@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../views/index.vue'
-import MIndex from '../views/mIndex.vue'
 
 Vue.use(VueRouter)
 
@@ -9,12 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i) ? MIndex : Index
-  },
-  {
-    path: '/m_index',
-    name: 'm_index',
-    component: () => import(/* webpackChunkName: "m_index" */ '../views/mIndex.vue')
+    component: Index
   },
   {
     path: '/maintaining',
@@ -32,11 +26,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "result" */ '../views/protocol.vue')
   },
   // 兼容旧版本.html
-  {
-    path: '/m_index.html',
-    name: 'm_index',
-    component: () => import(/* webpackChunkName: "m_index" */ '../views/mIndex.vue')
-  },
   {
     path: '/maintaining.html',
     name: 'maintaining',

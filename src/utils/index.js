@@ -354,3 +354,65 @@ export function removeClass(ele, cls) {
     ele.className = ele.className.replace(reg, ' ')
   }
 }
+
+/**
+* Judge whether it is character drawing or not
+* @param {string} s
+* @returns {boolean}
+*/
+
+export const isChracterDraw = s => {
+
+  const percentOfNormalSymbol = (s) => {
+    //统计常规符号：汉字 字母 数字
+    if (s.length == 0) return 0
+  
+    // 去除b站表情对较短小作文的影响，将其作为特殊符号统计
+    s = s.replace(/[[\u4e00-\u9fa5_]{3,10}]+/, ' ')
+  
+    const regex = /([0-9a-z\u4e00-\u9fa5)]+)/i
+    const percentage = [...s]
+      .filter(s => s.match(regex)).length / s.length
+    return percentage
+  }
+  
+  // 统计出现的字符种类
+  const numOfSymbol = (s) => {
+    return [... new Set(s)].length
+  } 
+
+  const percentage = percentOfNormalSymbol(s)
+	const num = numOfSymbol(s)
+	if (percentage < 0.15 || num < 7) return true
+
+	return false
+}
+
+/**
+* Get length that removed spical symbols
+* @param {string} s
+* @returns {number}
+*/
+export const pureLength = (s) => s.replace(/[[\u4e00-\u9fa5_]{3,10}]+/, ' ').length
+
+/**
+* Change Format of response data.data.releted
+* @param {Array} arr
+* @returns {Object}
+*/
+export const convert = (arr) => {
+  return arr.map(item => {
+    return {
+      id: item[1].rpid,
+      repeatPercent: (item[0] * 100).toFixed(2),
+      content: item[1].content,
+      author: {
+        name: item[1].m_name, 
+        id: item[1].mid
+      },
+      createTime: parseTime(item[1].ctime * 1000, '{y}/{m}/{d} {h}:{i}'),
+      url: item[2]
+    }
+  })
+}
+

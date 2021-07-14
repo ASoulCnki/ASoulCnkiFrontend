@@ -1,0 +1,59 @@
+/* 
+* 子组件article.vue 的样式文件
+* author: ch3cknull (ch3cknull@outlook.com)
+*/
+
+.content {
+  width: 100%;
+  padding: 0.8rem 0.5rem 0 1rem;
+  border: 1px solid hsl(0, 0%, 91%);
+  border-radius: 0.8rem;
+  background: #fafafa;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 2rem 0;
+}
+.content-info {
+  width: 100%;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  padding: 0;
+}
+.content-detail {
+  width: 100%;
+  padding: 0 1rem 0.7rem 0.3rem;
+  box-sizing: border-box;
+  white-space: pre-line;
+  word-break: break-all;
+  font-size: 0.8rem;
+  line-height: 1.7rem;
+  border-radius: 0.5rem;
+  background: #fafafa;
+  color: #595959;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  display: inline-block;
+  padding: 0 1.5rem 0 0;
+}
+
+ul li:last-child {
+  float: right;
+  padding: 0 0.3rem 0 0;
+}
+
+ul li:nth-last-child(2) {
+  padding: 0;
+}
+
+.footer {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: right;
+  margin: 0;
+  padding: 0 2rem 0 0;
+}
