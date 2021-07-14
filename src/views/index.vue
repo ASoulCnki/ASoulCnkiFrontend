@@ -109,7 +109,8 @@
 
 <script>
 import axios from 'axios'
-var post_url = "https://asoulcnki.asia/v1/api/check";
+// var post_url = "https://asoulcnki.asia/v1/api/check";
+var post_url = `${process.env.VUE_APP_BASE_API}/check`;
 Date.prototype.format = function (fmt) {
   var o = {
     "M+": this.getMonth() + 1, //月份
@@ -186,8 +187,13 @@ export default {
   },
   methods: {
     button_click() {
+      console.log(process.env.VUE_APP_BASE_API)
       if (this.text.length < 10) {
-        alert("小作文字数太少了哦~");
+        this.$message({
+          showClose: true,
+          message: '小作文字数太少了哦~',
+          type: 'warning'
+        })
         return;
       }
       if (this.agree_check) {
@@ -196,8 +202,7 @@ export default {
           this.button_class = "submit_btn_clicked";
           this.wait_result = true;
           localStorage.setItem("text", this.text);
-          axios
-            .post(post_url, { text: this.text })
+          axios.post(post_url, { text: this.text })
             .then((response) => {
               this.button_content = "提交小作文";
               this.button_class = "submit_btn";
@@ -223,7 +228,11 @@ export default {
                 //跳转
                 window.location.href = "/result";
               } else {
-                alert("服务器返回错误");
+                this.$message({
+                  showClose: true,
+                  message: '服务器返回错误',
+                  type: 'error'
+                })
               }
             })
             .catch((error) => {
@@ -231,12 +240,20 @@ export default {
               this.button_content = "提交小作文";
               this.button_class = "submit_btn";
               this.wait_result = false;
-              alert(error);
+              this.$message({
+                showClose: true,
+                message: error,
+                type: 'error'
+              })
               console.log(error);
             });
         }
       } else {
-        alert("您未同意《枝网查重平台用户协议》");
+        this.$message({
+          showClose: true,
+          message: '您未同意《枝网查重平台用户协议》',
+          type: 'warning'
+        })
       }
     },
     agree_check_click() {
