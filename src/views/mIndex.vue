@@ -153,7 +153,11 @@ export default {
   methods: {
     button_click() {
       if (this.text.length < 10) {
-        alert("小作文字数太少了哦~");
+        this.$message({
+          showClose: true,
+          message: '小作文字数太少了哦~',
+          type: 'warning'
+        })
         return;
       }
       if (this.agree_check) {
@@ -189,7 +193,11 @@ export default {
                 //跳转
                 window.location.href = "/result";
               } else {
-                alert("服务器返回错误");
+                this.$message({
+                  showClose: true,
+                  message: '服务器返回错误',
+                  type: 'error'
+                })
               }
             })
             .catch((error) => {
@@ -197,12 +205,20 @@ export default {
               this.button_content = "提交小作文";
               this.button_class = "btn btn-info btn-lg";
               this.wait_result = false;
-              alert(error);
+              this.$message({
+                showClose: true,
+                message: error,
+                type: 'error'
+              })
               console.log(error);
             });
         }
       } else {
-        alert("您未同意《枝网查重平台用户协议》");
+        this.$message({
+          showClose: true,
+          message: "您未同意《枝网查重平台用户协议》",
+          type: 'warning'
+        })
       }
     },
     agree_check_click() {

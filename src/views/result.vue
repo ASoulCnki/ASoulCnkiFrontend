@@ -103,6 +103,7 @@
 </template>
 
 <script>
+
 function time_format(time) {
   var now = new Date();
   var time_num = parseInt(time) * 1000;
@@ -293,11 +294,19 @@ var clipboard = new ClipboardJS("#copy_result_btn", {
 });
 clipboard.on("success", function (e) {
   console.log(e);
-  alert("复制成功");
+  this.$message({
+    showClose: true,
+    message: "复制成功",
+    type: 'success'
+  })
 });
 clipboard.on("error", function (e) {
   console.log(e);
-  alert("复制失败，请手动复制");
+  this.$message({
+    showClose: true,
+    message: "复制失败，请手动复制",
+    type: 'warning'
+  })
 });
 history.pushState(null, null, document.URL);
 window.addEventListener("popstate", function () {
