@@ -87,7 +87,6 @@ export default {
         report += `相似小作文: ${article.url}\n作者:${article.author.name}\n发表时间:${article.createTime}\n\n`
       }
       report += `查重结果仅作参考，请注意辨别是否为原创`
-
       //评价
       // var comment = "我的评价是:";
       // if (rate < 40.0) {
@@ -97,7 +96,6 @@ export default {
       // } else {
       //   comment += "一眼偷🥵\n";
       // }
-
       return report;
     },
     notify(s, type) {

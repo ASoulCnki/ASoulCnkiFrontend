@@ -79,7 +79,6 @@ import { isChracterDraw, pureLength } from '../utils/'
 import { buttonClick } from '../utils/buttonClick' 
 import { person_list, description } from '../config'
 import Article from '../components/article.vue'
-
 export default {
   name: "Home",
   components: {
