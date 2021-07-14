@@ -75,8 +75,9 @@
 </template>
 
 <script>
-import {button_click, isChracterDraw, pureLength} from '../util/'
-import {person_list, description} from '../config'
+import { isChracterDraw, pureLength } from '../utils/'
+import { buttonClick } from '../utils/buttonClick' 
+import { person_list, description } from '../config'
 import Article from '../components/article.vue'
 
 export default {
@@ -103,7 +104,7 @@ export default {
   },
   methods: {
     buttonClick() {
-      button_click.call(this, arguments)
+      buttonClick.call(this, arguments)
     },
     getReport() {
       this.$router.push({

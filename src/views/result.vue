@@ -74,7 +74,38 @@ export default {
   },
   data() {
     return {
-      response: {}
+      response: {},
+      clipboard: null
+    }
+  },
+  methods: {
+    report(trigger) {
+      const response = JSON.parse(localStorage.getItem('response'))
+      let report = `枝网文本复制检测报告(简洁)\n查重时间: ${response.time}\n总文字复制比: ${response.repeatPercent}%\n`
+      if (response.alike.length > 0) {
+        const article = response.alike[0] 
+        report += `相似小作文: ${article.url}\n作者:${article.author.name}\n发表时间:${article.createTime}\n\n`
+      }
+      report += `查重结果仅作参考，请注意辨别是否为原创`
+
+      //评价
+      // var comment = "我的评价是:";
+      // if (rate < 40.0) {
+      //   comment += "原创/偷🥰\n";
+      // } else if (rate < 70.0) {
+      //   comment += "有抄袭嫌疑🤨\n";
+      // } else {
+      //   comment += "一眼偷🥵\n";
+      // }
+
+      return report;
+    },
+    notify(s, type) {
+      this.$message({
+        showClose: true,
+        message: s,
+        type: type
+      })
     }
   },
   created() {
@@ -82,7 +113,7 @@ export default {
     this.response = this.$route.params.response
     document.title = "枝网检测报告";
     let rate = this.response.repeatPercentage
-
+    localStorage.setItem('response', JSON.stringify(this.response))
     if (rate < 20) {
       this.progress_class = "progress-bar progress-bar-success";
       this.rate_color = "green";
@@ -94,51 +125,15 @@ export default {
       this.rate_color = "red";
     }
   },
- 
-  filters: {
-    rounding(value) {
-      return value.toFixed(2);
-    },
-  },
-};
-var clipboard = new ClipboardJS("#copy_result_btn", {
-  text: function (trigger) {
-
-
-let report = `枝网文本复制检测报告(简洁)
-查重时间: ${response.time}
-总文字复制比: ${response.repeatPercentage}%
-`
-  if (response.arr.length > 0) {
-    const article = response.arr[0] 
-    report += `相似小作文: ${article.url}
-作者:${article.author.name}
-发表时间:${article.createTime}
-`
+  mounted() {
+    const clipboard = new ClipboardJS('#copy_result_btn', {
+      text: this.report
+    })
+    clipboard.on("success", () => this.notify('复制成功', 'success'));
+    clipboard.on("error", () => this.notify('复制失败，请手动复制', 'warning')) 
+    this.clipboard = clipboard
   }
-
-  report += `查重结果仅作参考，请注意辨别是否为原创`
-
-    //评价
-    // var comment = "我的评价是:";
-    // if (rate < 40.0) {
-    //   comment += "原创/偷🥰\n";
-    // } else if (rate < 70.0) {
-    //   comment += "有抄袭嫌疑🤨\n";
-    // } else {
-    //   comment += "一眼偷🥵\n";
-    // }
-    return report;
-  },
-});
-clipboard.on("success", function (e) {
-  console.log(e);
-  alert("复制成功");
-});
-clipboard.on("error", function (e) {
-  console.log(e);
-  alert("复制失败，请手动复制");
-});
+};
 history.pushState(null, null, document.URL);
 window.addEventListener("popstate", function () {
   window.location = "/";

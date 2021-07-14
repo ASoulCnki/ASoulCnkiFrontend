@@ -1,27 +1,30 @@
 import axios from 'axios'
 import dayjs from 'dayjs'
-import { convert } from './arrayToObject'
+import { convert } from './index'
 
-function button_click() {
+// index 组件 查询小作文的函数
+function buttonClick() {
+  const notify = (s, type) => this.$message({
+    showClose: true,
+    message: s,
+    type: type
+  })
 
-  // const post_url = 'https://asoulcnki.asia/v1/api/check'
-  const post_url = '/result1'
+  const post_url = `${process.env.VUE_APP_BASE_API}/check`;
   if (this.text.length < 10) {
-    alert("小作文字数太少了哦~");
-    return;
+    return notify('小作文字数太少了捏', 'warning')
   }
   if (!this.agree_check) {
-    return alert('请先同意协议')
+    return notify('请先同意协议', 'warning')
   }
   if (!this.isComplete) {
     this.isComplete = true;
     axios
-      .get(post_url)
-      // .post(post_url, { text: this.text })
+      .post(post_url, { text: this.text })
       .then( res => {
         this.isComplete = false;
         if (res.data.code != 0) {
-          return alert("服务器错误")
+          return notify('服务器异常', 'error')
         }
         //时间设置
         const format = (...args) => new dayjs(...args).format("YYYY-MM-DD HH:mm:ss")
@@ -40,11 +43,11 @@ function button_click() {
       })
       .catch( err => {
         this.isComplete = false;
-        alert(err);
+        notify('服务器异常', 'error')
         throw new Error(err)
       });
   }
 
 }
 
-export {button_click}
+export { buttonClick }
