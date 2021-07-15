@@ -40,6 +40,13 @@ function buttonClick() {
           alike: convert(data.related),
           text: this.text
         }
+
+        const length = this.response.alike.length
+        if (length == 0) {
+          notify('没有找到重复的小作文捏', 'success')
+        } else {
+          notify(`找到了${length}条相似的小作文`, 'success')
+        }
       })
       .catch(err => {
         this.isComplete = false;
