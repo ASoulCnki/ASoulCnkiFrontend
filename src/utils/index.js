@@ -402,6 +402,9 @@ export const pureLength = (s) => s.replace(/[[\u4e00-\u9fa5_]{3,10}]+/, ' ').len
 */
 export const convert = (arr) => {
   return arr.map(item => {
+    if (!Array.isArray(item)) {
+      item = [item.rate, item.reply, item.reply_url]
+    }
     return {
       id: item[1].rpid,
       repeatPercent: (item[0] * 100).toFixed(2),

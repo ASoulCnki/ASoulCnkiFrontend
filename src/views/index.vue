@@ -1,15 +1,21 @@
 <template>
   <div id="body_content">
     <div class="content-left">
-      <div class="notify">
-        我是公告
-      </div>
+      <Notice
+        :color="'black'"
+        :content="notice.content"
+      />
       <div class="main-container">
         <div class="text-contianer">
           <div class="text-header">
             <ul>
               <li id="percentage" style="color: rgb(215, 58, 73);">
-                重复率 {{ response.repeatPercent }}% 
+                总文字复制比 {{ response.repeatPercent }}% 
+              </li>
+              <li>
+                <button class="text-button report" @click="getReport" :disabled="!reportable">
+                  生成报告
+                </button>
               </li>
               <li>
                 <button @click="buttonClick"
@@ -18,11 +24,7 @@
                   {{ isComplete ? '查重中···' : '提交小作文' }}
                 </button>
               </li>
-              <li>
-                <button class="text-button report" @click="getReport" :disabled="!reportable">
-                  生成查重报告
-                </button>
-              </li>
+
             </ul>
           </div>
           <textarea
@@ -79,10 +81,13 @@ import { isChracterDraw, pureLength } from '../utils/'
 import { buttonClick } from '../utils/buttonClick' 
 import { person_list, description } from '../config'
 import Article from '../components/article.vue'
+import Notice from '../components/Notice.vue'
+
 export default {
   name: "Home",
   components: {
-    Article
+    Article,
+    Notice
   },
   data() {
     return {
@@ -91,6 +96,11 @@ export default {
       maxlength: 1000,
       button_content: "提交小作文",
       isComplete: false,
+      notice: {
+        backgroundColor: '#rgb(245, 132, 27)',
+        color: 'white',
+        content:{message:'这是一条带链接的通知,去掉url属性为一般通知', url: '/'}
+      },
       response: {
         repeatPercent: 0,
         timeRange: [],

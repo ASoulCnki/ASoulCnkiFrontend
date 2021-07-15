@@ -3,7 +3,7 @@
     <div class="no_data">
       <img class="no_dataImg" src="../assets/images/2.gif" alt="暂无数据" />
       <div class="no_dataText">
-        系统维护中
+        <h1>系统维护中</h1>
         <p>
           为了AU们能获得更好的查重体验
           枝网将在2021年6月30日15:00-17:00进行维护。
@@ -44,13 +44,17 @@ a:hover {
 }
 .no_dataText {
   text-align: center;
-  padding: 0px 0px 90px 0px;
-  color: #bebebe;
+  padding: 0 3rem 5rem 3rem;
+  color: #595959;
   font-size: 24px;
   font-weight: bold;
 }
+
+.no_dataText p {
+  word-break: break-all;
+}
 .no_dataImg {
   width: 240px;
-  padding: 170px 0px 50px 0px;
+  padding: 10rem 0px 50px 0px;
 }
 </style>

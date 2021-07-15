@@ -109,6 +109,11 @@ export default {
   created() {
     // set title
     this.response = this.$route.params.response
+
+    if (!this.response) {
+      this.$router.push('/')
+    }
+
     document.title = "枝网检测报告";
     let rate = this.response.repeatPercentage
     localStorage.setItem('response', JSON.stringify(this.response))
@@ -141,9 +146,21 @@ window.addEventListener("popstate", function () {
 <style>
 body {
   background: #ebebeb;
+  min-width: 375px;
 }
+@media screen and (min-width: 800px) {
+  #panel {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 400px) {
+  #panel {
+    width: 90%;
+  }
+}
+
 #panel {
-  width: 90%;
+  /* width: 90%; */
   margin: auto;
   margin-top: 20px;
 }
@@ -167,11 +184,11 @@ body {
   color: rgb(23, 121, 204);
 }
 .result_box {
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 .result_box_inner {
-  margin: 10px;
+  /* margin: 10px; */
   border-radius: 10px;
   border: 1px solid #e2e0e0;
 }
