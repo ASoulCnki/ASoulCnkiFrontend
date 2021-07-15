@@ -10,7 +10,7 @@ function buttonClick() {
     type: type
   })
 
-  const post_url = `${process.env.VUE_APP_BASE_API}/check`;
+  const post_url = `${process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'}/check`;
   if (this.text.length < 10) {
     return notify('小作文字数太少了捏', 'warning')
   }
@@ -21,7 +21,7 @@ function buttonClick() {
     this.isComplete = true;
     axios
       .post(post_url, { text: this.text })
-      .then( res => {
+      .then(res => {
         this.isComplete = false;
         if (res.data.code != 0) {
           return notify('服务器异常', 'error')
@@ -41,7 +41,7 @@ function buttonClick() {
           text: this.text
         }
       })
-      .catch( err => {
+      .catch(err => {
         this.isComplete = false;
         notify('服务器异常', 'error')
         throw new Error(err)

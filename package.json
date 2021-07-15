@@ -25,11 +25,10 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "vue-template-compiler": "^2.6.11",
     "node-sass": "^5.0.0",
-    "style-loader": "^2.0.0",
     "sass-loader": "^10.0.5",
-    "mockjs": "1.0.1-beta3"
+    "style-loader": "^2.0.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "> 1%",
