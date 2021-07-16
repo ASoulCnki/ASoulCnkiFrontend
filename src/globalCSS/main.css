@@ -123,14 +123,23 @@ ul {
 }
 
 
-.text-button {
-  padding: 0.5rem 1.3rem;
+.button {
+  padding: 0.3rem 1.1rem;
   border-radius: 0.6rem;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
   justify-content: center;
   border: 1px solid white;
   color: white;
   transition: 0.3s;
+}
+
+.text-button {
+  padding: 0.5rem 1.3rem;
+}
+
+.icon {
+  padding: 0.05rem 0;
+  height: 1.6rem;
 }
 
 .submit-ready {
