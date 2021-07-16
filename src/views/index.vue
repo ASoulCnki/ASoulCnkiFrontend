@@ -66,6 +66,7 @@
             </em>
           </p>
         </div>
+        <!-- <Carousel/> -->
         <div class="right-bottom-links right-item">
           <h3 class="description-title">欢迎关注</h3>
           <p v-for="person in person_list" :key="person.href">
@@ -88,12 +89,14 @@ import { buttonClick } from '../utils/buttonClick'
 import { person_list, description, message } from '../config'
 import Article from '../components/article.vue'
 import Notice from '../components/Notice.vue'
+import Carousel from '../components/Carousel.vue'
 
 export default {
   name: "Home",
   components: {
     Article,
-    Notice
+    Notice,
+    Carousel
   },
   data() {
     return {
@@ -121,6 +124,7 @@ export default {
   },
   methods: {
     report(trigger) {
+      if (!this.reportable) return
       const response = this.response
       let report = `枝网文本复制检测报告(简洁)\n查重时间: ${response.time}\n总文字复制比: ${response.repeatPercent}%\n`
       if (response.alike.length > 0) {
