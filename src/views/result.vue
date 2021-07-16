@@ -148,21 +148,32 @@ body {
   background: #ebebeb;
   min-width: 375px;
 }
-@media screen and (min-width: 800px) {
+/* @media screen and (max-width: 600px) {
   #panel {
     width: 60%;
   }
-}
-@media screen and (max-width: 400px) {
+} */
+/* @media screen and (max-width: 800px) {
   #panel {
-    width: 90%;
+    width: 80%;
+    margin: 5%;
   }
-}
+} */
 
 #panel {
-  /* width: 90%; */
+  width: 96%;
   margin: auto;
   margin-top: 20px;
+}
+@media screen and (min-width: 800px) {
+  #panel {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #panel {
+    width: 60%;
+  }
 }
 #title {
   margin-bottom: 20px;

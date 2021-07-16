@@ -23,10 +23,25 @@
   }
 
   .content-detail {
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 2.0rem;
     word-break: break-all;
   }
+
+  /* .content-info ul {
+    display: grid;
+    grid-template-columns: 65% 35%;
+  }
+
+  .content-info li {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+  } */
+
+}
+
+@media screen and (max-width: 1000px) {
 
   .content-info ul {
     display: grid;
@@ -35,8 +50,7 @@
 
   .content-info li {
     padding: 0.25rem 0.5rem;
-    font-size: 1.2rem;
-    line-height: 1.8rem;
+    font-size: 1.3rem;
+    line-height: 2.0rem;
   }
-
 }

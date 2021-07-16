@@ -45,7 +45,7 @@ function buttonClick() {
         if (length == 0) {
           notify('没有找到重复的小作文捏', 'success')
         } else {
-          notify(`找到了${length}条相似的小作文`, 'success')
+          notify(`请点击复制以复制查重报告`, 'success')
         }
       })
       .catch(err => {

@@ -6,7 +6,7 @@
   <div class="content">
     <div class="content-info">
       <ul>
-        <li>检测时间 {{article.createTime}}</li>
+        <li>发表时间 {{article.createTime}}</li>
         <li style="color:#d73a49">重复率: {{article.repeatPercent}}%</li>
         <li>
           作者: 
