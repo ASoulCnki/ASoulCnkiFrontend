@@ -11,6 +11,21 @@ const routes = [
     component: Index
   },
   {
+    path: '/index.html',
+    name: 'index',
+    component: Index
+  },
+  {
+    path: '/m_index',
+    name: 'index',
+    component: Index
+  },
+  {
+    path: '/m_index.html',
+    name: 'index',
+    component: Index
+  },
+  {
     path: '/maintaining',
     name: 'maintaining',
     component: () => import(/* webpackChunkName: "maintaining" */ '../views/maintaining.vue')
@@ -40,7 +55,12 @@ const routes = [
     path: '/protocol.html',
     name: 'protocol',
     component: () => import(/* webpackChunkName: "result" */ '../views/protocol.vue')
-  }
+  },
+  {
+    path: '*',
+    name: 'notFound',
+    redirect: '/'
+  },
 ]
 
 const router = new VueRouter({
