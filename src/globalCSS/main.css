@@ -41,7 +41,7 @@ ul {
 .right-item {
   border: 1px solid hsl(0, 0%, 91%);
   border-radius: 0.5rem;
-  /* padding: 0.5rem 1.5rem; */
+  padding: 0.5rem 1.5rem;
   margin: 0 0 2rem 0; 
 }
 
