@@ -1,14 +1,9 @@
 import axios from 'axios'
-import dayjs from 'dayjs'
-import { convert } from './index'
+import { convert, parseTime } from './index'
 
 // index 组件 查询小作文的函数
 function buttonClick() {
-  const notify = (s, type) => this.$message({
-    showClose: true,
-    message: s,
-    type: type
-  })
+  const notify = this.notify
 
   const post_url = `${process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'}/check`;
   if (this.text.length < 10) {
@@ -27,7 +22,7 @@ function buttonClick() {
           return notify('服务器异常', 'error')
         }
         //时间设置
-        const format = (...args) => new dayjs(...args).format("YYYY-MM-DD HH:mm:ss")
+        const format = (...args) => parseTime(new Date(...args), '{y}/{m}/{d} {h}:{i}:{s}')
         const data = res.data.data
 
         this.response = {

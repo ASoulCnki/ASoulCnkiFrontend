@@ -66,7 +66,7 @@
             </em>
           </p>
         </div>
-        <!-- <Carousel/> -->
+        <!-- <Carousel :memberArray="person_list"/> -->
         <div class="right-bottom-links right-item">
           <h3 class="description-title">欢迎关注</h3>
           <p v-for="person in person_list" :key="person.href">
