@@ -1,7 +1,7 @@
 <template>
   <div class="right-item">
     <el-carousel :interval="5000" arrow="hover" indicator-position="none">
-      <el-carousel-item v-for=" item in 6" :key="item" class="carousel-item">
+      <el-carousel-item v-for=" item in memberArray" :key="item.name" class="carousel-item">
         <div class="member-info">
           {{ item }}
         </div>
@@ -13,8 +13,8 @@
 <script>
 export default {
   name: 'Carousel',
-  components: {
-    
+  props: {
+    memberArray: Array
   },
   data() { 
     return {
@@ -33,8 +33,14 @@ export default {
     background: #000;
   }
   .member-info {
-    background: rgb(105, 163, 230);
+    /* background: rgb(105, 163, 230); */
     width: 100%;
     height: 300px;
+  }
+
+  .member-info img {
+    width: 100%;
+    clip-path: inset(110px 0 200px 0);
+    transform: translateY(-110px);
   }
 </style>

@@ -2,26 +2,32 @@ const person_list = [
   {
     name: "A-SOUL_Official",
     href: "703007996",
+    imgPath: "a.jpg"
   },
   {
     name: "贝拉kira",
     href: "672353429",
+    imgPath: "b.jpg"
   },
   {
     name: "嘉然今天吃什么",
     href: "672328094",
+    imgPath: "d.jpg"
   },
   {
     name: "向晚大魔王",
     href: "672346917",
+    imgPath: "a.jpg"
   },
   {
     name: "乃琳Queen",
     href: "672342685",
+    imgPath: "e.jpg"
   },
   {
     name: "珈乐Carol",
     href: "351609538",
+    imgPath: "c.jpg"
   },
 ];
 
