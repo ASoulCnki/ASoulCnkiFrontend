@@ -7,7 +7,8 @@
     "serve": "vue-cli-service serve",
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build:report": "vue-cli-service build --report"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -29,7 +30,8 @@
     "node-sass": "^5.0.0",
     "sass-loader": "^10.0.5",
     "style-loader": "^2.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "browserslist": [
     "> 1%",

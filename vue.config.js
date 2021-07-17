@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const settings = require('./src/settings.js')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function resolve(dir) {
     return path.join(__dirname, dir)
@@ -33,5 +34,6 @@ module.exports = {
     },
     chainWebpack: config => {
         config.module.rule('url-loader').test(/\.(cur)(\?.*)?$/).use('url-loader').loader('url-loader').end();
+        config.plugin('webpack-bundle-analyzer').use(BundleAnalyzerPlugin)
     }
 }
