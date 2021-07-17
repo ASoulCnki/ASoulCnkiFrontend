@@ -1,5 +1,5 @@
 # asoulcnki-frontend
-# A-SOUL评论区小作文 枝网查重系统 前端（迁移中）
+# A-SOUL评论区小作文 枝网查重系统 前端（已迁移）
 源项目：https://github.com/stream2000/ASoulCnki  
 网站地址：https://asoulcnki.asia
 
