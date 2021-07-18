@@ -24,7 +24,7 @@
                 </button>
               </li>
               <li>
-                <button @click="buttonClick"
+                <button @click="buttonClick" :disabled="isComplete"
                   :class="'text-button button ' + (isComplete ? 'submit-pedding' : 'submit-ready') " 
                 >
                   {{ isComplete ? '查重中' : '提交' }}
@@ -66,19 +66,7 @@
             </em>
           </p>
         </div>
-        <!-- <Carousel :memberArray="person_list"/> -->
-        <div class="right-bottom-links right-item">
-          <h3 class="description-title">欢迎关注</h3>
-          <p v-for="person in person_list" :key="person.href">
-            <a
-              :href="'https://space.bilibili.com/'+ person.href"
-              style="color: rgb(251, 114, 153)"
-              target="_blank"
-            >
-              {{ person.name }}
-            </a>
-          </p>
-      </div>
+        <Carousel :memberArray="person_list"/>
     </div>
   </div>
 </template>
@@ -108,8 +96,9 @@ export default {
       notice: {
         backgroundColor: '#DB7672',
         color: 'white',
-        content:{message: message(new Date() * 1)}
-        // content:{message:''}
+        content:[
+          {message: message(new Date() * 1)},
+        ]
       },
       response: {
         repeatPercent: 0,
@@ -173,7 +162,7 @@ export default {
     const clipboard = new ClipboardJS('#copy', {
       text: this.report
     })
-    clipboard.on("success", () => this.notify('复制成功', 'success'));
+    clipboard.on("success", () => this.notify('复制成功,适度玩梗捏', 'success'));
     clipboard.on("error", () => this.notify('复制失败，请手动复制', 'warning'))
     this.clipboard = clipboard
   }
