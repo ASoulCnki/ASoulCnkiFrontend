@@ -162,7 +162,7 @@ export default {
     const clipboard = new ClipboardJS('#copy', {
       text: this.report
     })
-    clipboard.on("success", () => this.notify('复制成功,玩梗适度,恳求大家不要乱刷捏', 'success'));
+    clipboard.on("success", () => this.notify('复制成功,适度玩梗捏', 'success'));
     clipboard.on("error", () => this.notify('复制失败，请手动复制', 'warning'))
     this.clipboard = clipboard
   }
