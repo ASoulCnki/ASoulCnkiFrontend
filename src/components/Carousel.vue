@@ -1,10 +1,19 @@
 <template>
   <div class="right-item">
-    <el-carousel :interval="5000" arrow="hover" indicator-position="none">
-      <el-carousel-item v-for=" item in memberArray" :key="item.name" class="carousel-item">
-        <div class="member-info">
-          {{ item }}
+    <el-carousel :interval="6000" arrow="hover" indicator-position="none" :height="'20rem'">
+      <el-carousel-item v-for=" member in memberArray" :key="member.name" class="carousel-item">
+        <a :href="'https://space.bilibili.com/' + member.href">
+        <div class="member-info" 
+          :style="{backgroundColor: member.color}"  
+        >
+          <div class="avtar">
+            <img :src="member.imgPath" :alt="member.name" referrerpolicy="no-referrer"> 
+          </div>
+          <div class="member-name">
+            {{member.name}}
+          </div>
         </div>
+        </a>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -16,31 +25,46 @@ export default {
   props: {
     memberArray: Array
   },
-  data() { 
-    return {
-      
-    }
-  },
-  methods: {
-    
-  }
 }
 </script>
 
 <style lang="css" scoped>
+  a, a:hover {
+    text-decoration: none;
+    color: white;
+  }
+
   .carousel-item h3 {
     text-align: center;
     background: #000;
+    padding: 0;
   }
   .member-info {
-    /* background: rgb(105, 163, 230); */
+    padding: 3rem 0 0 0;
+    margin: 0;
     width: 100%;
-    height: 300px;
+    height: 100%;
+    border-radius: 0.4rem;
   }
 
-  .member-info img {
-    width: 100%;
-    clip-path: inset(110px 0 200px 0);
-    transform: translateY(-110px);
+  .avtar {
+    width: 10rem;
+    height: 10rem;
+    margin: auto;
+    border-radius: 10rem;
+    border: 0.3rem solid #fafafa;
+    overflow: hidden;
+  }
+
+  .avtar img {
+    height: 100%;
+  }
+
+  .member-name {
+    margin: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fafafa;
   }
 </style>
