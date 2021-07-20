@@ -38,11 +38,16 @@
             :maxlength="maxlength"
             v-model="text"
           />
-          <p class="text-status">
-            <span>
+          <div class="text-status">
+            <div>
+              <el-checkbox v-model="isAgreed">
+                您已同意<b @click="isProtocolVisiable=true">用户协议</b>
+              </el-checkbox>
+            </div>
+            <div>
               {{ text.length }}/{{ maxlength }} 种类: {{typeofText}}
-            </span>
-          </p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="render-data-list">
@@ -68,6 +73,7 @@
         </div>
         <Carousel :memberArray="person_list"/>
     </div>
+    <Protocol :visible="isProtocolVisiable" @close="closeDialog"/>
   </div>
 </template>
 
@@ -78,13 +84,15 @@ import { person_list, description, message } from '../config'
 import Article from '../components/article.vue'
 import Notice from '../components/Notice.vue'
 import Carousel from '../components/Carousel.vue'
+import Protocol from './protocol.vue'
 
 export default {
   name: "Home",
   components: {
     Article,
     Notice,
-    Carousel
+    Carousel,
+    Protocol
   },
   data() {
     return {
@@ -93,6 +101,8 @@ export default {
       maxlength: 1000,
       button_content: "提交小作文",
       isComplete: false,
+      isProtocolVisiable: false,
+      isAgreed: true,
       notice: {
         backgroundColor: '#DB7672',
         color: 'white',
@@ -133,15 +143,15 @@ export default {
         params: { response: this.response }
       })
     },
-    agree_check_click() {
-      this.agree_check = !this.agree_check;
-    },
     notify(s, type) {
       this.$message({
         showClose: true,
         message: s,
         type: type
       })
+    },
+    closeDialog() {
+      this.isProtocolVisiable = false
     }
   },
   computed: {
@@ -159,12 +169,20 @@ export default {
     }
   },
   mounted() {
+    const isAgreed = JSON.parse(localStorage.getItem('isAgreed'))
+    this.isAgreed = isAgreed || false
     const clipboard = new ClipboardJS('#copy', {
       text: this.report
     })
     clipboard.on("success", () => this.notify('复制成功,适度玩梗捏', 'success'));
     clipboard.on("error", () => this.notify('复制失败，请手动复制', 'warning'))
     this.clipboard = clipboard
+  },
+  watch: {
+    isAgreed(newVal, oldVal) {
+      if (newVal != null)
+        localStorage.setItem('isAgreed', newVal)
+    }
   }
 };
 </script>

@@ -6,11 +6,11 @@ function buttonClick() {
   const notify = this.notify
 
   const post_url = `${process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'}/check`;
+  if (!this.isAgreed) {
+    return notify('请先同意用户协议', 'warning')
+  }
   if (this.text.length < 10) {
     return notify('小作文字数太少了捏', 'warning')
-  }
-  if (!this.agree_check) {
-    return notify('请先同意协议', 'warning')
   }
   if (!this.isComplete) {
     this.isComplete = true;

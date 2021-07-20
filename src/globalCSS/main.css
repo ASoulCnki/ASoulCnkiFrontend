@@ -118,11 +118,16 @@ ul {
 
 .text-status {
   width: 100%;
-  text-align: right;
-  font-size: 1.2rem;
-  padding: 0 1.6rem 0 0;
+  text-align: left;
+  font-size: 16px;
+  padding: 0.5rem 1.6rem;
+  display: inline-grid;
+  grid-template-columns: 45% 55%;  
 }
 
+.text-status div:last-child {
+  text-align: right;
+}
 
 .button {
   padding: 0.3rem 1.1rem;
@@ -143,8 +148,9 @@ ul {
 }
 
 .icon {
-  padding: 0.05rem 0;
-  height: 1.6rem;
+  padding: 0.09rem 0;
+  transform: translateY(1px);
+  height: 1.65rem;
 }
 
 .submit-ready {
