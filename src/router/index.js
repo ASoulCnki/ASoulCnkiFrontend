@@ -35,11 +35,6 @@ const routes = [
     name: 'result',
     component: () => import(/* webpackChunkName: "result" */ '../views/result.vue')
   },
-  {
-    path: '/protocol',
-    name: 'protocol',
-    component: () => import(/* webpackChunkName: "result" */ '../views/protocol.vue')
-  },
   // 兼容旧版本.html
   {
     path: '/maintaining.html',
@@ -50,11 +45,6 @@ const routes = [
     path: '/result.html',
     name: 'result',
     component: () => import(/* webpackChunkName: "result" */ '../views/result.vue')
-  },
-  {
-    path: '/protocol.html',
-    name: 'protocol',
-    component: () => import(/* webpackChunkName: "result" */ '../views/protocol.vue')
   },
   {
     path: '*',

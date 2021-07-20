@@ -46,11 +46,8 @@ const description = [
 ]
 
 const message = (time) => {
-  const oldVal = '队长！大聪明！！生日快乐！！！一起向前冲啊啊啊！（明天才是正式的生日，大家别记错了！！）（偷自@向晚大魔王）枝网项目组祝拉姐生日快乐！'
-  const newVal = '队长！大聪明！！生日快乐！！！一起向前冲啊啊啊！（今天才是正式的生日，大家别记错了！！）（偷自@向晚大魔王）枝网项目组祝拉姐生日快乐！'
   const feedback = '查重过程中遇到的问题可以向@查重姬Official进行反馈，传送门在系统介绍 ——枝网项目组'
-  return (time < 1626451200000) ? 
-    oldVal : (time < 1626537600000) ? newVal : feedback
+  return feedback
 }
 
 export {description, person_list, message}

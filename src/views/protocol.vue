@@ -2,10 +2,9 @@
   <el-dialog 
     class="protocol"
     :visible.sync="visible"
-    :width="'95%'"
+    :width="isWidth ? '55%' : '95%'"
     :top="'5rem'"
     :before-close="close"
-    :close-on-click-modal="false"
     style="margin:auto; padding:0; overflow:hidden"
     :title="'枝网查重平台用户协议'"
     >
@@ -113,12 +112,23 @@ export default {
   props:{
     visible: Boolean
   },
+  data() {
+    return {
+      isWidth: true
+    }
+  },
   methods: {
     close(done) {
       this.$emit('close')
       done()
     }
   },
+  mounted() {
+    this.isWidth = window.innerWidth >= 800
+    window.onresize = () => {
+      this.isWidth = window.innerWidth >= 800
+    }
+  }
 };
 </script>
 
@@ -129,14 +139,8 @@ export default {
 }
 
 .protocol {
-  width: 55%;
-}
-
-@media screen and (max-width: 800px) {
-  .protocol {
-    width: 100%;
-    overflow: hidden;
-  }
+  width: 100%;
+  overflow: hidden;
 }
 
 .protocol-content {
