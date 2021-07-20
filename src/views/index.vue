@@ -40,9 +40,8 @@
           />
           <div class="text-status">
             <div>
-              <el-checkbox v-model="isAgreed">
-                您已同意<b @click="isProtocolVisiable=true">用户协议</b>
-              </el-checkbox>
+              <el-checkbox v-model="isAgreed"/>
+              您已同意<a @click="isProtocolVisiable=true">用户协议</a>
             </div>
             <div>
               {{ text.length }}/{{ maxlength }} 种类: {{typeofText}}
@@ -152,6 +151,10 @@ export default {
     },
     closeDialog() {
       this.isProtocolVisiable = false
+    },
+    openDialog() {
+      this.isAgreed = !this.isAgreed
+      this.isProtocolVisiable = true
     }
   },
   computed: {

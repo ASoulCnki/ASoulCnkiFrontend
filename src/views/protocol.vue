@@ -5,6 +5,7 @@
     :width="'95%'"
     :top="'5rem'"
     :before-close="close"
+    :close-on-click-modal="false"
     style="margin:auto; padding:0; overflow:hidden"
     :title="'枝网查重平台用户协议'"
     >
@@ -112,15 +113,10 @@ export default {
   props:{
     visible: Boolean
   },
-  data() {
-    return {
-      isAgree: false,
-    }
-  },
   methods: {
     close(done) {
       this.$emit('close')
-      // done()
+      done()
     }
   },
 };
