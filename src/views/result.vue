@@ -75,12 +75,13 @@ export default {
   data() {
     return {
       response: {},
-      clipboard: null
+      clipboard: null,
+      progress_class: ""
     }
   },
   methods: {
     report(trigger) {
-      const response = JSON.parse(localStorage.getItem('response'))
+      const response = this.response
       let report = `枝网文本复制检测报告(简洁)\n查重时间: ${response.time}\n总文字复制比: ${response.repeatPercent}%\n`
       if (response.alike.length > 0) {
         const article = response.alike[0] 
@@ -115,8 +116,7 @@ export default {
     }
 
     document.title = "枝网检测报告";
-    let rate = this.response.repeatPercentage
-    localStorage.setItem('response', JSON.stringify(this.response))
+    let rate = parseInt(this.response.repeatPercent)
     if (rate < 20) {
       this.progress_class = "progress-bar progress-bar-success";
       this.rate_color = "green";
@@ -148,17 +148,6 @@ body {
   background: #ebebeb;
   min-width: 375px;
 }
-/* @media screen and (max-width: 600px) {
-  #panel {
-    width: 60%;
-  }
-} */
-/* @media screen and (max-width: 800px) {
-  #panel {
-    width: 80%;
-    margin: 5%;
-  }
-} */
 
 #panel {
   width: 96%;
