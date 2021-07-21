@@ -28,17 +28,6 @@
     word-break: break-all;
   }
 
-  /* .content-info ul {
-    display: grid;
-    grid-template-columns: 65% 35%;
-  }
-
-  .content-info li {
-    padding: 0.25rem 0.5rem;
-    font-size: 1.3rem;
-    line-height: 1.8rem;
-  } */
-
 }
 
 @media screen and (max-width: 1000px) {

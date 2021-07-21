@@ -1,5 +1,4 @@
 <template>
-  <div class="main-style">
     <div class="no_data">
       <img class="no_dataImg" src="../assets/images/2.gif" alt="暂无数据" />
       <div class="no_dataText">
@@ -14,7 +13,6 @@
       </div>
       <!--<img class="width100" src="images/1.png" alt="底部">-->
     </div>
-  </div>
 </template>
 
 <script>
@@ -26,15 +24,6 @@ export default {
 </script>
 
 <style>
-body,
-a,
-a:link {
-  cursor: url("../assets/images/cur117.cur"), default;
-}
-
-a:hover {
-  cursor: url("../assets/images/cur117.cur"), wait;
-}
 .no_data {
   height: 100vh;
   display: flex;

@@ -1,0 +1,122 @@
+.result-panel {
+  background: #ebebeb;
+  min-width: 375px;
+  width: 100%;
+  padding: 25px 0;
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.panel-body {
+  width: 96%;
+  margin: auto;
+  background: #fff;
+  border: 1px solid hsl(0, 0%, 89%);
+  border-radius: 0.5rem;
+  padding: 15px;
+}
+@media screen and (min-width: 800px) {
+  .panel-body {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .panel-body {
+    width: 60%;
+  }
+}
+.result-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.result-title h3 {
+  text-align: center;
+}
+.result-head {
+  margin: 10px;
+  margin-left: 20px;
+}
+.result-head-item {
+  color: rgb(23, 121, 204);
+}
+
+.result-body-title {
+  margin-top: 20px;
+  text-align: center;
+  font-size: medium;
+  font-weight: 1000;
+  color: rgb(23, 121, 204);
+}
+
+.result-body {
+  line-height: 22px;
+}
+
+
+.result-article-content {
+  width: 100;
+  margin: auto;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 2rem 2rem;
+  word-break: break-all;
+  white-space: pre-wrap;
+  border: 1px solid #e2e0e0;
+}
+
+.result-article-content p {
+  margin: 0;
+}
+
+#result-copy-container {
+  text-align: center;
+}
+
+.result-copy-button {
+  background-color: hsl(207, 98%, 55%);
+  color: white;
+  padding: 0.8rem 2rem;
+  border: 1px solid white;
+  margin: 0 0 1rem 0;
+  transition: 0.3s;
+  border-radius: 0.8rem;
+}
+
+.result-copy-button:hover {
+  background-color: white;
+  color: hsl(207, 98%, 55%);
+  border: 1px solid hsl(207, 98%, 55%);
+}
+
+.result-progress {
+  height: 20px;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+  overflow: hidden;
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin: 0 0 30px 0;
+}
+
+.result-progress-bar {
+  height: 20px;
+  float: left;
+  line-height: 12px;
+  color: #fff;
+  text-align: center;
+  height: 100%;
+}
+
+.result-progress-bar-success {
+  background-color: #5cb85c;
+  /* background-image: -moz-repeating-linear-gradient(); */
+}
+
+.result-progress-bar-warning {
+  background-color: #f0ad4e;
+}
+
+.result-progress-bar-danger {
+  background-color: #d9534f;
+}

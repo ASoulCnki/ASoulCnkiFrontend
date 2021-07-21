@@ -34,6 +34,7 @@
 .content-info ul {
   list-style: none;
   padding: 0;
+  margin: 0.3rem 0 1rem 0;
 }
 
 .content-info ul li {

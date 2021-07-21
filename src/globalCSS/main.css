@@ -9,11 +9,15 @@
 
 a {
   text-decoration: none;
+  color: #337ab7;
 }
 
 html, body {
   margin: 0;
   padding: 0;
+  font-size: 10px;
+  color: #333;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 button, textarea, input {
@@ -23,6 +27,10 @@ button, textarea, input {
 
 ul {
   list-style: none;
+}
+
+#app {
+  width: 100%;
 }
 
 .content-left {
@@ -48,6 +56,13 @@ ul {
 .right-top-description {
   display: block;
   padding: 0.5rem 1.5rem;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  color: #333;
+}
+
+.right-top-description p {
+  margin: 10px 0;
 }
 
 .main-container {
@@ -178,6 +193,9 @@ ul {
 
 .description-title {
   margin: 1rem 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .description-value {
