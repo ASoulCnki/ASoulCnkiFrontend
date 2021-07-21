@@ -396,9 +396,9 @@ export const isChracterDraw = s => {
 export const pureLength = (s) => s.replace(/[[\u4e00-\u9fa5_]{3,10}]+/, ' ').length
 
 /**
-* Change Format of response data.data.releted
+* Change Format of response article Arrays
 * @param {Array} arr
-* @returns {Object}
+* @returns {Array}
 */
 export const convert = (arr) => {
   return arr.map(item => {
