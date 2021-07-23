@@ -6,7 +6,7 @@
         :color="notice.color"
         :content="notice.content"
       />
-      <div class="main-container">
+      <div class="main-container shadow-md">
         <div class="text-contianer">
           <div class="text-header">
             <ul>
@@ -58,7 +58,12 @@
       </div>
     </div>
     <div class="content-right">
-        <div class="right-top-description right-item">
+        <div class="right-top-description right-item shadow-md">
+          <p class="text-red-600 font-bold text-3xl">新功能!枝网评论展 
+            <a href="/rank" class="text-blue-400">点此进入</a>
+          </p>
+        </div>
+        <div class="right-top-description right-item shadow-md">
           <h3 class="description-title">
             枝网查重系统介绍
           </h3>   
@@ -70,7 +75,14 @@
             </em>
           </p>
         </div>
+
         <Carousel :memberArray="person_list"/>
+        <hr class="p-0 my-5">
+        <p class="text-center text-xl">
+          <a class="text-gray-300" href="https://beian.miit.gov.cn/" target="_blank">
+            琼ICP备20001476号-2
+          </a>
+        </p>
     </div>
     <Protocol :visible="isProtocolVisiable" @close="closeDialog"/>
   </div>

@@ -11,7 +11,7 @@
           <span class="result-head-item">时间范围：</span>{{ response.TimeRange[0] }} 至 {{response.TimeRange[1]}}
         </p>
         <p>
-          <b :style="'color: ' + rate_color + '; font-size: medium'">
+          <b :style="'color: ' + rate_color + '; font-size: medium'" class="m-3">
             总文字复制比：{{ response.repeatPercent }}%</b
           >
         </p>
