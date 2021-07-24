@@ -59,7 +59,7 @@
     </div>
     <div class="content-right">
         <div class="right-top-description right-item shadow-md">
-          <p class="text-red-600 font-bold text-3xl">新功能!枝网评论展 
+          <p class="text-red-600 font-bold text-3xl">新功能!枝江作文展
             <a href="/rank" class="text-blue-400">点此进入</a>
           </p>
         </div>
