@@ -3,7 +3,7 @@ module.exports = {
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
-      color: {
+      colors: {
         'ava': '#9ac8e2',
         'bella':'#bd7d74',
         'carol': '#b8a6d9',
