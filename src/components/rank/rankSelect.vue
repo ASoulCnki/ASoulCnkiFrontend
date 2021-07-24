@@ -11,6 +11,7 @@
             v-for="(option, index) in choice.options" 
             :key="option.value"
           >
+            <!-- radio -->
             <label 
               :for="'radio'+ index + '' + index1" 
               class="overflow-auto">
@@ -20,7 +21,8 @@
                 :id="'radio' + index + '' + index1" 
                 :value="option.value"
                 class="hidden radio">
-              <div class="m-2 pt-2 p-1 px-6 bg-gray-50 rounded-lg text-gray-600  border choice transition">
+              <div class="m-2 pt-2 p-1 px-6 bg-gray-50 rounded-lg text-gray-600  border choice transition 
+              dark:bg-gray-500 dark:text-gray-300">
                 {{option.text}}
               </div>
             </label>
@@ -60,17 +62,18 @@ export default {
       this.datas = this.datas.map(item => 0)
     },
     submit() {
-      const data = [...this.choices].map( (item, index) => {
-        return item.options[this.datas[index]]
+      const caches = {}
+      this.choices.forEach( (item, index) => {
+        caches[item.filterAttr] = item.options[this.datas[index]]
         // return item.options.filter(item => item.value == this.datas[index])[0]
       })
-      this.$emit('values', data)
+      this.$emit('values', caches)
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
 .radio:checked ~ .choice {
   background: hsl(212, 91%, 60%);
   color: white;

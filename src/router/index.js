@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Index from '../views/index.vue'
 import Result from '../views/result.vue'
 import Maintaining from '../views/maintaining.vue'
-import Rank from '../views/Rank.vue'
 
 Vue.use(VueRouter)
 
@@ -26,7 +25,7 @@ const routes = [
   {
     path: '/rank',
     name: 'rank',
-    component: Rank
+    component: () => import('../views/Rank.vue')
   },
   {
     path: '*',

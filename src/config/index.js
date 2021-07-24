@@ -41,8 +41,31 @@ const person_list = [
 const description = [
   {key: '比对库范围：', value: 'b站动态、视频评论区', type: 'text'},
   {key: '参考文献：', value: `[1]李旭.基于串匹配方法的文档复制检测系统研究[D].燕山大学.`, type: 'text'},
-  {key: '开源地址：', value: {text: 'ASoulCnki', href: 'https://github.com/stream2000/ASoulCnki'}, type: 'link'},
+  {key: '开源地址：', value: {text: 'ASoulCnki', href: 'https://github.com/ASoulCnki'}, type: 'link'},
   {key: '反馈地址：', value: {text: 'ASoulCnki_Official', href: 'https://t.bilibili.com/542031663106174238'}, type: 'link'},
+]
+
+const filters = [
+  {
+    filterName: '时间范围',
+    filterAttr:'timeRangeMode',
+    multiple: false,
+    options: [
+      {text: '全部时间', value: 0},
+      {text: '本周', value: 1},
+      {text: '三天内', value: 2},
+    ]
+  },
+  {
+    filterName: '筛选类型',
+    filterAttr:'sortMode',
+    multiple: false,
+    options: [
+      {text: '总点赞数', value: 0},
+      {text: '点赞数', value: 1},
+      {text: '引用次数', value: 2},
+    ]
+  },
 ]
 
 const message = (time) => {
@@ -50,4 +73,4 @@ const message = (time) => {
   return feedback
 }
 
-export {description, person_list, message}
+export {description, person_list, message, filters}

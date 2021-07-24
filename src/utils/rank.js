@@ -2,30 +2,26 @@ import axios from 'axios'
 import { parseTime } from './index'
 
 export function request() {
-  const getUrl = `http://47.96.156.169:8000/v1/api/ranking/`;
+  const getUrl = `${process.env.VUE_APP_RANK_API || 'https://asoulcnki.asia/v1/api'}/ranking/`;
 
   const notify = (s, type) => {
-    this.$message({
-      showClose: true,
-      message: s,
-      type: type
-    })
+    this.$message({showClose: true, message: s, type: type})
   }
 
   const params = {
-    sortMode: this.stateSelect[1].value,
-    timeRangeMode: this.stateSelect[0].value,
+    sortMode: this.stateSelect.sortMode.value,
+    timeRangeMode: this.stateSelect.timeRangeMode.value,
     pageSize: 10,
     pageNum: this.pageNum
   }
 
-  // 发送请求
   axios.get(getUrl, {
     params: params
   })
     .then( res => {
       const data = res.data.data
       if (data.code) {
+        this.response.articles = []
         return notify('服务器异常, 请稍后重试', 'error')
       }
       // notify('查询成功', 'success')
@@ -38,11 +34,14 @@ export function request() {
         ],
         articles: handleArray(data.replies)
       }
-      this.totalPage = Math.floor(this.response.allCount/10)
     })
     .catch( err => {
+      this.response.articles = []
       notify('服务器异常', 'error')
       throw new Error(err)
+    })
+    .finally( () => {
+      this.totalPage = Math.floor(this.response.allCount/10)
     })
 }
 
@@ -81,7 +80,7 @@ function handleURL(x) {
     case 1:
       return `${baseUrl}/video/av${x.oid}/#reply${x.rpid}`
     case 17:
-      return `${dynamicBaseUrl}/${x.oid}/#reply${x.rpid}`
+      return `${dynamicBaseUrl}/${x.dynamic_id}/#reply${x.rpid}`
     case 12:
       return `${baseUrl}/read/cv${x.oid}/#reply${x.rpid}`
     default:
