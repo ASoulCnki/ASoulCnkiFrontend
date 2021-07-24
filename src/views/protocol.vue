@@ -85,11 +85,11 @@
         <li>应该不会有人看完用户协议吧，全看完的话mua你一下</li>
       </ol>
 
-      <div style="text-align: center">
-        <h3>开源协议</h3>
+      <div class="text-center my-8">
+        <p class="my-2 font-bold text-black">开源协议</p>
         <svg
           height="32"
-          class="octicon octicon-law color-text-primary float-left mr-2"
+          class="text-center mx-auto"
           viewBox="0 0 24 24"
           version="1.1"
           width="32"

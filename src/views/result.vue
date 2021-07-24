@@ -11,7 +11,7 @@
           <span class="result-head-item">时间范围：</span>{{ response.TimeRange[0] }} 至 {{response.TimeRange[1]}}
         </p>
         <p>
-          <b :style="'color: ' + rate_color + '; font-size: medium'">
+          <b :style="'color: ' + rate_color + '; font-size: medium'" class="m-3">
             总文字复制比：{{ response.repeatPercent }}%</b
           >
         </p>
@@ -42,6 +42,7 @@
         </div>
         <p class="result-body-title">相似小作文</p>
         <div class="render-data">
+          <p class="result-body-info" v-if="response.alike.length == 0">没有找到相似的小作文</p>
           <Article 
             v-for="article in response.alike"
             :key="article.id"

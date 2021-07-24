@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Index from '../views/index.vue'
 import Result from '../views/result.vue'
 import Maintaining from '../views/maintaining.vue'
-import LeaderBoard from '../views/LeaderBoard.vue'
 
 Vue.use(VueRouter)
 
@@ -23,11 +22,11 @@ const routes = [
     name: 'result',
     component: Result
   },
-  // {
-  //   path: '/leaderboard',
-  //   name: 'leaderboard',
-  //   component: LeaderBoard
-  // },
+  {
+    path: '/rank',
+    name: 'rank',
+    component: () => import('../views/Rank.vue')
+  },
   {
     path: '*',
     name: 'notFound',

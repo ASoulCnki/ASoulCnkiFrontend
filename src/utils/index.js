@@ -406,15 +406,21 @@ export const convert = (arr) => {
       item = [item.rate, item.reply, item.reply_url]
     }
     return {
-      id: item[1].rpid,
-      repeatPercent: (item[0] * 100).toFixed(2),
       content: item[1].content,
+      createTime: parseTime(item[1].ctime * 1000, '{y}/{m}/{d} {h}:{i}'),
+      dynamicId: item[1].dynamic_id,
+      likeNum: item[1].like_num,
       author: {
         name: item[1].m_name, 
         id: item[1].mid
       },
-      createTime: parseTime(item[1].ctime * 1000, '{y}/{m}/{d} {h}:{i}'),
-      url: item[2]
+      originId: item[1].origin_rpid,
+      id: item[1].rpid,
+      similarCount: item[1].similarCount,
+      similarLikeSum: item[1].similar_like_sum,
+      repeatPercent: (item[0] * 100).toFixed(2),
+
+      url: item[2] || ""
     }
   })
 }

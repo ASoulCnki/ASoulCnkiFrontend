@@ -2,22 +2,26 @@
   "name": "asoulcnki-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "build:prod": "vue-cli-service build",
-    "build": "vue-cli-service build"
+    "dev": "vue-cli-service serve"
   },
   "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "autoprefixer": "^9",
     "axios": "^0.21.1",
     "chalk": "^4.1.1",
     "clipboard": "^2.0.8",
     "core-js": "^3.6.5",
+    "cross-env": "^7.0.3",
     "dayjs": "^1.10.6",
     "element-ui": "^2.15.3",
     "normalize.css": "7.0.0",
+    "postcss": "^7",
     "runjs": "^4.4.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
@@ -29,11 +33,13 @@
     "node-sass": "^5.0.0",
     "sass-loader": "^10.0.5",
     "style-loader": "^2.0.0",
+    "vue-cli-plugin-tailwind": "^2.0.6",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "homepage": "./"
 }
