@@ -5,7 +5,7 @@ export function request() {
   const getUrl = `${process.env.VUE_APP_RANK_API || 'https://asoulcnki.asia/v1/api'}/ranking/`;
 
   const notify = (s, type) => {
-    this.$message({showClose: true, message: s, type: type})
+    this.$message({ showClose: true, message: s, type: type })
   }
 
   const params = {
@@ -18,7 +18,7 @@ export function request() {
   axios.get(getUrl, {
     params: params
   })
-    .then( res => {
+    .then(res => {
       const data = res.data.data
       if (data.code) {
         this.response.articles = []
@@ -35,13 +35,13 @@ export function request() {
         articles: handleArray(data.replies)
       }
     })
-    .catch( err => {
+    .catch(err => {
       this.response.articles = []
       notify('服务器异常', 'error')
       throw new Error(err)
     })
-    .finally( () => {
-      this.totalPage = Math.ceil(this.response.allCount/10)
+    .finally(() => {
+      this.totalPage = Math.ceil(this.response.allCount / 10)
     })
 }
 
@@ -51,7 +51,7 @@ function handleArray(array) {
   return array.map(x => {
     return {
       content: x.content,
-      createTime: parseTime(x.ctime*1000, '{y}/{m}/{d}').substr(2),
+      createTime: parseTime(x.ctime * 1000, '{y}/{m}/{d}').substr(2),
       id: x.dynamic_id,
       likeNum: x.like_num,
       author: {
@@ -71,7 +71,7 @@ function handleArray(array) {
 function handleURL(x) {
 
   // 有bug 动态的链接跳转会404
-  const [ baseUrl, dynamicBaseUrl] = [
+  const [baseUrl, dynamicBaseUrl] = [
     'https://www.bilibili.com',
     'https://t.bilibili.com'
   ]
