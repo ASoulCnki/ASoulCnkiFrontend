@@ -1,6 +1,6 @@
 <template>
   <div class="body-content h-full m-0 p-0">
-    <div class="main-container dark:bg-gray-600 h-full">
+    <div class="container dark:bg-gray-600 h-full">
     <div class="content-left">
       <Notice
         :backgroundColor="notice.backgroundColor"
