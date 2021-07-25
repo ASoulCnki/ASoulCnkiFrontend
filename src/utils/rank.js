@@ -2,7 +2,7 @@ import axios from 'axios'
 import { parseTime } from './index'
 
 export function request() {
-  const getUrl = `${process.env.VUE_APP_RANK_API || 'https://asoulcnki.asia/v1/api'}/ranking/`;
+  const getUrl = `${process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'}/ranking/`;
 
   const notify = (s, type) => {
     this.$message({showClose: true, message: s, type: type})

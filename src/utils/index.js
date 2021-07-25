@@ -416,10 +416,9 @@ export const convert = (arr) => {
       },
       originId: item[1].origin_rpid,
       id: item[1].rpid,
-      similarCount: item[1].similarCount,
+      similarCount: item[1].similar_count,
       similarLikeSum: item[1].similar_like_sum,
       repeatPercent: (item[0] * 100).toFixed(2),
-
       url: item[2] || ""
     }
   })

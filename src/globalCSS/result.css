@@ -9,6 +9,7 @@
   margin: 0;
   font-size: 14px;
   color: #333;
+  @apply dark:bg-gray-700
 }
 
 .panel-body {
@@ -18,6 +19,7 @@
   border: 1px solid hsl(0, 0%, 89%);
   border-radius: 0.5rem;
   padding: 15px;
+  @apply dark:bg-gray-600;
 }
 @media screen and (min-width: 800px) {
   .panel-body {
