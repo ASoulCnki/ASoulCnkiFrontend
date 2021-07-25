@@ -32,6 +32,11 @@ ul {
 
 #app {
   width: 100%;
+  min-height: 100%;
+  @apply dark:bg-gray-600;
+}
+
+.body-content {
   height: 100%;
 }
 
@@ -40,12 +45,14 @@ ul {
   width: 60%;
   padding: 2rem;
   margin: 0 0 0 4%;
+  @apply dark:bg-gray-600;
 }
 
 .content-right {
   float: left;
   width: 32%;
   padding: 2rem;
+  @apply dark:bg-gray-600;
 }
 
 .right-item {
@@ -53,6 +60,8 @@ ul {
   border-radius: 0.5rem;
   /* padding: 0.5rem 1.5rem; */
   margin: 0 0 2rem 0; 
+  @apply shadow-md;
+  @apply dark:bg-gray-700 dark:text-gray-200;
 }
 
 .right-top-description {
@@ -72,7 +81,7 @@ ul {
   width: 100%;
   padding: 0;
   border: 1px solid hsl(0, 0%, 91%);
-  border-radius: 0.7rem;
+  @apply dark:border-gray-600 border rounded-lg overflow-hidden;
 }
 
 .notify {
@@ -91,11 +100,11 @@ ul {
 .text-container {
   width: 100%;
   padding: 0.5rem;
-  overflow: hidden;
 }
 
 .text-header {
   width: 100%;
+  @apply dark:bg-gray-700;
 }
 
 .text-header ul {
@@ -120,6 +129,7 @@ ul {
   background-color: #fafafa;
   width: 100%;
   outline: 0;
+  margin: 0;
   word-break: break-all;
   resize: none;
   padding: 0.5rem 1rem;
@@ -127,6 +137,7 @@ ul {
   font-size: 1.4rem;
   line-height: 2.5rem;
   color: #595959;
+  @apply dark:bg-gray-700 dark:text-gray-200;
 }
 
 .text-container textarea:window-inactive {
@@ -136,10 +147,13 @@ ul {
 .text-status {
   width: 100%;
   text-align: left;
+  margin: 0;
   font-size: 14px;
   padding: 0.5rem 1.6rem;
   display: inline-grid;
-  grid-template-columns: 45% 55%;  
+  grid-template-columns: 45% 55%;
+  @apply overflow-hidden;
+  @apply dark:text-gray-200 dark:bg-gray-700;
 }
 
 .text-status div:last-child {

@@ -1,5 +1,6 @@
 <template>
-  <div id="body_content">
+  <div class="body-content h-full m-0 p-0">
+    <div class="main-container dark:bg-gray-600 h-full">
     <div class="content-left">
       <Notice
         :backgroundColor="notice.backgroundColor"
@@ -33,11 +34,13 @@
 
             </ul>
           </div>
-          <textarea
-            placeholder="内容字数不少于10个字，不多于1000字。输入信息后，点击下方「提交小作文」进行查重 !"
-            :maxlength="maxlength"
-            v-model="text"
-          />
+          <div class="h-full dark:bg-gray-700">
+            <textarea
+              placeholder="内容字数不少于10个字，不多于1000字。输入信息后，点击下方「提交小作文」进行查重 !"
+              :maxlength="maxlength"
+              v-model="text"
+            />
+          </div>
           <div class="text-status">
             <div>
               <el-checkbox v-model="isAgreed"/>
@@ -58,19 +61,19 @@
       </div>
     </div>
     <div class="content-right">
-        <div class="right-top-description right-item shadow-md">
+        <div class="right-top-description right-item">
           <p class="text-red-600 font-bold text-3xl">新功能!枝江作文展
             <a href="/rank" class="text-blue-400">点此进入</a>
           </p>
-          <p class="text-2xl leading-loose">
-            枝网原班人马打造，我们自己都在溜的优秀小作文展示平台
+          <p class="text-2xl leading-loose dark:text-gray-100">
+            枝网原班人马打造，我们自己都溜到停不下来的优秀小作文展示平台
           </p>
         </div>
-        <div class="right-top-description right-item shadow-md">
-          <h3 class="description-title">
+        <div class="right-top-description right-item">
+          <h3 class="description-title dark:text-gray-100">
             枝网查重系统介绍
           </h3>   
-          <p v-for="item in description" :key="item.key">
+          <p v-for="item in description" :key="item.key" class="dark:text-gray-100">
             <b>{{item.key}}</b><br/>
             <em v-if="item.type == 'text'" class="description-value">{{item.value}}</em>
             <em v-if="item.type == 'link'">
@@ -86,6 +89,7 @@
             琼ICP备20001476号-2
           </a>
         </p>
+    </div>
     </div>
     <Protocol :visible="isProtocolVisiable" @close="closeDialog"/>
   </div>
