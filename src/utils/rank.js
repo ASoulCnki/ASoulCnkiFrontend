@@ -1,8 +1,8 @@
-import axios from 'axios'
+import { instance } from '@/api';
 import { parseTime } from './index'
 
 export function request() {
-  const getUrl = `${process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'}/ranking/`;
+  const getUrl = `/ranking/`;
 
   const notify = (s, type) => {
     this.$message({ showClose: true, message: s, type: type })
@@ -15,7 +15,7 @@ export function request() {
     pageNum: this.pageNum
   }
 
-  axios.get(getUrl, {
+  instance.get(getUrl, {
     params: params
   })
     .then(res => {
@@ -24,8 +24,6 @@ export function request() {
         this.response.articles = []
         return notify('服务器异常, 请稍后重试', 'error')
       }
-      // notify('查询成功', 'success')
-
       this.response = {
         allCount: data.all_count,
         timeRange: [

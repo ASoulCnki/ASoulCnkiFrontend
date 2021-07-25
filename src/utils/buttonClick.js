@@ -1,11 +1,11 @@
-import axios from 'axios'
+import { instance } from '@/api';
 import { convert, parseTime } from './index'
 
 // index 组件 查询小作文的函数
 function buttonClick() {
   const notify = this.notify
 
-  const post_url = `${process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'}/check`;
+  const post_url = '/check';
   if (!this.isAgreed) {
     return notify('请先同意用户协议', 'warning')
   }
@@ -14,7 +14,7 @@ function buttonClick() {
   }
   if (!this.isComplete) {
     this.isComplete = true;
-    axios
+    instance
       .post(post_url, { text: this.text })
       .then(res => {
         this.isComplete = false;
