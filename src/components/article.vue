@@ -4,7 +4,7 @@
  -->
 <template>
   <div class="content dark:bg-gray-700 dark:text-gray-300">
-    <div class="content-info">
+    <div class="content-info dark:bg-gray-700 dark:text-gray-300">
       <ul>
         <li>发表时间 {{article.createTime}}</li>
         <li style="color:#d73a49">重复率: {{article.repeatPercent}}%</li>

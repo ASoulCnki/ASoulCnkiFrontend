@@ -12,6 +12,7 @@
   overflow: hidden;
   box-sizing: border-box;
   margin: 2rem 0;
+  @apply dark:bg-gray-700 dark:text-gray-300
 }
 .content-info {
   width: 100%;
@@ -28,8 +29,7 @@
   font-size: 1.4rem;
   line-height: 2rem;
   border-radius: 0.5rem;
-  background: #fafafa;
-  color: #595959;
+  @apply dark:bg-gray-700 dark:text-gray-300
 }
 .content-info ul {
   list-style: none;
