@@ -82,7 +82,7 @@ export default {
   computed: {
     authorName() {
       const name = this.article.author.name
-      return name.length <= 7 ? name : name.substr(0, 7) + '...'
+      return name.length <= 6 ? name : name.substr(0, 5) + '...'
     }
   },
   mounted() {

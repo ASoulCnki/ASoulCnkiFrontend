@@ -12,10 +12,10 @@
       </div>
       <div class="discription">
       <h2 class="pb-4 pt-2">问题反馈
-        <a href="https://t.bilibili.com/551286754984977322" class="text-blue-400">[传送门]</a>
+        <a href="https://t.bilibili.com/551286754984977322" class="text-blue-400" target="_blank">[传送门]</a>
       </h2>
       <p class="text">如果使用过程中发现问题，欢迎到<a 
-        href="" class="high"
+        href="https://space.bilibili.com/1809170490/" class="high"
         target="_blank"
         >@查重姬Offical</a>
         反馈动态评论或私信反馈，包括但不限于:</p>
@@ -27,7 +27,7 @@
       <p class="text">BUG问题请尽可能说明<span class="high-red">系统，机型，浏览器名称等。</span></p>
       </div>
       <div class="discription">
-      <p class="text">由于枝网仅收录了<span class="high-red">A-SOUL六个官方账号</span>下的评论，对比范围有限，且算法还比较较粗略，所以使用过程中可能会遇到以下情况</p>
+      <p class="text">由于枝网仅收录了<span class="high-red">A-SOUL六个官方账号</span>下的评论，对比范围有限，且算法还比较粗略，所以使用过程中可能会遇到以下情况</p>
       <ol class="text-2xl leading-relaxed font-bold">
         <li>1. 首发b站二创，贴吧，豆瓣，NGA等平台的小作文被偷后鉴定为原创/原偷</li>
         <li>2. 在ASOUL官号下发布的评论有借鉴，但仍被判断为原创/原偷。</li>
