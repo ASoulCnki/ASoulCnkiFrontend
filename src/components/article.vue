@@ -3,21 +3,21 @@
   author
  -->
 <template>
-  <div class="content">
+  <div class="content dark:bg-gray-700 dark:text-gray-300">
     <div class="content-info">
       <ul>
         <li>发表时间 {{article.createTime}}</li>
         <li style="color:#d73a49">重复率: {{article.repeatPercent}}%</li>
         <li>
           作者: 
-          <a style="color:#005cc5" :href="'https://space.bilibili.com/' + article.author.id" target="_blank">
+          <a class="text-blue-400 dark:text-yellow-400" :href="'https://space.bilibili.com/' + article.author.id" target="_blank">
             {{article.author.name}}
           </a>
         </li>
-        <li><a :href="article.url" style="color:#005cc5" target="_blank">原文地址</a></li>
+        <li><a :href="article.url" class="text-blue-400 dark:text-yellow-400" target="_blank">传送门</a></li>
       </ul>
     </div>
-    <div class="content-detail">
+    <div class="content-detail dark:text-gray-300 dark:bg-gray-700 leading-relaxed">
       {{article.content}}
     </div>
   </div>

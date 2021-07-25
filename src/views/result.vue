@@ -1,17 +1,17 @@
 <template>
-  <div class="result-panel" id="panel">
-    <div class="panel-body">
-      <div class="result-title">
+  <div class="result-panel dark:bg-gray-700" id="panel">
+    <div class="panel-body dark:bg-gray-600">
+      <div class="result-title dark:text-gray-100">
         <h3>文本复制检测报告单(枝网)</h3>
       </div>
-      <div class="result-head">
+      <div class="result-head dark:text-gray-200">
         <p><span class="result-head-item">检测时间：</span>{{ response.time }}</p>
         <p><span class="result-head-item">检测范围：</span>b站评论</p>
         <p>
           <span class="result-head-item">时间范围：</span>{{ response.TimeRange[0] }} 至 {{response.TimeRange[1]}}
         </p>
-        <p>
-          <b :style="'color: ' + rate_color + '; font-size: medium'" class="m-3">
+        <p class="my-4">
+          <b :style="'color: ' + rate_color + '; font-size: medium'">
             总文字复制比：{{ response.repeatPercent }}%</b
           >
         </p>
@@ -28,17 +28,18 @@
           <button class="result-copy-button">
             复制查重结果
           </button>
-          <p>
+          <p class="dark:text-gray-200">
             查重结果仅作参考，请注意辨别是否为原创<br />(算法更新中,不足之处欢迎<a
               href="https://t.bilibili.com/542031663106174238"
               target="_blank"
+              class="dark:text-yellow-400"
               >点此反馈</a
             >)
           </p>
         </div>
         <p class="result-body-title">原文</p>
-        <div class="result-article-content">
-          <p>{{ response.text }}</p>
+        <div class="result-article-content dark:bg-gray-700">
+          <p class="dark:text-gray-200">{{ response.text }}</p>
         </div>
         <p class="result-body-title">相似小作文</p>
         <div class="render-data">
