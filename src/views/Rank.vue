@@ -1,72 +1,40 @@
 <template>
-  <div class="m-0 p-0 dark:bg-gray-700 text-2xl">
-    <div class="box-border text-3xl w-full px-6 lg:px-10 py-4 border-0 bg-blue-400 text-gray-200 dark:bg-gray-600 dark:text-gray-100">
+  <div class="m-0 p-0 dark:bg-gray-700 text-2xl h-full">
+    <div class="nav">
       枝江作文展
       <!-- 说明里需要加上对应通知（弹框形式） -->
-      <span class="float-right">说明</span>
+      <!-- <span class="float-right">说明</span> -->
     </div>
-    <RankSelect :choices="choices" @values="getSelectData" :class="{'hidden':!selectVisible, 'transition':true}"/>
-    <div class="main-container text-2xl border-0 rounded-none overflow-hidden 
-      dark:bg-gray-700">
+    <RankSelect 
+      :choices="choices" 
+      @values="getSelectData"
+      :class="{'hidden':!selectVisible}"
+    />
+    <div class="main-container">
       <!-- left content -->
-      <div class="left md:float-left md:w-3/5 p-4 shadow-xl bg-blue-300 lg:my-5 lg:mx-8 lg:mb-64  box-border lg:rounded-md  dark:bg-gray-700">
-        <div class="filter-content p-2 bg-white mt-2 mb-4 overflow-auto rounded-md dark:bg-gray-600 dark:text-gray-300 ">
-          <div class="box-border p-1 pl-1 mr-3 rounded-md border border-white inline-block float-left text-gray-600
-          dark:text-gray-300 dark:bg-gray-600 dark:border-gray-600">
-            筛选方式
-          </div>
-          <div
-            class="box-border p-1 px-2 mr-3 rounded-md border border-gray-400 inline-block float-left"
-            v-for="i in stateSelect"
-            :key="i.text"
-          >
+      <div class="left-content">
+        <div class="filter-content">
+          <div class="filter-content-text">筛选方式</div>
+          <div class="filter-result-item" v-for="i in stateSelect" :key="i.text">
             {{ i.text }}
           </div>
-          <span 
-            class="box-border float-right p-1 px-2 rounded-md border hover:bg-blue-400 hover:text-gray-100 transition"
-            @click="selectVisible = !selectVisible"
-            >
+          <span class="filter-button" @click="selectVisible = !selectVisible">
             筛选
           </span>
         </div>
         <RankArticle v-for="i in response.articles" :article="i" :key="i.replyId"/>
-        <div 
-          class="text-center text-4xl text-gray-500 w-full bg-gray-100 rounded-md py-64 my-2"
-          v-if="response.articles.length == 0"  
-        >
+        <div class="result-none" v-if="response.articles.length == 0">
           没有找到相关结果,请尝试重新筛选
         </div>
-        <div class="page-changer flex justify-center  dark:text-gray-200 dark:bg-gray-600">          
-          <span 
-            class="py-2 px-3 m-2 bg-white rounded-md hover:scale-110 hover:bg-gray-100 transition dark:bg-gray-500"
-            @click="pageNum--"
-          >
-            {{'上一页'}}
+        <div class="button-panel">          
+          <span class="button" @click="pageNum--">上一页</span>
+          <span class="px-1 my-2 rounded-md transition">
+            第<input type="text" class="page-input" v-model.lazy.number="pageNum" title="这是个输入框">页
           </span>
-          <span
-            class="py-2 px-1 my-2 rounded-md transition"
-          >第</span>
-          <input type="text" class="w-14 text-center h-12 py-2 m-2 rounded-md dark:bg-gray-500" v-model.lazy.number="pageNum">
-          <span
-            class="py-2 px-1 my-2 rounded-md transition "
-          >页</span>
-          <!-- <span
-            class="py-2 px-3 m-2 bg-white rounded-md hover:scale-110 hover:bg-gray-100 transition dark:bg-gray-500"
-            @click="jump"
-          >
-            跳转
-          </span> -->
-          <span class="w-15 text-center h-12 py-2 m-2 dark:text-gray-200">共 {{totalPage}} 页</span>
-          <span
-            class="py-2 px-3 m-2 bg-white rounded-md hover:scale-110 hover:bg-gray-100 transition dark:bg-gray-500"
-            @click="pageNum++"
-            >
-            {{'下一页'}}
-          </span>
-
+          <span class="page-num">共 {{totalPage}} 页</span>
+          <span class="button" @click="pageNum++">下一页</span>
         </div>
       </div>
-      <!-- right content -->
       <RankRightContent/>
     </div>
   </div>
@@ -108,19 +76,10 @@ export default {
     },
     getData() {
       request.call(this, arguments)
-    },
-    jump() {
-      if (this.pageNum == this.pageNumNow) {
-        return
-      }
-      scrollTo(0, 0)
-      this.getData()
-      this.pageNumNow = this.pageNum
     }
   },
   mounted() {
     document.title = "枝江作文展"
-
     const select = {}
     this.choices.forEach(s => select[s.filterAttr] = s.options[0])
     this.stateSelect = select
@@ -148,5 +107,76 @@ export default {
 <style lang="css" scoped>
 html, body {
   min-width: 375px;
+  @apply h-full;
+  @apply dark:bg-gray-600;
+}
+
+.nav {
+  @apply box-border text-3xl w-full px-6 py-4 border-0 ;
+  @apply bg-blue-400 text-gray-200;
+  @apply lg:px-10;
+  @apply dark:bg-gray-600 dark:text-gray-100;
+}
+
+.main-container {
+  @apply text-2xl border-0 rounded-none overflow-hidden min-h-full;
+  @apply bg-gray-200;
+  @apply dark:bg-gray-700;
+}
+
+.left-content {
+  @apply box-border p-4 shadow-xl bg-blue-300;
+  @apply md:float-left md:w-3/5;
+  @apply lg:my-5 lg:mx-8 lg:mb-64 lg:rounded-md;
+  @apply dark:bg-gray-600;
+}
+
+.filter-content {
+  @apply p-2 bg-white mt-2 mb-4 overflow-auto rounded-md;
+  @apply dark:bg-gray-700 dark:text-gray-300;
+}
+
+.filter-content-text {
+  @apply box-border p-1 pl-1 mr-3 inline-block float-left text-gray-600;
+  @apply rounded-md border border-white;
+  @apply dark:text-gray-300 dark:bg-gray-600 dark:border-gray-600;
+}
+
+.filter-result-item {
+  @apply box-border p-1 px-2 mr-3 rounded-md inline-block float-left;
+  @apply border border-gray-400;
+}
+
+.filter-button {
+  @apply box-border float-right p-1 px-2 rounded-md border;
+  @apply hover:bg-blue-400 hover:text-gray-100 transition;
+  @apply cursor-pointer;
+}
+
+.page-input {
+  @apply w-14 text-center h-12 py-2 mx-2 rounded-md;
+  @apply dark:bg-gray-500;
+}
+
+.button-panel {
+  @apply flex justify-center rounded-md mt-2;
+  @apply dark:text-gray-200 dark:bg-gray-600;
+}
+
+.button {
+  @apply py-2 px-3 m-2 bg-white text-black rounded-md border-0;
+  @apply hover:scale-110 hover:bg-gray-100 transition;
+  @apply dark:bg-gray-500 dark:text-gray-300 dark:hover:bg-gray-400;
+}
+
+.page-num {
+  @apply w-auto text-center h-12 py-2 m-2;
+  @apply dark:text-gray-200;
+}
+
+.result-none {
+  @apply text-center text-4xl rounded-md py-64 my-2;
+  @apply text-gray-500 w-full bg-gray-100;
+  @apply dark:text-gray-300 dark:bg-gray-500;
 }
 </style>

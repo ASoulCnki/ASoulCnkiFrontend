@@ -41,7 +41,7 @@ export function request() {
       throw new Error(err)
     })
     .finally( () => {
-      this.totalPage = Math.floor(this.response.allCount/10)
+      this.totalPage = Math.ceil(this.response.allCount/10)
     })
 }
 
@@ -79,6 +79,7 @@ function handleURL(x) {
   switch (x.type_id) {
     case 1:
       return `${baseUrl}/video/av${x.oid}/#reply${x.rpid}`
+    case 11:
     case 17:
       return `${dynamicBaseUrl}/${x.dynamic_id}/#reply${x.rpid}`
     case 12:

@@ -2,9 +2,9 @@
   <div id="body_content">
     <div class="content-left">
       <Notice
-      :backgroundColor="notice.backgroundColor"
+        :backgroundColor="notice.backgroundColor"
         :color="notice.color"
-        :content="notice.content"
+        :content="notice.content" 
       />
       <div class="main-container shadow-md">
         <div class="text-contianer">
@@ -41,7 +41,7 @@
           <div class="text-status">
             <div>
               <el-checkbox v-model="isAgreed"/>
-              您已同意<a @click="isProtocolVisiable=true">用户协议</a>
+              您已同意<a @click="isProtocolVisiable=true" class="text-blue-400 underline">用户协议</a>
             </div>
             <div>
               {{ text.length }}/{{ maxlength }} 种类: {{typeofText}}
@@ -61,6 +61,9 @@
         <div class="right-top-description right-item shadow-md">
           <p class="text-red-600 font-bold text-3xl">新功能!枝江作文展
             <a href="/rank" class="text-blue-400">点此进入</a>
+          </p>
+          <p class="text-2xl leading-loose">
+            枝网原班人马打造，我们自己都在溜的优秀小作文展示平台
           </p>
         </div>
         <div class="right-top-description right-item shadow-md">

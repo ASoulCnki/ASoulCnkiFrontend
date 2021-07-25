@@ -61,7 +61,7 @@ const filters = [
     filterAttr:'sortMode',
     multiple: false,
     options: [
-      {text: '总点赞数', value: 0},
+      {text: '累计点赞数', value: 0},
       {text: '点赞数', value: 1},
       {text: '引用次数', value: 2},
     ]
