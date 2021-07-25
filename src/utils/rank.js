@@ -40,8 +40,8 @@ export function request() {
       notify('服务器异常', 'error')
       throw new Error(err)
     })
-    .finally( () => {
-      this.totalPage = Math.ceil(this.response.allCount/10)
+    .finally(() => {
+      this.totalPage = Math.ceil(this.response.allCount / 10)
     })
 }
 
