@@ -28,7 +28,7 @@
           <button class="result-copy-button">
             复制查重结果
           </button>
-          <p class="dark:text-gray-200">
+          <p class="dark:text-gray-200 my-6">
             查重结果仅作参考，请注意辨别是否为原创<br />(算法更新中,不足之处欢迎<a
               href="https://t.bilibili.com/542031663106174238"
               target="_blank"
@@ -37,13 +37,13 @@
             >)
           </p>
         </div>
-        <p class="result-body-title">原文</p>
+        <p class="result-body-title my-6">原文</p>
         <div class="result-article-content dark:bg-gray-700">
           <p class="dark:text-gray-200">{{ response.text }}</p>
         </div>
         <p class="result-body-title">相似小作文</p>
         <div class="render-data">
-          <p class="result-body-info" v-if="response.alike.length == 0">没有找到相似的小作文</p>
+          <p class="result-body-info dark:text-gray-300" v-if="response.alike.length == 0">没有找到相似的小作文</p>
           <Article 
             v-for="article in response.alike"
             :key="article.id"

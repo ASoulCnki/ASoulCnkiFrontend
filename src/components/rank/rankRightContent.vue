@@ -54,7 +54,7 @@
 
 .right-content {
   @apply box-border md:float-left md:w-1/3 m-5 text-3xl;
-  @apply dark:bg-gray-700 dark:text-gray-300
+  @apply dark:bg-gray-700 dark:text-gray-200;
 }
 
 .url {
@@ -65,7 +65,7 @@
   @apply box-border w-full p-3 mt-0 mb-6 rounded-md shadow-md;
   @apply border-gray-400 border;
   @apply bg-gray-50;
-  @apply dark:text-gray-200 dark:bg-gray-600;
+  @apply dark:text-gray-300 dark:bg-gray-700;
 }
 
 .text {
