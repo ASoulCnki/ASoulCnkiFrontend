@@ -15,6 +15,7 @@
 
   .text-header ul li {
     font-size: 1.25rem;
+    padding: 0;
     padding: 0 0.65rem 0 1rem;
   }
 
@@ -38,7 +39,7 @@
   }
 
   .content-info li {
-    padding: 0.25rem 0.5rem;
+    /* padding: 0.25rem 0.5rem; */
     font-size: 1.3rem;
     line-height: 2.0rem;
   }

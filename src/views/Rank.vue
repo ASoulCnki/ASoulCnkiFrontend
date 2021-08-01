@@ -1,9 +1,7 @@
 <template>
-  <div class="m-0 p-0 dark:bg-gray-700 text-2xl h-full">
+  <div class="m-0 p-0 dark:bg-gray-700 text-2xl h-full mx-auto w-full bg-gray-200">
     <div class="nav">
       枝江作文展
-      <!-- 说明里需要加上对应通知（弹框形式） -->
-      <!-- <span class="float-right">说明</span> -->
     </div>
     <RankSelect 
       :choices="choices" 
@@ -108,6 +106,7 @@ export default {
 html, body {
   min-width: 375px;
   @apply h-full;
+  @apply bg-gray-200;
   @apply dark:bg-gray-600;
 }
 
@@ -115,11 +114,12 @@ html, body {
   @apply box-border text-3xl w-full px-6 py-4 border-0 ;
   @apply bg-blue-400 text-gray-200;
   @apply lg:px-10;
-  @apply dark:bg-gray-600 dark:text-gray-100;
+  @apply dark:bg-gray-700 dark:text-gray-200;
 }
 
 .main-container {
   @apply text-2xl border-0 rounded-none overflow-hidden min-h-full;
+  @apply xl:w-5/6 lg:mx-auto;
   @apply bg-gray-200;
   @apply dark:bg-gray-700;
 }

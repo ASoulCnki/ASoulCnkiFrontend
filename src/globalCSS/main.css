@@ -19,7 +19,7 @@ html, body {
   height: 100%;
   color: #333;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  @apply dark:bg-gray-600;
+  @apply dark:bg-gray-600 bg-gray-100;
 }
 
 button, textarea, input {
@@ -61,7 +61,7 @@ ul {
   border-radius: 0.5rem;
   /* padding: 0.5rem 1.5rem; */
   margin: 0 0 2rem 0; 
-  @apply shadow-md;
+  @apply shadow-sm bg-gray-50;
   @apply dark:bg-gray-700 dark:text-gray-200;
 }
 
@@ -172,7 +172,7 @@ ul {
 }
 
 #copy {
-  transform: translateY(2px);
+  transform: translateY(3px);
 }
 
 .button:disabled {
@@ -184,9 +184,9 @@ ul {
 }
 
 .icon {
-  padding: 0.09rem 0;
+  padding: 0.1rem 0;
   transform: translateY(1px);
-  height: 1.65rem;
+  height: 1.9rem;
 }
 
 .submit-ready {

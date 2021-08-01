@@ -7,7 +7,11 @@
           :style="{backgroundColor: member.color}"  
         >
           <div class="avtar">
-            <img :src="member.imgPath" :alt="member.name" referrerpolicy="no-referrer"> 
+            <img referrerpolicy="no-referrer" class="avtar-img"
+              :data-src="member.imgPath + '@128w_128h_1o.webp'"
+              :data-apple-src="member.imgApplePath" 
+              :alt="member.name" 
+            > 
           </div>
           <div class="member-name">
             {{member.name}}
@@ -25,6 +29,38 @@ export default {
   props: {
     memberArray: Array
   },
+  methods: {
+    lazyLoad(target, isApple) {
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            const img = entry.target
+            const src = isApple ? 
+              img.getAttribute('data-apple-src') : img.getAttribute('data-src')
+            img.setAttribute('src', src)
+            io.unobserve(entry.target)
+          }
+        });
+      }, {
+        root: null,
+        threshold: [0],
+        rootMargin: '-50px'
+      })
+      io.observe(target)
+    },
+    isApple(s) {
+      return (
+        !(/chrome/i).test(s) && (/safari/i).test(s)
+      )
+    }
+  },
+  mounted() {
+    const imgs = [...document.querySelectorAll('.avtar-img')]
+    const isApple = this.isApple(navigator.userAgent)
+    imgs.forEach(i => {
+      this.lazyLoad(i, isApple)
+    })
+  }
 }
 </script>
 
