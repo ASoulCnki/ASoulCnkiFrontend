@@ -7,7 +7,7 @@
         :color="notice.color"
         :content="notice.content" 
       />
-      <div class="main-container shadow-sm">
+      <div class="main-container">
         <div class="text-contianer">
           <div class="text-header">
             <ul>

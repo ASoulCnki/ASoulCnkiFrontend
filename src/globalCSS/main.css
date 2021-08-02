@@ -44,14 +44,14 @@ ul {
 }
 
 .content-right {
+  @apply w-full pb-6 px-6 mx-auto;
+  @apply lg:float-left lg:py-8 md:w-4/5 lg:w-2/5;
   @apply dark:bg-gray-600;
-  @apply lg:float-left w-full md:w-4/5 lg:w-2/5 p-6 py-8 mx-auto;
 }
 
 .right-item {
-  border: 1px solid hsl(0, 0%, 91%);
-  @apply shadow-sm bg-gray-50 mb-8 rounded-lg;
-  @apply dark:bg-gray-700 dark:text-gray-200;
+  @apply shadow-md bg-gray-50 mb-8 rounded-lg;
+  @apply dark:bg-gray-700 dark:text-gray-300;
 }
 
 .right-top-description {
@@ -65,13 +65,11 @@ ul {
 
 .main-container {
   background-color: #fafafa;
-  border: 1px solid hsl(0, 0%, 91%);
-  @apply dark:border-gray-600;
-  @apply border p-0 rounded-lg overflow-hidden w-full;
+  @apply p-0 rounded-lg overflow-hidden w-full;
 }
 
 .text-container {
-  @apply w-full p-2;
+  @apply w-full p-2 overflow-hidden;
 }
 
 .text-header {
@@ -98,7 +96,7 @@ ul {
   @apply resize-none break-words whitespace-pre-wrap;
   @apply m-0 outline-none w-full px-4 py-2;
   @apply text-gray-600 text-2xl leading-relaxed;
-  @apply dark:bg-gray-700 dark:text-gray-200;
+  @apply dark:bg-gray-700 dark:text-gray-300;
 }
 
 .text-container textarea:window-inactive {

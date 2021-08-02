@@ -1,7 +1,7 @@
 <template>
   <div class="result-panel" id="panel">
     <div class="panel-body">
-      <div class="result-title dark:text-gray-100">
+      <div class="result-title dark:text-gray-200">
         <h3>文本复制检测报告单(枝网)</h3>
       </div>
       <div class="result-head dark:text-gray-200">
