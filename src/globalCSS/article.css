@@ -4,48 +4,51 @@
 */
 
 .content {
-  width: 100%;
-  padding: 0.8rem 0.5rem 0 1rem;
+  padding: 0.8rem 0.75rem 0 0.75rem;
   border: 1px solid hsl(0, 0%, 91%);
-  border-radius: 0.8rem;
   background: #fafafa;
-  overflow: hidden;
-  box-sizing: border-box;
-  margin: 2rem 0;
-  @apply dark:bg-gray-700 dark:text-gray-300 shadow-sm;
+  @apply w-full overflow-hidden box-border my-8 rounded-xl;
+  @apply dark:bg-gray-700 dark:text-gray-300 shadow-md;
 }
-.content-info {
-  width: 100%;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  padding: 0;
-}
+
 .content-detail {
-  width: 100%;
   padding: 0 1rem 0.7rem 0.3rem;
-  box-sizing: border-box;
-  white-space: pre-line;
-  word-break: break-all;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  border-radius: 0.5rem;
-  @apply dark:bg-gray-700 dark:text-gray-300
+  @apply w-full rounded-xl break-all whitespace-pre-line;
+  @apply box-border text-2xl leading-relaxed mb-4 p-3;
+  @apply dark:bg-gray-700 dark:text-gray-300;
+  @apply bg-gray-200 text-gray-700; 
 }
+
+.content-info {
+  @apply w-full text-xl p-0;
+  @apply dark:bg-gray-700 dark:text-gray-300;
+}
+
 .content-info ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.3rem 0 1rem 0;
+  @apply p-0 list-none mt-1 mb-4;
 }
 
 .content-info ul li {
-  display: inline-block;
-  padding: 0 1.5rem 0 0;
+  @apply inline-block pr-4 pb-1 text-2xl;
+  @apply md:text-xl lg:text-2xl;
+}
+
+.content-info ul li:nth-child(2n) {
+  @apply text-right;
+  @apply md:text-left;
+}
+
+.content ul li a {
+  @apply text-blue-400 dark:text-yellow-400;
 }
 
 .footer {
-  box-sizing: border-box;
-  width: 100%;
-  text-align: right;
-  margin: 0;
-  padding: 0 2rem 0 0;
+  @apply: box-border w-full text-right m-0 pr-8;
+}
+
+@media screen and (max-width: 768px) {
+  .content-info ul {
+    display: grid;
+    grid-template-columns: 65% 35%;
+  }
 }

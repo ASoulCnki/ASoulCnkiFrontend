@@ -88,6 +88,11 @@ export default {
     text-decoration: none;
   }
 
+  .notify {
+    @apply w-full h-16 px-4 mb-4 text-white text-2xl leading-loose;
+    @apply rounded-lg overflow-hidden bg-yellow-500;
+  }
+
   .icon {
     width: 4rem;
     height: 4rem;

@@ -1,10 +1,10 @@
 /* 
-* 主页面 需要和同目录下 media.css 一同导入
+* 主页面样式
 * author: ch3cknull (ch3cknull@outlook.com)
 */
 
 * {
-  box-sizing: border-box;
+  @apply box-border;
 }
 
 a {
@@ -13,18 +13,10 @@ a {
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
+  @apply m-0 p-0 h-full;
   font-size: 10px;
-  height: 100%;
   color: #333;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  @apply dark:bg-gray-600 bg-gray-100;
-}
-
-button, textarea, input {
-  outline: 0;
-  border: 0;
+  @apply dark:bg-gray-600 bg-gray-100 font-sans;
 }
 
 ul {
@@ -32,112 +24,80 @@ ul {
 }
 
 #app {
-  width: 100%;
-  min-height: 100%;
-  @apply dark:bg-gray-600;
+  @apply dark:bg-gray-600 w-full min-h-full;
 }
 
 .body-content {
-  height: 100%;
+  @apply m-0 p-0 w-full h-full overflow-hidden;
+  @apply bg-gray-100 dark:bg-gray-600;
+}
+
+.index-container {
+  @apply dark:bg-gray-600 h-full w-full overflow-hidden;
+  @apply lg:mx-auto xl:w-5/6 2xl:w-4/5 max-w-screen-2xl;
 }
 
 .content-left {
-  float: left;
-  width: 60%;
-  padding: 2rem;
-  margin: 0 0 0 4%;
+  @apply mx-auto p-6 py-8 w-full;
+  @apply md:w-4/5 lg:float-left lg:w-3/5;
   @apply dark:bg-gray-600;
 }
 
 .content-right {
-  float: left;
-  width: 32%;
-  padding: 2rem;
   @apply dark:bg-gray-600;
+  @apply lg:float-left w-full md:w-4/5 lg:w-2/5 p-6 py-8 mx-auto;
 }
 
 .right-item {
   border: 1px solid hsl(0, 0%, 91%);
-  border-radius: 0.5rem;
-  /* padding: 0.5rem 1.5rem; */
-  margin: 0 0 2rem 0; 
-  @apply shadow-sm bg-gray-50;
+  @apply shadow-sm bg-gray-50 mb-8 rounded-lg;
   @apply dark:bg-gray-700 dark:text-gray-200;
 }
 
 .right-top-description {
-  display: block;
-  padding: 0.5rem 1.5rem;
-  font-size: 1.4rem;
-  line-height: 2.0rem;
   color: #333;
+  @apply px-6 py-2 text-2xl block;
 }
 
 .right-top-description p {
-  margin: 10px 0;
+  @apply mt-4;
 }
 
 .main-container {
   background-color: #fafafa;
-  width: 100%;
-  padding: 0;
   border: 1px solid hsl(0, 0%, 91%);
-  @apply dark:border-gray-600 border rounded-lg overflow-hidden;
-}
-
-.notify {
-  width: 100%;
-  height: 4rem;
-  padding: 0 1rem;
-  font-size: 1.6rem;
-  line-height: 4rem;
-  color: white;
-  margin: 0 0 1rem 0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  background-color: rgba(245, 132, 27, 0.863);
+  @apply dark:border-gray-600;
+  @apply border p-0 rounded-lg overflow-hidden w-full;
 }
 
 .text-container {
-  width: 100%;
-  padding: 0.5rem;
+  @apply w-full p-2;
 }
 
 .text-header {
-  width: 100%;
-  @apply dark:bg-gray-700;
+  @apply w-full dark:bg-gray-700;
+  @apply text-2xl;
 }
 
 .text-header ul {
-  margin: 0;
-  padding: 0.5rem 0;
+  @apply py-2 m-0;
 }
 
 .text-header ul li {
-  list-style: none;
-  padding: 0 1rem;
-  display: inline-block;
-  font-size: 1.3rem;
-  line-height: 1.6rem;
+  @apply list-none pb-4 p-2 inline-block text-xl;
+  @apply md:px-4 py-0 lg:text-xl;
 }
 
 .text-header ul li:last-child {
-  float: right;
-  padding: 0 1rem 0 0;
+  @apply float-right pr-4;
 }
 
 .text-contianer textarea {
-  background-color: #fafafa;
-  width: 100%;
-  outline: 0;
-  margin: 0;
-  word-break: break-all;
-  resize: none;
-  padding: 0.5rem 1rem;
   height: 28rem;
-  font-size: 1.4rem;
-  line-height: 2.5rem;
-  color: #595959;
+  background-color: #fafafa;
+  @apply resize-none break-words whitespace-pre-wrap;
+  @apply m-0 outline-none w-full px-4 py-2;
+  @apply text-gray-600 text-2xl leading-relaxed;
   @apply dark:bg-gray-700 dark:text-gray-200;
 }
 
@@ -146,47 +106,38 @@ ul {
 }
 
 .text-status {
-  width: 100%;
-  text-align: left;
-  margin: 0;
-  font-size: 14px;
-  padding: 0.5rem 1.6rem;
-  display: inline-grid;
   grid-template-columns: 45% 55%;
-  @apply overflow-hidden;
+  @apply overflow-hidden w-full text-left inline-grid;
+  @apply py-2 px-6 m-0 text-xl;
   @apply dark:text-gray-200 dark:bg-gray-700;
 }
 
 .text-status div:last-child {
-  text-align: right;
+  @apply text-right;
 }
 
 .button {
-  padding: 0.3rem 1.1rem;
-  border-radius: 0.6rem;
   line-height: 1.6rem;
-  justify-content: center;
-  border: 1px solid white;
-  color: white;
   transition: 0.3s;
+  @apply px-4 py-2 rounded-lg flex justify-center;
+  @apply text-white border border-white;
 }
 
 #copy {
-  transform: translateY(3px);
+  transform: translateY(2.5px);
 }
 
 .button:disabled {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
 }
 
 .text-button {
-  padding: 0.5rem 1.3rem;
+  @apply px-6 py-2;
 }
 
 .icon {
-  padding: 0.1rem 0;
-  transform: translateY(1px);
-  height: 1.9rem;
+  /* transform: translateY(1px); */
+  height: 1.60rem;
 }
 
 .submit-ready {
@@ -215,12 +166,12 @@ ul {
 }
 
 .description-title {
+  @apply my-4 font-normal leading-tight;
   margin: 1rem 0;
   font-size: 24px;
-  font-weight: 500;
-  line-height: 1.1;
 }
 
 .description-value {
-  word-break: break-all;
+  @apply break-all my-1;
+  @apply font-sans;
 }

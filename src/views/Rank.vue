@@ -119,15 +119,15 @@ html, body {
 
 .main-container {
   @apply text-2xl border-0 rounded-none overflow-hidden min-h-full;
-  @apply xl:w-5/6 lg:mx-auto;
+  @apply xl:w-5/6 lg:mx-auto md:px-6;
   @apply bg-gray-200;
   @apply dark:bg-gray-700;
 }
 
 .left-content {
   @apply box-border p-4 shadow-xl bg-blue-300;
-  @apply md:float-left md:w-3/5;
-  @apply lg:my-5 lg:mx-8 lg:mb-64 lg:rounded-md;
+  @apply md:w-4/5 md:mx-auto lg:float-left lg:w-3/5;
+  @apply md:my-5 md:rounded-md lg:mb-64;
   @apply dark:bg-gray-600;
 }
 
