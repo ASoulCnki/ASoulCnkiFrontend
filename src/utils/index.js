@@ -424,3 +424,11 @@ export const convert = (arr) => {
   })
 }
 
+import { fillTags } from "./tagedText"
+import { buttonClick } from './buttonClick'
+import { request } from "./rank"
+export {
+  fillTags,
+  buttonClick,
+  request
+}
