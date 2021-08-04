@@ -1,6 +1,8 @@
 <template>
   <div id="app" class="dark:bg-gray-700">
-    <router-view v-if="isRouterAlive" />
+    <keep-alive>
+      <router-view v-if="isRouterAlive" />
+    </keep-alive>
   </div>
 </template>
 <script>

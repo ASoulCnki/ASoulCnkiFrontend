@@ -1,24 +1,25 @@
 <template>
-  <div class="m-0 p-0 dark:bg-gray-700 text-2xl h-full mx-auto w-full bg-gray-200">
+  <div class="rank-panel">
     <div class="nav">
       枝江作文展
     </div>
-    <RankSelect 
-      :choices="choices" 
-      @values="getSelectData"
-      :class="{'hidden':!selectVisible}"
-    />
     <div class="main-container">
-      <!-- left content -->
       <div class="left-content">
         <div class="filter-content">
-          <div class="filter-content-text">筛选方式</div>
-          <div class="filter-result-item" v-for="i in stateSelect" :key="i.text">
-            {{ i.text }}
+          <div class="overflow-hidden">
+            <div class="filter-content-text">筛选方式</div>
+            <div class="filter-result-item" v-for="i in stateSelect" :key="i.text">
+              {{ i.text }}
+            </div>
+            <span class="filter-button" @click="selectVisible = !selectVisible">
+              筛选
+            </span>
           </div>
-          <span class="filter-button" @click="selectVisible = !selectVisible">
-            筛选
-          </span>
+          <RankSelect 
+            :choices="choices"
+            :visible="selectVisible"
+            @values="getSelectData"
+          />
         </div>
         <RankArticle v-for="i in response.articles" :article="i" :key="i.replyId"/>
         <div class="result-none" v-if="response.articles.length == 0">
@@ -42,8 +43,8 @@
 import RankArticle from '../components/rank/rankArticle.vue'
 import RankSelect from '../components/rank/rankSelect.vue'
 import RankRightContent from '../components/rank/rankRightContent.vue'
-import { request } from '../utils/rank'
-import { filters } from '../config/index'
+import { request } from '../utils/'
+import { filters } from '../config/'
 
 export default {
   name: 'rank',
@@ -108,6 +109,11 @@ html, body {
   @apply h-full;
   @apply bg-gray-200;
   @apply dark:bg-gray-600;
+}
+
+.rank-panel {
+  @apply m-0 p-0 text-2xl h-full mx-auto w-full bg-gray-200;
+  @apply dark:bg-gray-700;
 }
 
 .nav {

@@ -7,7 +7,7 @@
         </svg>
         <a
           :href="'https://space.bilibili.com/' + article.author.id"
-          target="_blank" class="url"
+          class=" overflow-ellipsis url" target="_blank"
           :title="article.author.name"
         >
           {{ authorName }}
@@ -110,7 +110,7 @@ export default {
 }
 
 .copy {
-  @apply float-right border -mt-1 px-5 mx-4 rounded-md bg-blue-400 text-white;
+  @apply float-right border -mt-1 px-5 mr-2 rounded-md bg-blue-400 text-white;
   @apply dark:bg-gray-500 dark:text-gray-200;
 }
 

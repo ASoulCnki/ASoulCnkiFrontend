@@ -57,6 +57,7 @@
           v-for="article in response.alike" 
           :key="article.id"
           :article="article"
+          :text="response.text"
         />
       </div>
     </div>
@@ -67,8 +68,7 @@
 </template>
 
 <script>
-import { isChracterDraw, pureLength } from '../utils/'
-import { buttonClick } from '../utils/buttonClick' 
+import { isChracterDraw, pureLength, buttonClick } from '../utils/'
 import { message } from '../config'
 import Article from '../components/article.vue'
 import Notice from '../components/Notice.vue'

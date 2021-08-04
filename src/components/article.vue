@@ -17,17 +17,27 @@
         <li><a :href="article.url" target="_blank">传送门</a></li>
       </ul>
     </div>
-    <div class="content-detail ">
-      {{article.content}}
+    <div class="content-detail">
+      <!-- {{article.content}} -->
+      <!-- {{content}} -->
+      <p v-html="content"></p>
     </div>
   </div>
 </template>
 
 <script>
+import { fillTags } from '../utils'
+
 export default {
   name: 'Article',
   props: {
-    article: Object
+    article: Object,
+    text: String
+  },
+  computed: {
+    content() {
+      return fillTags(this.text, this.article.content, 4, 'strong')
+    }
   }
 }
 </script>

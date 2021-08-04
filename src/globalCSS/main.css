@@ -65,7 +65,7 @@ ul {
 
 .main-container {
   background-color: #fafafa;
-  @apply p-0 rounded-lg overflow-hidden w-full;
+  @apply p-0 rounded-lg overflow-hidden w-full shadow-sm;
 }
 
 .text-container {

@@ -18,6 +18,10 @@
   @apply dark:bg-gray-800 dark:text-gray-400;
 }
 
+.content-detail strong {
+  @apply font-bold text-red-600;
+}
+
 .content-info {
   @apply w-full text-xl p-0;
   @apply dark:bg-gray-700 dark:text-gray-300;
@@ -28,7 +32,7 @@
 }
 
 .content-info ul li {
-  @apply inline-block pr-4 pb-1 text-2xl;
+  @apply inline-block pr-4 pb-1 text-2xl h-8 overflow-hidden;
   @apply md:text-xl lg:text-2xl;
 }
 
@@ -48,6 +52,6 @@
 @media screen and (max-width: 768px) {
   .content-info ul {
     display: grid;
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 60% 40%;
   }
 }
