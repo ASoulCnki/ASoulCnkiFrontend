@@ -52,14 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="render-data-list">
-        <Article 
-          v-for="article in response.alike" 
-          :key="article.id"
-          :article="article"
-          :text="response.text"
-        />
-      </div>
+      <ArticleShow :articles="response.alike" :text="text"/>
     </div>
     <RightContent/>
     </div>
@@ -70,15 +63,15 @@
 <script>
 import { isChracterDraw, pureLength, buttonClick } from '../utils/'
 import { message } from '../config'
-import Article from '../components/article.vue'
 import Notice from '../components/Notice.vue'
+import ArticleShow from '../components/index/articleShow.vue'
 import RightContent from '../components/index/RightContent.vue'
 import Protocol from './protocol.vue'
 
 export default {
   name: "Home",
   components: {
-    Article,
+    ArticleShow,
     Notice,
     RightContent,
     Protocol
@@ -105,6 +98,7 @@ export default {
         text: "",
         alike: []
       },
+      textMarked: false,
       clipbaord: null
     };
   },

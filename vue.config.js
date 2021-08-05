@@ -32,6 +32,21 @@ module.exports = {
         }
     },
     chainWebpack: config => {
-        config.module.rule('url-loader').test(/\.(cur)(\?.*)?$/).use('url-loader').loader('url-loader').end();
+        config.module
+            .rule('vue')
+            .use('vue-loader')
+            .loader('vue-loader')
+            .tap( options => {
+                options.compilerOptions.directives = {
+                    html(node, directiveMeta) {
+                        (node.props || (node.props = [])).push({
+                            name: 'innerHTML',
+                            value: `xss(_s(${directiveMeta.value}))`
+                        })
+                    }
+                }
+            })
+            .end()
+            .rule('url-loader').test(/\.(cur)(\?.*)?$/).use('url-loader').loader('url-loader').end();
     }
 }

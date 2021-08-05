@@ -18,9 +18,8 @@
       </ul>
     </div>
     <div class="content-detail">
-      <!-- {{article.content}} -->
-      <!-- {{content}} -->
-      <p v-html="content"></p>
+      <p v-if="textMarked" v-html="content"></p>
+      <p v-else>{{article.content}}</p>
     </div>
   </div>
 </template>
@@ -32,7 +31,10 @@ export default {
   name: 'Article',
   props: {
     article: Object,
-    text: String
+    text: String,
+    textMarked: {
+      default: () => true
+    }
   },
   computed: {
     content() {

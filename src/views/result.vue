@@ -24,22 +24,22 @@
         </div>
       </div>
       <div class="result-body">
-          <div class="flex justify-center space-x-5">
-            <button class="result-copy-button" id="result-copy">
-              复制查重结果
-            </button>
-            <button class="result-copy-button" @click="backToHome">
-              返回枝网查重
-            </button>
-          </div>
-          <p class="dark:text-gray-200 my-6 text-center">
-            查重结果仅作参考，请注意辨别是否为原创<br />(算法更新中,不足之处欢迎<a
-              href="https://t.bilibili.com/542031663106174238"
-              target="_blank"
-              class="dark:text-yellow-400 text-blue-400 underline"
-              >点此反馈</a
-            >)
-          </p>
+        <div class="flex justify-center space-x-5">
+          <button class="result-copy-button" id="result-copy">
+            复制查重结果
+          </button>
+          <button class="result-copy-button" @click="backToHome">
+            返回枝网查重
+          </button>
+        </div>
+        <p class="dark:text-gray-200 my-6 text-center">
+          查重结果仅作参考，请注意辨别是否为原创<br />(算法更新中,不足之处欢迎<a
+            href="https://t.bilibili.com/542031663106174238"
+            target="_blank"
+            class="dark:text-yellow-400 text-blue-400 underline"
+            >点此反馈</a
+          >)
+        </p>
         <p class="result-body-title">原文</p>
         <div class="result-article-content">
           <p>{{ response.text }}</p>
@@ -47,12 +47,7 @@
         <p class="result-body-title">相似小作文</p>
         <div class="render-data">
           <p class="result-body-info" v-if="response.alike.length == 0">没有找到相似的小作文</p>
-          <Article 
-            v-for="article in response.alike"
-            :key="article.id"
-            :article="article"
-            :text="response.text"
-          />
+          <ArticleShow :articles="response.alike" :text="response.text"/>
         </div>
       </div>
     </div>
@@ -60,11 +55,11 @@
 </template>
 
 <script>
-import Article from '../components/article.vue'
+import ArticleShow from '../components/index/articleShow.vue'
 export default {
   name: 'result',
   components: {
-    Article
+    ArticleShow
   },
   data() {
     return {

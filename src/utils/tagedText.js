@@ -8,8 +8,7 @@
 
 	intervals.sort((a, b) => a.start - b.start);
 
-	let outputs = [];
-	outputs.push(intervals[0]);
+	let outputs = [intervals[0]];
 
 	intervals.forEach(s => {
 		const lastInterval = outputs[outputs.length - 1];
@@ -46,7 +45,7 @@ function compare(origin, dest, sensive) {
 
 	const newCache = (end, offset) => {
 		let start = end - offset;
-		start = start < 0 ? 0 : start + 1;
+		start = start < 0 ? 0 : start;
 		return {
 			start: start,
 			end: offset + start
@@ -82,6 +81,7 @@ function compare(origin, dest, sensive) {
 	});
 	return merge(cacheArray);
 }
+
 const render = (s, flag, tag) => {
 	const strArr = [...s];
 	const tagName = tag.match(/\w+/);
@@ -104,6 +104,6 @@ const render = (s, flag, tag) => {
  * @returns {string} 做好标记的文本
  */
 export function fillTags(origin, dest, sensive = 4, tag = "em") {
-	const flag = compare(origin, dest, sensive);
+	const flag = compare(dest, origin, sensive);
 	return render(dest, flag, tag);
 }
