@@ -19,7 +19,7 @@
     </div>
     <div class="content-detail">
       <p v-if="textMarked" v-html="content"></p>
-      <p v-else>{{article.content}}</p>
+      <p v-else v-html="pureContent"></p>
     </div>
   </div>
 </template>
@@ -36,9 +36,26 @@ export default {
       default: () => true
     }
   },
+  data() {
+    return {
+      regex : /(https:\/\/|)(b23\.tv\/\S{0,8}|\S+\.bilibili.com\/\S+\d+)/g
+    }
+  },
+  methods: {
+    parseURL(s) {
+      const x = s.startsWith('https:') ? s : `https://${s}`
+      return `<a target="_blank" href="${x}">${s}</a>`
+    }
+  },
   computed: {
     content() {
-      return fillTags(this.text, this.article.content, 4, 'strong')
+      const preString = fillTags(this.text, this.article.content, 4, 'strong')
+      return preString
+        .replace(this.regex, s => this.parseURL(s))
+    },
+    pureContent() {
+      return this.article.content
+        .replace(this.regex, s => this.parseURL(s))
     }
   }
 }

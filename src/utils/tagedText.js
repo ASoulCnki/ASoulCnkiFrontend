@@ -45,7 +45,7 @@ function compare(origin, dest, sensive) {
 
 	const newCache = (end, offset) => {
 		let start = end - offset;
-		start = start < 0 ? 0 : start;
+		start = start < 0 ? 0 : start+1;
 		return {
 			start: start,
 			end: offset + start
