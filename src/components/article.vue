@@ -3,31 +3,63 @@
   author
  -->
 <template>
-  <div class="content dark:bg-gray-700 dark:text-gray-300">
-    <div class="content-info dark:bg-gray-700 dark:text-gray-300">
+  <div class="content">
+    <div class="content-info">
       <ul>
         <li>发表时间 {{article.createTime}}</li>
         <li style="color:#d73a49">重复率: {{article.repeatPercent}}%</li>
         <li>
           作者: 
-          <a class="text-blue-400 dark:text-yellow-400" :href="'https://space.bilibili.com/' + article.author.id" target="_blank">
+          <a :href="'https://space.bilibili.com/' + article.author.id" target="_blank">
             {{article.author.name}}
           </a>
         </li>
-        <li><a :href="article.url" class="text-blue-400 dark:text-yellow-400" target="_blank">传送门</a></li>
+        <li><a :href="article.url" target="_blank">传送门</a></li>
       </ul>
     </div>
-    <div class="content-detail dark:text-gray-300 dark:bg-gray-700 leading-relaxed">
-      {{article.content}}
+    <div class="content-detail">
+      <p v-if="textMarked" v-html="content"></p>
+      <p v-else v-html="pureContent"></p>
     </div>
   </div>
 </template>
 
 <script>
+import { fillTags } from '../utils'
+
 export default {
   name: 'Article',
   props: {
-    article: Object
+    article: Object,
+    text: String,
+    textMarked: {
+      default: () => true
+    }
+  },
+  data() {
+    return {
+      regex : /(https?:\/\/|)(b23\.tv\/\S{0,8}|\S+\.bilibili.com\/\S+\d+)/g
+    }
+  },
+  methods: {
+    parseURL(s) {
+      s = s.replace(/[\[\]\(\)\<\>'"`]/g, '')
+      const x = s.startsWith('https:') ? s : `https://${s}`
+      return `<a target="_blank" href="${x}">${s}</a>`
+    }
+  },
+  computed: {
+    content() {
+      const content = this.article.content.replace(/<\/?[\S ]+>/g, '')
+      const preString = fillTags(this.text, content, 4, 'strong')
+      return preString
+        .replace(this.regex, s => this.parseURL(s))
+    },
+    pureContent() {
+      return this.article.content
+        .replace(/<\/?[\S ]+>/g, '')
+        .replace(this.regex, s => this.parseURL(s))
+    }
   }
 }
 </script>

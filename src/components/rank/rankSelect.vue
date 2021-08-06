@@ -1,5 +1,5 @@
 <template>
-  <div class="select-content">
+  <div :class="{'select-content': true, 'hidden': !visible}">
     <div class="my-3" v-for="(choice, index1) in choices" :key="choice.filterName">
       <p class="px-3 font-bold mt-2">{{ choice.filterName }}</p>
       <hr class="m-3">
@@ -29,7 +29,8 @@
 export default {
   name: '',
   props:{
-    choices: Array
+    choices: Array,
+    visible: Boolean
   },
   data() { 
     return {
@@ -58,7 +59,7 @@ export default {
 }
 
 .select-content {
-  @apply p-1 px-5 py-4 bg-gray-100 m-0;
+  @apply px-5 py-4 bg-gray-100 mt-3 rounded-md transition;
   @apply dark:bg-gray-600 dark:text-gray-300;
 }
 

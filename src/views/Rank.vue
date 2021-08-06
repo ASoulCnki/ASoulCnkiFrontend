@@ -1,24 +1,25 @@
 <template>
-  <div class="m-0 p-0 dark:bg-gray-700 text-2xl h-full mx-auto w-full bg-gray-200">
+  <div class="rank-panel">
     <div class="nav">
       枝江作文展
     </div>
-    <RankSelect 
-      :choices="choices" 
-      @values="getSelectData"
-      :class="{'hidden':!selectVisible}"
-    />
     <div class="main-container">
-      <!-- left content -->
       <div class="left-content">
         <div class="filter-content">
-          <div class="filter-content-text">筛选方式</div>
-          <div class="filter-result-item" v-for="i in stateSelect" :key="i.text">
-            {{ i.text }}
+          <div class="overflow-hidden">
+            <div class="filter-content-text">筛选方式</div>
+            <div class="filter-result-item" v-for="i in stateSelect" :key="i.text">
+              {{ i.text }}
+            </div>
+            <span class="filter-button" @click="selectVisible = !selectVisible">
+              筛选
+            </span>
           </div>
-          <span class="filter-button" @click="selectVisible = !selectVisible">
-            筛选
-          </span>
+          <RankSelect 
+            :choices="choices"
+            :visible="selectVisible"
+            @values="getSelectData"
+          />
         </div>
         <RankArticle v-for="i in response.articles" :article="i" :key="i.replyId"/>
         <div class="result-none" v-if="response.articles.length == 0">
@@ -42,8 +43,8 @@
 import RankArticle from '../components/rank/rankArticle.vue'
 import RankSelect from '../components/rank/rankSelect.vue'
 import RankRightContent from '../components/rank/rankRightContent.vue'
-import { request } from '../utils/rank'
-import { filters } from '../config/index'
+import { request } from '../utils/'
+import { filters } from '../config/'
 
 export default {
   name: 'rank',
@@ -110,6 +111,11 @@ html, body {
   @apply dark:bg-gray-600;
 }
 
+.rank-panel {
+  @apply m-0 p-0 text-2xl h-full mx-auto w-full bg-gray-200;
+  @apply dark:bg-gray-700;
+}
+
 .nav {
   @apply box-border text-3xl w-full px-6 py-4 border-0 ;
   @apply bg-blue-400 text-gray-200;
@@ -119,15 +125,15 @@ html, body {
 
 .main-container {
   @apply text-2xl border-0 rounded-none overflow-hidden min-h-full;
-  @apply xl:w-5/6 lg:mx-auto;
+  @apply xl:w-5/6 lg:mx-auto md:px-6;
   @apply bg-gray-200;
   @apply dark:bg-gray-700;
 }
 
 .left-content {
   @apply box-border p-4 shadow-xl bg-blue-300;
-  @apply md:float-left md:w-3/5;
-  @apply lg:my-5 lg:mx-8 lg:mb-64 lg:rounded-md;
+  @apply md:w-4/5 md:mx-auto lg:float-left lg:w-3/5;
+  @apply md:my-5 md:rounded-md lg:mb-64;
   @apply dark:bg-gray-600;
 }
 

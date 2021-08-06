@@ -1,14 +1,14 @@
 <template>
   <div class="result-panel" id="panel">
     <div class="panel-body">
-      <div class="result-title dark:text-gray-100">
+      <div class="result-title">
         <h3>文本复制检测报告单(枝网)</h3>
       </div>
-      <div class="result-head dark:text-gray-200">
+      <div class="result-head">
         <p><span class="result-head-item">检测时间：</span>{{ response.time }}</p>
         <p><span class="result-head-item">检测范围：</span>b站评论</p>
         <p>
-          <span class="result-head-item">时间范围：</span>{{ response.TimeRange[0] }} 至 {{response.TimeRange[1]}}
+          <span class="result-head-item">时间范围：</span>{{ response.TimeRange[0] }} 至 {{ response.TimeRange[1] }}
         </p>
         <p class="my-4">
           <b :style="'color: ' + rate_color + '; font-size: medium'">
@@ -24,31 +24,30 @@
         </div>
       </div>
       <div class="result-body">
-        <div style="text-align:center">
-          <button class="result-copy-button">
+        <div class="flex justify-center space-x-5">
+          <button class="result-copy-button" id="result-copy">
             复制查重结果
           </button>
-          <p class="dark:text-gray-200 my-6">
-            查重结果仅作参考，请注意辨别是否为原创<br />(算法更新中,不足之处欢迎<a
-              href="https://t.bilibili.com/542031663106174238"
-              target="_blank"
-              class="dark:text-yellow-400"
-              >点此反馈</a
-            >)
-          </p>
+          <button class="result-copy-button" @click="backToHome">
+            返回枝网查重
+          </button>
         </div>
-        <p class="result-body-title my-6">原文</p>
-        <div class="result-article-content dark:bg-gray-700">
-          <p class="dark:text-gray-200">{{ response.text }}</p>
+        <p class="dark:text-gray-200 my-6 text-center">
+          查重结果仅作参考，请注意辨别是否为原创<br />(算法更新中,不足之处欢迎<a
+            href="https://t.bilibili.com/542031663106174238"
+            target="_blank"
+            class="dark:text-yellow-400 text-blue-400 underline"
+            >点此反馈</a
+          >)
+        </p>
+        <p class="result-body-title">原文</p>
+        <div class="result-article-content">
+          <p>{{ response.text }}</p>
         </div>
         <p class="result-body-title">相似小作文</p>
         <div class="render-data">
-          <p class="result-body-info dark:text-gray-300" v-if="response.alike.length == 0">没有找到相似的小作文</p>
-          <Article 
-            v-for="article in response.alike"
-            :key="article.id"
-            :article="article"
-          />
+          <p class="result-body-info" v-if="response.alike.length == 0">没有找到相似的小作文</p>
+          <ArticleShow :articles="response.alike" :text="response.text"/>
         </div>
       </div>
     </div>
@@ -56,11 +55,11 @@
 </template>
 
 <script>
-import Article from '../components/article.vue'
+import ArticleShow from '../components/index/articleShow.vue'
 export default {
   name: 'result',
   components: {
-    Article
+    ArticleShow
   },
   data() {
     return {
@@ -86,6 +85,9 @@ export default {
         message: s,
         type: type
       })
+    },
+    backToHome() {
+      this.$router.go(-1)
     }
   },
   created() {
@@ -108,7 +110,7 @@ export default {
     }
   },
   mounted() {
-    const clipboard = new ClipboardJS('.result-copy-button', {
+    const clipboard = new ClipboardJS('#result-copy', {
       text: this.report
     })
     clipboard.on("success", () => this.notify('复制成功,适度玩梗捏', 'success'));

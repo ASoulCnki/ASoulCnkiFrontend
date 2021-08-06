@@ -1,128 +1,79 @@
 .result-panel {
-  position: absolute;
-  background: #ebebeb;
   min-width: 375px;
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  padding: 20px 0;
-  margin: 0;
-  font-size: 14px;
-  color: #333;
-  @apply dark:bg-gray-700
+  @apply min-h-full w-full overflow-hidden text-2xl;
+  @apply m-0 absolute py-8 text-gray-700 bg-gray-100;
+  @apply dark:bg-gray-700;
 }
 
 .panel-body {
   width: 96%;
-  margin: auto;
-  background: #fff;
-  border: 1px solid hsl(0, 0%, 89%);
-  border-radius: 0.5rem;
-  padding: 15px;
+  @apply rounded-lg bg-white mx-auto p-2;
+  @apply md:w-4/5 lg:w-3/5 sm:px-8 mx-auto;
   @apply dark:bg-gray-600;
 }
-@media screen and (min-width: 800px) {
-  .panel-body {
-    width: 80%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .panel-body {
-    width: 60%;
-  }
-}
+
 .result-title {
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: bolder;
+  @apply mb-6 font-bold dark:text-gray-200;
 }
+
 .result-title h3 {
-  text-align: center;
+  @apply text-center my-8 text-4xl;
 }
+
 .result-head {
-  margin: 10px;
-  margin-left: 20px;
+  @apply m-4 ml-8 dark:text-gray-200;
 }
+
 .result-head-item {
-  color: rgb(23, 121, 204);
+  @apply text-blue-400 font-bold leading-relaxed tracking-wider;
 }
 
 .result-body-title {
-  margin-top: 20px;
-  text-align: center;
-  font-size: medium;
-  font-weight: 1000;
-  color: rgb(23, 121, 204);
+  @apply my-6 text-center text-2xl font-bold text-blue-500;
 }
 
 .result-body {
   line-height: 22px;
 }
 
-
 .result-article-content {
-  width: 100;
-  margin: auto;
+  @apply w-full mx-auto rounded-lg p-8 border;
+  @apply break-all whitespace-pre-wrap;
+  @apply dark:bg-gray-700 dark:text-gray-200;
   font-size: 15px;
-  border-radius: 10px;
-  padding: 2rem 2rem;
-  word-break: break-all;
-  white-space: pre-wrap;
-  border: 1px solid #e2e0e0;
 }
 
 .result-article-content p {
-  margin: 0;
+  @apply m-0;
 }
 
 #result-copy-container {
-  text-align: center;
+  @apply flex justify-center;
 }
 
 .result-copy-button {
-  background-color: hsl(207, 98%, 55%);
-  color: white;
-  padding: 0.8rem 2rem;
-  border: 1px solid white;
-  margin: 0 0 1rem 0;
   transition: 0.3s;
-  border-radius: 0.8rem;
-}
-
-.result-copy-button:hover {
-  background-color: white;
-  color: hsl(207, 98%, 55%);
-  border: 1px solid hsl(207, 98%, 55%);
+  @apply rounded-lg mb-4 text-white px-8 py-3 border;
+  @apply bg-blue-400 text-white border-white;
+  @apply hover:bg-white hover:text-blue-400 hover:border-blue-400;
 }
 
 .result-progress {
-  height: 20px;
   box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
-  overflow: hidden;
-  background: #f5f5f5;
-  border-radius: 4px;
-  margin: 0 0 30px 0;
+  @apply mb-8 overflow-hidden rounded-md h-8 bg-gray-100;
 }
 
 .result-body-info {
-  font-size: 1.6rem;
-  text-align: center;
-  margin: 5rem 0;
-  font-weight: bolder;
+  @apply font-bold text-center my-20 text-2xl;
+  @apply dark:text-gray-300 tracking-wider;
 }
 
 .result-progress-bar {
-  height: 20px;
-  float: left;
-  line-height: 12px;
-  color: #fff;
-  text-align: center;
-  height: 100%;
+  @apply h-8 text-center text-white float-left;
 }
 
 .result-progress-bar-success {
   background-color: #5cb85c;
-  /* background-image: -moz-repeating-linear-gradient(); */
 }
 
 .result-progress-bar-warning {

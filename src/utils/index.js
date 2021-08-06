@@ -408,6 +408,7 @@ export const convert = (arr) => {
     return {
       content: item[1].content,
       createTime: parseTime(item[1].ctime * 1000, '{y}/{m}/{d} {h}:{i}'),
+      timestamp: item[1].ctime,
       dynamicId: item[1].dynamic_id,
       likeNum: item[1].like_num,
       author: {
@@ -424,3 +425,11 @@ export const convert = (arr) => {
   })
 }
 
+import { fillTags } from "./tagedText"
+import { buttonClick } from './buttonClick'
+import { request } from "./rank"
+export {
+  fillTags,
+  buttonClick,
+  request
+}
