@@ -38,23 +38,26 @@ export default {
   },
   data() {
     return {
-      regex : /(https:\/\/|)(b23\.tv\/\S{0,8}|\S+\.bilibili.com\/\S+\d+)/g
+      regex : /(https?:\/\/|)(b23\.tv\/\S{0,8}|\S+\.bilibili.com\/\S+\d+)/g
     }
   },
   methods: {
     parseURL(s) {
+      s = s.replace(/[\[\]\(\)\<\>'"`]/g, '')
       const x = s.startsWith('https:') ? s : `https://${s}`
       return `<a target="_blank" href="${x}">${s}</a>`
     }
   },
   computed: {
     content() {
-      const preString = fillTags(this.text, this.article.content, 4, 'strong')
+      const content = this.article.content.replace(/<\/?[\S ]+>/g, '')
+      const preString = fillTags(this.text, content, 4, 'strong')
       return preString
         .replace(this.regex, s => this.parseURL(s))
     },
     pureContent() {
       return this.article.content
+        .replace(/<\/?[\S ]+>/g, '')
         .replace(this.regex, s => this.parseURL(s))
     }
   }
