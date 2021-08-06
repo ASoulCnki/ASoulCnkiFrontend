@@ -163,3 +163,18 @@ ul {
   @apply break-all my-1;
   @apply font-sans;
 }
+
+.el-dialog {
+  width: 90%;
+  max-width: 768px;
+  @apply rounded-md;
+  @apply lg:w-1/2;
+}
+
+.el-dialog__header, .el-dialog__body, .el-dialog__title {
+  @apply dark:bg-gray-700 dark:text-gray-300;
+}
+
+.el-dialog__body {
+  @apply p-0;
+}

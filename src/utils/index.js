@@ -428,8 +428,21 @@ export const convert = (arr) => {
 import { fillTags } from "./tagedText"
 import { buttonClick } from './buttonClick'
 import { request } from "./rank"
+import {
+  isActive,
+  isTimeActive,
+  enableActive,
+  disableActive,
+  randomURL
+} from './activity'
+
 export {
   fillTags,
   buttonClick,
-  request
+  request,
+  isActive,
+  isTimeActive,
+  enableActive,
+  disableActive,
+  randomURL
 }

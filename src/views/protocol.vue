@@ -2,10 +2,8 @@
   <el-dialog 
     class="protocol"
     :visible.sync="visible"
-    :width="isWidth ? '55%' : '95%'"
     :top="'5rem'"
     :before-close="close"
-    style="margin:auto; padding:0; overflow:hidden"
     :title="'枝网查重平台用户协议'"
     >
     <div class="protocol-content">
@@ -86,7 +84,7 @@
       </ol>
 
       <div class="text-center my-8">
-        <p class="my-2 font-bold text-black">开源协议</p>
+        <p class="my-2 font-bold">开源协议</p>
         <svg
           height="32"
           class="text-center mx-auto"
@@ -112,21 +110,10 @@ export default {
   props:{
     visible: Boolean
   },
-  data() {
-    return {
-      isWidth: true
-    }
-  },
   methods: {
     close(done) {
       this.$emit('close')
       done()
-    }
-  },
-  mounted() {
-    this.isWidth = window.innerWidth >= 800
-    window.onresize = () => {
-      this.isWidth = window.innerWidth >= 800
     }
   }
 };
@@ -138,16 +125,14 @@ export default {
   box-sizing: border-box;
 }
 
-.protocol {
-  width: 100%;
-  overflow: hidden;
+ol {
+  @apply list-decimal;
 }
 
 .protocol-content {
-  margin: 0;
-  width: 100%;
   height: 45rem;
   overflow-y: scroll;
+  @apply box-border p-5 w-full leading-relaxed break-normal;
 }
 
 .protocol-content ol {
