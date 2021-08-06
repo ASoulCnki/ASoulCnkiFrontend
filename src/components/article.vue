@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     parseURL(s) {
-      s = s.replace(/[\[\]\(\)\<\>'"`]/g, '')
       const x = s.startsWith('https:') ? s : `https://${s}`
       return `<a target="_blank" href="${x}">${s}</a>`
     }
@@ -53,7 +52,6 @@ export default {
       const content = this.article.content.replace(/<\/?[\S ]+>/g, '')
       const preString = fillTags(this.text, content, 4, 'strong')
       return preString
-        .replace(this.regex, s => this.parseURL(s))
     },
     pureContent() {
       return this.article.content
