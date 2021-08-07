@@ -29,6 +29,7 @@
 
 <script>
 import { fillTags, isActive, isTimeActive, randomURL } from '../utils'
+import { setDialog, getDialogExist } from '../utils/activity'
 import { urlArray } from '../config'
 import ActivityDialog from '../components/activity/activityDialog.vue'
 
@@ -64,6 +65,7 @@ export default {
       if (this.timeout) clearTimeout(this.timeout);
       this.timeout = setTimeout( () => {
         this.visible = true
+        setDialog()
       }, 800)
     }
   },
@@ -79,13 +81,11 @@ export default {
         .replace(this.regex, s => this.parseURL(s))
     },
     isActive() {
-      const [start, end] = [1628352000000, 1628438400000]
-      return isActive() && isTimeActive(start, end)
-      // return isActive()
+      return isActive() && isTimeActive()
     }
   },
   mounted() {
-    if (isActive()) {
+    if (isActive() && !getDialogExist()) {
       this.$refs.content.addEventListener('click', e => {
         if (e.target.tagName != "A") return
         this.message()

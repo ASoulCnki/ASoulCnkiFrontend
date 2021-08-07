@@ -433,7 +433,8 @@ import {
   isTimeActive,
   enableActive,
   disableActive,
-  randomURL
+  randomURL,
+  existActiveKey
 } from './activity'
 
 export {
@@ -444,5 +445,6 @@ export {
   isTimeActive,
   enableActive,
   disableActive,
-  randomURL
+  randomURL,
+  existActiveKey
 }

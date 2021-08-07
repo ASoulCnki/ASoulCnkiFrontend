@@ -84,57 +84,46 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  a {
-    text-decoration: none;
-  }
-
   .notify {
     @apply w-full h-16 px-4 mb-4 text-white text-2xl leading-loose;
     @apply rounded-lg overflow-hidden bg-yellow-500;
   }
 
   .icon {
-    width: 4rem;
-    height: 4rem;
-    padding: 0.7rem 0;
+    @apply w-16 h-16 py-3;
   }
   .icon path {
     fill: white;
   }
 
   .notify-left, .notify-right {
-    float: left;
-    box-sizing: border-box;
-    height: inherit;
     line-height: 4rem;
-    font-size: 1.8rem
+    font-size: 1.8rem;
+    @apply float-left box-border;
   }
 
   .notify-left {
-    width: 4rem;
+    @apply w-16;
   }
 
   .notify-right {
     width: calc(100% - 4rem);
-    letter-spacing: 0.15rem;
     word-break: none;
-    overflow: hidden;
-    white-space: nowrap;
+    @apply tracking-widest overflow-hidden whitespace-nowrap;
   }
   
   .notify-text {
-    display: inline;
+    @apply inline;
   }
 
   .notify-text-padding {
+    @apply w-full;
     padding: 0 80%;
-    width: 100%;
   }
 
   .notify-text-padding span {
     margin: 0 20%;
-    text-align: left;
-    width: auto;
+    @apply text-left m-auto;
   }
 
 </style>

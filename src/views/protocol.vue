@@ -122,7 +122,7 @@ export default {
 <style lang="css" scoped>
 
 * {
-  box-sizing: border-box;
+  @apply box-border;
 }
 
 ol {
@@ -131,27 +131,15 @@ ol {
 
 .protocol-content {
   height: 45rem;
-  overflow-y: scroll;
-  @apply box-border p-5 w-full leading-relaxed break-normal;
+  @apply box-border p-5 w-full leading-relaxed;
+  @apply break-normal overflow-y-scroll;
 }
 
 .protocol-content ol {
-  padding: 0 0 0 15px;
-  word-break: break-all;
-}
-
-.check-box {
-  padding: 1.5rem;
-  align-items: center;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  height: 5rem;
+  @apply break-all pl-8;
 }
 
 h3 {
-  margin: 18px 0;
-  font-size: 16px;
-  font-weight: 700;
+  @apply font-bold text-2xl my-3;
 }
 </style>
