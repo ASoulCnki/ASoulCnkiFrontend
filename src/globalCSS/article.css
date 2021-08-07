@@ -4,14 +4,12 @@
 */
 
 .content {
-  padding: 0.8rem 0.75rem 0 0.75rem;
   background: #fafafa;
-  @apply w-full overflow-hidden box-border my-8 rounded-xl;
+  @apply w-full overflow-hidden box-border my-8 rounded-xl px-3 pt-3;
   @apply dark:bg-gray-700 dark:text-gray-300 shadow-md;
 }
 
 .content-detail {
-  padding: 0 1rem 0.7rem 0.3rem;
   @apply w-full rounded-xl break-all whitespace-pre-line;
   @apply box-border text-2xl leading-relaxed mb-4 p-3;
   @apply bg-gray-200 text-gray-700; 

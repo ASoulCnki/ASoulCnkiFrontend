@@ -48,15 +48,18 @@ export default {
       })
       io.observe(target)
     },
-    isApple(s) {
+    isApple() {
+      const ua = navigator.userAgent
+      const platform = navigator.platform
       return (
-        !(/chrome/i).test(s) && (/safari/i).test(s)
+        !(/chrome/i).test(ua) && (/safari/i).test(ua) &&
+          !(/(win|linux)/i).test(platform)
       )
     }
   },
   mounted() {
     const imgs = [...document.querySelectorAll('.avtar-img')]
-    const isApple = this.isApple(navigator.userAgent)
+    const isApple = this.isApple()
     imgs.forEach(i => {
       this.lazyLoad(i, isApple)
     })
@@ -66,41 +69,26 @@ export default {
 
 <style lang="css" scoped>
   a, a:hover {
-    text-decoration: none;
-    color: white;
+    @apply no-underline text-white;
   }
 
   .carousel-item h3 {
-    text-align: center;
-    background: #000;
-    padding: 0;
+    @apply text-center bg-black p-0;
   }
   .member-info {
-    padding: 3rem 0 0 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0.4rem;
+    @apply pt-12 m-0 w-full h-full rounded-lg;
   }
 
   .avtar {
-    width: 10rem;
-    height: 10rem;
-    margin: auto;
-    border-radius: 10rem;
-    border: 0.3rem solid #fafafa;
-    overflow: hidden;
+    @apply w-40 h-40 m-auto rounded-full border-2 overflow-hidden;
+    @apply bg-white;
   }
 
   .avtar img {
-    height: 100%;
+    @apply h-full;
   }
 
   .member-name {
-    margin: 2rem;
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    color: #fafafa;
+    @apply m-8 font-bold text-center text-gray-200 text-3xl
   }
 </style>

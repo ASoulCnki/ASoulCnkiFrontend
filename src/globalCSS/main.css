@@ -21,6 +21,10 @@ ul {
   @apply list-none;
 }
 
+button {
+  @apply outline-none;
+}
+
 #app {
   @apply dark:bg-gray-600 w-full min-h-full;
 }
@@ -155,11 +159,29 @@ ul {
 }
 
 .description-title {
-  @apply my-4 font-normal leading-tight;
-  font-size: 24px;
+  @apply my-4 font-normal leading-tight text-3xl;
 }
 
 .description-value {
-  @apply break-all my-1;
+  @apply break-all my-1 leading-relaxed;
   @apply font-sans;
+}
+
+.el-dialog {
+  width: 90%;
+  max-width: 768px;
+  @apply rounded-lg;
+  @apply lg:w-1/2;
+}
+
+.el-dialog__header, .el-dialog__body, .el-dialog__title {
+  @apply dark:bg-gray-700 dark:text-gray-300;
+}
+
+.el-dialog__title {
+  @apply font-bold;
+}
+
+.el-dialog__body {
+  @apply pb-4 p-0;
 }

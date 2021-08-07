@@ -77,9 +77,38 @@ const filters = [
 const message = (time) => {
   let feedback = '查重过程中遇到的问题可以向@查重姬Official进行反馈，传送门在系统介绍 ——枝网项目组'
   if (time < 1628438400000 && time > 1628265600000) {
-    feedback = "乃琳生日快乐捏，大腿别着凉了捏！枝网项目组祝乃琳生日快乐！"
+    feedback = "喜欢被你逗，喜欢当你的TOM猫，但最喜欢的是你的笑容。今天、明天、每一天，我们一直在！乃琳生日快乐吖！！！今天你是大哥！！！一起向前冲啊啊啊！！！🎂🎂🎂  ——超级超级爱你的一个魂（以上内容偷自ASoul）枝网项目组祝乃琳生日快乐！"
   } 
   return feedback
 }
 
-export {description, person_list, message, filters}
+
+function urlArray() {
+  let fakeArray = [
+    'https://www.bilibili.com/video/BV1CB4y1K7vE',
+    'https://www.bilibili.com/video/BV1Y54y1V7Pv',
+    'https://www.bilibili.com/video/BV1mU4y1V7j2',
+    'https://www.bilibili.com/video/BV1s64y1R7SN',
+    'https://www.bilibili.com/video/BV1Xf4y1b7vs',
+    'https://www.bilibili.com/video/BV1x44y167br',
+    'https://www.bilibili.com/video/BV1pM4y1u77H',
+    'https://www.bilibili.com/video/BV1HU4y1G7xV',
+    'https://www.bilibili.com/video/BV1oy4y1T7kc',
+    'https://www.bilibili.com/video/BV1Mf4y1s723',
+    'https://www.bilibili.com/video/BV1oX4y1g79t',
+    'https://www.bilibili.com/video/BV1Ap4y1b7YN',
+    'https://www.bilibili.com/video/BV1Zb4y1Z7nh',
+    'https://www.bilibili.com/video/BV1MK4y1A7FE',
+    'https://www.bilibili.com/video/BV1J64y1y7em',
+    'https://www.bilibili.com/video/BV19A411G7uE',
+    'https://www.bilibili.com/video/BV1cK4y1V7mf',
+    'https://www.bilibili.com/video/BV1Eb4y1Z7wN'
+  ]
+
+  const sp = 'https://www.bilibili.com/video/BV1f54y1j7X8'
+
+  fakeArray = Array(6).fill(sp).concat(fakeArray)
+  return fakeArray
+}
+
+export {description, person_list, message, filters, urlArray}
