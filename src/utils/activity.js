@@ -22,6 +22,8 @@ export function randomURL(videoArray) {
  * @returns {Boolean} isActive
  */
 export function isTimeActive() {
+  if (persistence()) 
+    return true
   const time = new Date() * 1
   const [start, end] = [1628352000000, 1628438400000]
   return (time > start && time < end)
@@ -62,4 +64,10 @@ export function setDialog() {
 
 export function getDialogExist() {
   return localStorage.getItem(DIALOG_HISTORY) != null
+}
+
+// 彩蛋持久化, 当这一项存在，无视活动时间
+const PERSISTENCE_FLAG = 'active'
+export function persistence() {
+  return localStorage.getItem(PERSISTENCE_FLAG) != null
 }

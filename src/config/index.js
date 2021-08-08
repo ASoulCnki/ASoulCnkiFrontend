@@ -55,7 +55,7 @@ const filters = [
   {
     filterName: '时间范围',
     filterAttr:'timeRangeMode',
-    multiple: false,
+    type: 'single',
     options: [
       {text: '全部时间', value: 0},
       {text: '本周', value: 1},
@@ -65,20 +65,30 @@ const filters = [
   {
     filterName: '筛选类型',
     filterAttr:'sortMode',
-    multiple: false,
+    type: 'single',
     options: [
       {text: '累计点赞数', value: 0},
       {text: '点赞数', value: 1},
       {text: '引用次数', value: 2},
     ]
   },
+  {
+    filterName: '用户名',
+    filterAttr:'ids',
+    type: 'multi',
+    options: [
+      {text: '向晚', value: 672346917},
+      {text: '贝拉', value: 672353429},
+      {text: '珈乐', value: 351609538},
+      {text: '嘉然', value: 672328094},
+      {text: '乃琳', value: 672342685},
+      {text: '官号', value: 703007996},
+    ]
+  }
 ]
 
 const message = (time) => {
   let feedback = '查重过程中遇到的问题可以向@查重姬Official进行反馈，传送门在系统介绍 ——枝网项目组'
-  if (time < 1628438400000 && time > 1628265600000) {
-    feedback = "喜欢被你逗，喜欢当你的TOM猫，但最喜欢的是你的笑容。今天、明天、每一天，我们一直在！乃琳生日快乐吖！！！今天你是大哥！！！一起向前冲啊啊啊！！！🎂🎂🎂  ——超级超级爱你的一个魂（以上内容偷自ASoul）枝网项目组祝乃琳生日快乐！"
-  } 
   return feedback
 }
 

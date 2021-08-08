@@ -8,12 +8,14 @@
           :key="option.value"
         >
           <label class="overflow-auto" :for="'radio'+ index + '' + index1">
-            <input type="radio"
-              v-model="datas[index1]"
-              :name="choice.filterName" 
-              :id="'radio' + index + '' + index1"
+            <input type="checkbox" class="hidden radio" v-if="choice.type == 'multi'"
+              :id="'radio' + index + '' + index1" v-model="datas[index1]"
               :value="option.value"
-              class="hidden radio">
+            >
+            <input type="radio" class="hidden radio" v-else
+              :id="'radio' + index + '' + index1" v-model="datas[index1]"
+              :value="option.value" 
+            >
             <div class="option-label">{{ option.text }}</div>
           </label>
         </div>
@@ -34,20 +36,35 @@ export default {
   },
   data() { 
     return {
-      datas:Array(this.choices.length).fill(0)
+      datas: []
     }
   },
   methods: {
     reset() {
-      this.datas = this.datas.map(item => 0)
+      this.datas = this.choices.map(s => {
+        return (s.type == "multi") ? [] : 0 
+      })
     },
     submit() {
       const caches = {}
       this.choices.forEach( (item, index) => {
-        caches[item.filterAttr] = item.options[this.datas[index]]
+        if (item.type == 'multi') {
+          const data = this.datas[index]
+          const isEmpty = data.length == 0 || data.length == item.options.length
+          caches[item.filterAttr] = {
+            text: isEmpty ? '全部' : item.options.filter(s => data.includes(s.value)).map(s => s.text).toString(),
+            value: data.toString()
+          }
+        }
+        else {
+          caches[item.filterAttr] = item.options[this.datas[index]]
+        }
       })
       this.$emit('values', caches)
     }
+  },
+  mounted() {
+    this.reset()
   }
 }
 </script>

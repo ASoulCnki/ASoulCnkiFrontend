@@ -9,10 +9,12 @@ export function request() {
   }
 
   const params = {
-    sortMode: this.stateSelect.sortMode.value,
-    timeRangeMode: this.stateSelect.timeRangeMode.value,
     pageSize: 10,
     pageNum: this.pageNum
+  }
+
+  for (const param in this.stateSelect) {
+    params[param] = this.stateSelect[param].value
   }
 
   instance.get(getUrl, {
