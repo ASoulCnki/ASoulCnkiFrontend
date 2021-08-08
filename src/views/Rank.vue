@@ -7,9 +7,11 @@
       <div class="left-content">
         <div class="filter-content">
           <div class="overflow-hidden">
-            <div class="filter-content-text">筛选方式</div>
-            <div class="filter-result-item" v-for="i in stateSelect" :key="i.text">
-              {{ i.text }}
+            <div class="filter-tag">
+              <div class="filter-content-text">筛选方式</div>
+              <div class="filter-result-item mb-1" v-for="i in stateSelect" :key="i.text">
+                {{ i.text }}
+              </div>
             </div>
             <span class="filter-button" @click="selectVisible = !selectVisible">
               筛选
@@ -59,7 +61,6 @@ export default {
       stateSelect: {},
       selectVisible: false,
       pageNum: 1,
-      pageNumNow: 0,
       totalPage:1,
       response: {
         allCount: 0,
@@ -80,7 +81,10 @@ export default {
   mounted() {
     document.title = "枝江作文展"
     const select = {}
-    this.choices.forEach(s => select[s.filterAttr] = s.options[0])
+    this.choices.forEach(s => {
+      const val = s.type != "multi" ? s.options[0] : { text: "全部", value: (s.options.map(s => s.value).toString())} 
+      select[s.filterAttr] = val
+    })
     this.stateSelect = select
   },
   watch: {
@@ -140,6 +144,12 @@ html, body {
 .filter-content {
   @apply p-2 bg-white mt-2 mb-4 overflow-auto rounded-md;
   @apply dark:bg-gray-700 dark:text-gray-300;
+}
+
+.filter-tag {
+  width: calc(100% - 45px);
+  height: 27px;
+  @apply inline-block overflow-hidden;
 }
 
 .filter-content-text {
