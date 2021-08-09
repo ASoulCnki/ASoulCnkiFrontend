@@ -185,3 +185,8 @@ button {
 .el-dialog__body {
   @apply pb-4 p-0;
 }
+
+.marked {
+  @apply font-normal bg-gray-100 text-red-500;
+  @apply dark:bg-gray-700 dark:text-yellow-400;
+}

@@ -23,7 +23,7 @@
             @values="getSelectData"
           />
         </div>
-        <RankArticle v-for="i in response.articles" :article="i" :key="i.replyId"/>
+        <RankArticle v-for="i in response.articles" :article="i" :key="i.replyId" :markArray="stateSelect.keywords"/>
         <div class="result-none" v-if="response.articles.length == 0">
           没有找到相关结果,请尝试重新筛选
         </div>
