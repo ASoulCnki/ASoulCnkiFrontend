@@ -73,7 +73,7 @@ const filters = [
     ]
   },
   {
-    filterName: '用户名',
+    filterName: '用户名过滤',
     filterAttr:'ids',
     type: 'multi',
     options: [
@@ -83,6 +83,14 @@ const filters = [
       {text: '嘉然', value: 672328094},
       {text: '乃琳', value: 672342685},
       {text: '官号', value: 703007996},
+    ]
+  },
+  {
+    filterName: '关键词检索',
+    filterAttr:'keywords',
+    type: 'input',
+    options: [
+      {text: "未添加关键词", value: ""}
     ]
   }
 ]
