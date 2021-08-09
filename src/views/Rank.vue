@@ -6,7 +6,7 @@
     <div class="main-container">
       <div class="left-content">
         <div class="filter-content">
-          <div class="overflow-hidden">
+          <div class="filter-content-mian">
             <div class="filter-tag">
               <div class="filter-content-text">筛选方式</div>
               <div class="filter-result-item mb-1" v-for="i in stateSelect" :key="i.text">
@@ -23,7 +23,7 @@
             @values="getSelectData"
           />
         </div>
-        <RankArticle v-for="i in response.articles" :article="i" :key="i.replyId"/>
+        <RankArticle v-for="i in response.articles" :article="i" :key="i.replyId" :markArray="stateSelect.keywords"/>
         <div class="result-none" v-if="response.articles.length == 0">
           没有找到相关结果,请尝试重新筛选
         </div>
@@ -82,7 +82,7 @@ export default {
     document.title = "枝江作文展"
     const select = {}
     this.choices.forEach(s => {
-      const val = s.type != "multi" ? s.options[0] : { text: "全部", value: (s.options.map(s => s.value).toString())} 
+      const val = s.type != "multi" ? s.options[0] : { text: "全部", value: (s.options.map(s => s.value).toString())}
       select[s.filterAttr] = val
     })
     this.stateSelect = select
@@ -144,6 +144,11 @@ html, body {
 .filter-content {
   @apply p-2 bg-white mt-2 mb-4 overflow-auto rounded-md;
   @apply dark:bg-gray-700 dark:text-gray-300;
+}
+
+.filter-content-mian {
+  height: 27px;
+  @apply overflow-hidden;
 }
 
 .filter-tag {

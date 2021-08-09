@@ -3,6 +3,7 @@
     <div class="my-3" v-for="(choice, index1) in choices" :key="choice.filterName">
       <p class="px-3 font-bold mt-2">{{ choice.filterName }}</p>
       <hr class="m-3">
+      <div v-if="['single', 'multi'].includes(choice.type)">
         <div class="inline-block overflow-hidden"
           v-for="(option, index) in choice.options" 
           :key="option.value"
@@ -19,6 +20,17 @@
             <div class="option-label">{{ option.text }}</div>
           </label>
         </div>
+      </div>
+      <div v-if="['input'].includes(choice.type)">
+        <div class="w-full">
+          <input type="text" 
+            class="w-full outline-none p-2 mx-2"
+            placeholder="多个关键词用空格分开，每个词不超过10字"
+            v-model="datas[index1]"
+          >
+          <!-- 待添加清空功能 -->
+        </div>
+      </div>
     </div>
     <div class="button-panel">
       <button class="button reset" @click="reset">重置</button>
@@ -42,25 +54,45 @@ export default {
   methods: {
     reset() {
       this.datas = this.choices.map(s => {
-        return (s.type == "multi") ? [] : 0 
+        if (s.type == 'multi') return []
+        if (s.type == 'input') return ''
+        return 0
       })
     },
     submit() {
       const caches = {}
       this.choices.forEach( (item, index) => {
+        const data = this.datas[index]
+        if (item.type == 'input') {
+          const arr = this.handleInput(data)
+          const isEmpty = arr.length == 0
+          caches[item.filterAttr] = {
+            text: isEmpty ? '未选择关键词' : arr.toString(),
+            value: isEmpty ? '' : arr.toString()
+          }
+          this.datas[index] = arr.join(' ')
+          return
+        }
         if (item.type == 'multi') {
-          const data = this.datas[index]
           const isEmpty = data.length == 0 || data.length == item.options.length
           caches[item.filterAttr] = {
             text: isEmpty ? '全部' : item.options.filter(s => data.includes(s.value)).map(s => s.text).toString(),
-            value: data.toString()
+            value: isEmpty ? '' : data.toString()
           }
         }
         else {
-          caches[item.filterAttr] = item.options[this.datas[index]]
+          caches[item.filterAttr] = item.options[data]
         }
       })
       this.$emit('values', caches)
+    },
+    handleInput(str) {
+      if (/^[ ]*$/.test(str)) 
+        return []
+      return [... new Set(str.split(' '))]
+        .filter(s => !(/^[ ]+$/).test(s) && s.length <= 10)
+        .sort( (a,b) => a.length - b.length)
+        .splice(0, 3)
     }
   },
   mounted() {

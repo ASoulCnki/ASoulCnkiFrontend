@@ -33,7 +33,8 @@
         复制
       </span>
     </div>
-    <div class="article-content">{{ article.content }}</div>
+    <div class="article-content" v-if="markedText" v-html="content"></div>
+    <div class="article-content" v-else>{{ article.content }}</div>
     <div class="article-footer">
       <span class="mt-1" title="累计点赞数">
         <svg class="h-9 m-0 px-2 pr-4 float-left" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +68,13 @@
 export default {
   name: 'RankArticle',
   props: {
-    article: Object
+    article: Object,
+    markArray: {
+      default: () => []
+    },
+    marked: {
+      default: () => false
+    }
   },
   data() {
     return {
@@ -83,6 +90,18 @@ export default {
     authorName() {
       const name = this.article.author.name
       return name.length <= 6 ? name : name.substr(0, 5) + '...'
+    },
+    markedText() {
+      return this.markArray.value.length > 0 
+      // return this.marked && this.markArray.length > 0 
+    },
+    content() {
+      let content = this.article.content;
+      const arr = this.markArray.value.split(',').sort((a, b) => b.length - a.length)
+      for (const regex of arr) {
+        content = content.replaceAll(regex, s => `<span class="marked">${s}</span>`)
+      }
+      return content
     }
   },
   mounted() {
