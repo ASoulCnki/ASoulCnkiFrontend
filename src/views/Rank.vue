@@ -45,7 +45,8 @@
 import RankArticle from '../components/rank/rankArticle.vue'
 import RankSelect from '../components/rank/rankSelect.vue'
 import RankRightContent from '../components/rank/rankRightContent.vue'
-import { request } from '../utils/'
+import AdvanceSearch from '../components/advance/advanceSearch.vue'
+import { debounce, request } from '../utils/'
 import { filters } from '../config/'
 
 export default {
@@ -53,7 +54,8 @@ export default {
   components: {
     RankArticle,
     RankSelect,
-    RankRightContent
+    RankRightContent,
+    AdvanceSearch
   },
   data() { 
     return {
@@ -66,7 +68,8 @@ export default {
         allCount: 0,
         timeRange: [0, 0],
         articles: []
-      }
+      },
+      timer: null
     }
   },
   methods: {
@@ -76,7 +79,8 @@ export default {
     },
     getData() {
       request.call(this, arguments)
-    }
+    },
+    debounce
   },
   mounted() {
     document.title = "枝江作文展"
@@ -86,6 +90,22 @@ export default {
       select[s.filterAttr] = val
     })
     this.stateSelect = select
+
+    const debounce = (fn, delay) => {
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => fn(), delay)
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key == "ArrowRight" && this.pageNum < this.totalPage) {
+        debounce(() => this.pageNum++, 700)
+      }
+      if (e.key == "ArrowLeft" && this.pageNum > 1) {
+        debounce(() => this.pageNum--, 700)
+      }
+    })
   },
   watch: {
     pageNum(newVal) {

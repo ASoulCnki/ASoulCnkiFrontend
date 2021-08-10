@@ -22,10 +22,9 @@
         </div>
       </div>
       <div v-if="['input'].includes(choice.type)">
-        <div class="w-full">
-          <input type="text" 
-            class="w-full outline-none p-2 mx-2"
-            placeholder="多个关键词用空格分开，每个词不超过10字"
+        <div class="input-panel">
+          <input type="text" class="input" @keydown="keydown($event)"
+            placeholder="多个关键词用空格分开，每个词不超过10字，最多三个词"
             v-model="datas[index1]"
           >
           <!-- 待添加清空功能 -->
@@ -58,6 +57,11 @@ export default {
         if (s.type == 'input') return ''
         return 0
       })
+    },
+    keydown(event) {
+      if (event.keyCode == 13) {
+        this.submit()
+      }
     },
     submit() {
       const caches = {}
@@ -113,13 +117,20 @@ export default {
 }
 
 .option-label {
-  @apply m-2 pt-2 p-1 px-6 border transition;
+  @apply m-2 pt-2 p-1 px-6 border transition pb-2;
   @apply bg-gray-50 rounded-lg text-gray-600;
-  @apply dark:bg-gray-500 dark:text-gray-300;
+  @apply dark:bg-gray-700 dark:text-gray-300;
 }
 
 .button-panel {
   @apply flex justify-center p-3 mt-8 text-white font-bold;
+}
+
+.input {
+  width: 98%;
+  @apply outline-none p-2 px-3 mx-2 rounded-lg;
+  @apply box-border tracking-wider overflow-ellipsis;
+  @apply dark:bg-gray-700 dark:text-gray-300;
 }
 
 .button {
