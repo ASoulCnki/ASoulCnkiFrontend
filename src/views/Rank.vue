@@ -54,7 +54,6 @@ export default {
     RankArticle,
     RankSelect,
     RankRightContent,
-    AdvanceSearch
   },
   data() { 
     return {
