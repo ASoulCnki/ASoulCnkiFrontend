@@ -96,6 +96,9 @@ export default {
       return [... new Set(str.split(' '))]
         .filter(s => !(/^[ ]+$/).test(s) && s.length <= 10)
         .sort( (a,b) => a.length - b.length)
+        .map(s => {
+          return (/^[\w\u4e00-\u9fa5]+$/).test(s) ? s : encodeURI(s)
+        })
         .splice(0, 3)
     }
   },

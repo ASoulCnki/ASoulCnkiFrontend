@@ -84,7 +84,7 @@ export default {
     document.title = "枝江作文展"
     const select = {}
     this.choices.forEach(s => {
-      const val = s.type != "multi" ? s.options[0] : { text: "全部", value: (s.options.map(s => s.value).toString())}
+      const val = s.type != "multi" ? s.options[0] : { text: "全部", value: ''}
       select[s.filterAttr] = val
     })
     this.stateSelect = select

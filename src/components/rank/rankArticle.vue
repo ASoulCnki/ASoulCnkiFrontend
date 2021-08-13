@@ -33,8 +33,10 @@
         复制
       </span>
     </div>
-    <div class="article-content" v-if="markedText" v-html="content"></div>
-    <div class="article-content" v-else>{{ article.content }}</div>
+    <!-- <div class="article-content" v-if="markedText" v-html="content"></div>
+    <div class="article-content" v-else>{{ article.content }}</div> -->
+    <div class="article-content">{{ article.content }}</div>
+
     <div class="article-footer">
       <span class="mt-1" title="累计点赞数">
         <svg class="h-9 m-0 px-2 pr-4 float-left" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -72,9 +74,6 @@ export default {
     markArray: {
       default: () => []
     },
-    marked: {
-      default: () => false
-    }
   },
   data() {
     return {
