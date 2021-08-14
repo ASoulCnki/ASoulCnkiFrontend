@@ -37,16 +37,53 @@
     <div class="discription">
       <p><a href="/" class="url">返回枝网查重</a></p>
     </div>
-    <hr class="line">
     <div class="right-footer">
-      <a href="https://github.com/ASoulCnki" target="_blank" class="px-2">项目地址</a>
+      <div class="footer-links">
+        <p>关于项目</p>
+        <a href="https://github.com/ASoulCnki" target="_blank">项目地址</a>
+        <a href="https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md" target="_blank">API文档</a>
+      </div>
+      <div class="footer-links">
+        <p>联系我们</p>
+        <a href="https://space.bilibili.com/1809170490/" target="_blank">BiliBili</a>
+        <a href="https://github.com/ASoulCnki" target="_blank">GitHub</a>
+      </div>
+      <div class="footer-links">
+        <p>问题反馈</p>
+        <a href="https://t.bilibili.com/542031663106174238" target="_blank">主站反馈</a>
+        <a href="https://t.bilibili.com/551286754984977322" target="_blank">作文展反馈</a>
+      </div>
     </div>
+    <div class="active-button" v-if="isActive" @click="visible = true">🎉</div>
+    <el-dialog :visible.sync="visible" title="枝江作文展筛选功能正式上线🎉">
+      <Dialog/>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+  import { setDialog, getDialogExist } from '../../utils/activity'
+  import Dialog from './rankFilterDialog.vue'
+
   export default {
-    name:'RankRightContent'
+    name:'RankRightContent',
+    components: {
+      Dialog
+    },
+    data() {
+      return {
+        visible: false,
+        isActive: false
+      }
+    },
+    mounted() {
+      if (getDialogExist()) {
+        this.isActive = true
+        return
+      }
+      setTimeout(() => this.visible = true, 500)
+      setDialog()
+    },
   }
 </script>
 
@@ -59,7 +96,7 @@
 }
 
 .url {
-  @apply dark:text-yellow-400
+  @apply dark:text-yellow-400;
 }
 
 .discription {
@@ -83,12 +120,24 @@
   @apply dark:text-yellow-500;
 }
 
-.line {
-  @apply font-thin m-3 mt-8 mb-5 bg-black;
-  @apply dark:bg-white
+.right-footer {
+  @apply flex justify-center w-full text-gray-400 divide-x text-2xl;
 }
 
-.right-footer {
-  @apply flex justify-center text-gray-400 divide-x-2 text-2xl;
+.footer-links {
+  @apply grid w-auto grid-cols-1 px-10 box-border w-1/3 text-center;
 }
+
+.footer-links a, .footer-links p {
+  @apply py-2 grid;
+}
+
+.footer-links a {
+  @apply text-gray-500 dark:text-gray-300 hover:underline;
+}
+
+.footer-links p {
+  min-width: 60px;
+  @apply text-gray-600 font-semibold dark:text-gray-300;
+} 
 </style>

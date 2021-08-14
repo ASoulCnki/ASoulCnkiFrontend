@@ -56,10 +56,11 @@ const filters = [
     filterName: '时间范围',
     filterAttr:'timeRangeMode',
     type: 'single',
+    // option 第一个为默认值, 显示时按顺序排列
     options: [
-      {text: '全部时间', value: 0},
       {text: '本周', value: 1},
       {text: '三天内', value: 2},
+      {text: '全部时间', value: 0},
     ]
   },
   {
@@ -73,7 +74,7 @@ const filters = [
     ]
   },
   {
-    filterName: '用户名过滤',
+    filterName: '按成员过滤[支持多选]',
     filterAttr:'ids',
     type: 'multi',
     options: [
