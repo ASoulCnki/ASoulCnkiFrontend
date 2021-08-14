@@ -28,17 +28,7 @@
         琼ICP备20001476号-2
       </a>
     </p>
-    <div 
-      class="box-border w-16 h-16 bg-white text-center pt-3 pl-1 
-        text-3xl rounded-2xl fixed bottom-24 right-10 shadow-lg z-50
-        hover:bg-gray-50 transition hover:shadow-inner 
-        dark:bg-gray-700 dark:hover:bg-gray-800
-        "
-      v-if="isActive"
-      @click="visible = true"
-    >
-      🎉
-    </div>
+    <div class="active-button" v-if="isActive" @click="visible = true">🎉</div>
     <el-dialog :visible.sync="visible" title="彩蛋🎉">
       <ActivityDialog/>
     </el-dialog>

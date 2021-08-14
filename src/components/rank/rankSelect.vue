@@ -9,13 +9,15 @@
           :key="option.value"
         >
           <label class="overflow-auto" :for="'radio'+ index + '' + index1">
+            <!-- 多选 -->
             <input type="checkbox" class="hidden radio" v-if="choice.type == 'multi'"
               :id="'radio' + index + '' + index1" v-model="datas[index1]"
               :value="option.value"
             >
+            <!-- 单选 -->
             <input type="radio" class="hidden radio" v-else
               :id="'radio' + index + '' + index1" v-model="datas[index1]"
-              :value="option.value" 
+              :value="index" 
             >
             <div class="option-label">{{ option.text }}</div>
           </label>
@@ -72,7 +74,7 @@ export default {
           const isEmpty = arr.length == 0
           caches[item.filterAttr] = {
             text: isEmpty ? '未选择关键词' : arr.toString(),
-            value: isEmpty ? '' : arr.toString()
+            value: arr.toString()
           }
           this.datas[index] = arr.join(' ')
           return
