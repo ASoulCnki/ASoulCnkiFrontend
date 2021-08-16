@@ -25,11 +25,12 @@
       </div>
       <div v-if="['input'].includes(choice.type)">
         <div class="input-panel">
-          <input type="text" class="input" @keydown="keydown($event)"
+          <el-input type="text" class="input" @keydown="keydown($event)"
             placeholder="多个关键词用空格分开，每个词不超过10字，最多三个词"
             v-model="datas[index1]"
+            clearable
           >
-          <!-- 待添加清空功能 -->
+          </el-input>
         </div>
       </div>
     </div>
@@ -93,10 +94,12 @@ export default {
       this.$emit('values', caches)
     },
     handleInput(str) {
-      if (/^[ ]*$/.test(str)) 
+      str = str.trim()
+      if ("" === str) {
         return []
+      } 
       return [... new Set(str.split(' '))]
-        .filter(s => !(/^[ ]+$/).test(s) && s.length <= 10)
+        .filter(s => "" !== s && s.length <= 10)
         .sort( (a,b) => a.length - b.length)
         .splice(0, 3)
     }
