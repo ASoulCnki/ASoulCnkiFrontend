@@ -196,4 +196,5 @@ button {
   @apply text-3xl rounded-2xl fixed bottom-24 right-10 shadow-lg z-50;
   @apply hover:bg-gray-50 transition hover:shadow-inner; 
   @apply dark:bg-gray-600 dark:hover:bg-gray-800;
+  cursor: pointer;
 }
