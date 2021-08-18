@@ -2,7 +2,8 @@
   <div class="right-content">
     <div class="discription">
       <h2 class="text-4xl pb-4 pt-2">枝网作文展</h2>
-      <p class="text">枝网作文展旨在收录原创（原偷小作文），由于爬取评论区有限，数据不一定准确，仅供娱乐。本榜单<span class="high">定期刷新</span>。</p>
+      <h2 class="text-3xl py-1 text-blue-600 dark:text-yellow-500">上次更新时间: {{ endTime }}</h2>
+      <p class="text">枝网作文展旨在收录原创（原偷小作文），由于爬取评论区有限，数据不一定准确，仅供娱乐。本榜单<span class="high">定期刷新</span>。作文展的收录范围是<span class="high">ASoul的六个官号</span></p>
       <h2 class="pb-4 pt-2">名词解释</h2>  
       <p class="text">点赞数：小作文自身的点赞数</p>
       <p class="text">引用数：被偷的次数</p>
@@ -14,11 +15,7 @@
       <h2 class="pb-4 pt-2">问题反馈
         <a href="https://t.bilibili.com/551286754984977322" class="text-blue-400" target="_blank">[传送门]</a>
       </h2>
-      <p class="text">如果使用过程中发现问题，欢迎到<a 
-        href="https://space.bilibili.com/1809170490/" class="high"
-        target="_blank"
-        >@查重姬Offical</a>
-        反馈动态评论或私信反馈，包括但不限于:</p>
+      <p class="text">如果使用过程中发现问题，欢迎反馈动态评论或私信反馈，联系方式位于<b class="high">页脚</b>，包括但不限于:</p>
       <ol class="text-2xl leading-relaxed font-bold">
         <li>1. 系统BUG</li>
         <li>2. 功能建议</li>
@@ -67,6 +64,9 @@
 
   export default {
     name:'RankRightContent',
+    props: {
+      endTime: String
+    },
     components: {
       Dialog
     },

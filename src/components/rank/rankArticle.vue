@@ -128,9 +128,8 @@ export default {
 }
 
 .copy {
-  @apply float-right border -mt-1 px-5 mr-2 rounded-md bg-blue-400 text-white;
+  @apply float-right border -mt-1 px-5 mr-2 rounded-md bg-blue-400 text-white cursor-pointer;
   @apply dark:bg-gray-500 dark:text-gray-200;
-  cursor: pointer;
   @apply hover:bg-blue-500 transition
 }
 

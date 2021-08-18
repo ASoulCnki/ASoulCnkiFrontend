@@ -36,7 +36,7 @@
           <span class="button" @click="pageNum++">下一页</span>
         </div>
       </div>
-      <RankRightContent/>
+      <RankRightContent :endTime="response.timeRange[1]" />
     </div>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
       totalPage:1,
       response: {
         allCount: 0,
-        timeRange: [0, 0],
+        timeRange: [0, '2021-07-25 00:00:00'],
         articles: []
       },
       timer: null
@@ -209,7 +209,6 @@ html, body {
   @apply py-2 px-3 m-2 bg-white text-black rounded-md border-0;
   @apply hover:scale-110 hover:bg-gray-100 transition;
   @apply dark:bg-gray-500 dark:text-gray-300 dark:hover:bg-gray-400;
-  cursor: pointer;
 }
 
 .page-num {
