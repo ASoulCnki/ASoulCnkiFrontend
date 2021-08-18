@@ -118,8 +118,11 @@ export default {
     },
     stateSelect(newVal, oldVal) {
       if (JSON.stringify(newVal) == JSON.stringify(oldVal)) return
-      this.pageNum = 1
-      this.getData()
+      if (1 === this.pageNum) {
+        this.getData();
+      } else {
+        this.pageNum = 1;
+      }
     }
   }
 }
@@ -206,6 +209,7 @@ html, body {
   @apply py-2 px-3 m-2 bg-white text-black rounded-md border-0;
   @apply hover:scale-110 hover:bg-gray-100 transition;
   @apply dark:bg-gray-500 dark:text-gray-300 dark:hover:bg-gray-400;
+  cursor: pointer;
 }
 
 .page-num {
