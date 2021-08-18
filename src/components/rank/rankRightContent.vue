@@ -2,7 +2,10 @@
   <div class="right-content">
     <div class="discription">
       <h2 class="text-4xl pb-4 pt-2">枝网作文展</h2>
-      <h2 class="text-3xl py-1 text-blue-600 dark:text-yellow-500">上次更新时间: {{ endTime }}</h2>
+      <h2 class="text-3xl py-1 text-blue-600 dark:text-yellow-500">
+        <span class="iconfont icon-shijian"></span>
+        上次更新时间: {{ endTime }}
+      </h2>
       <p class="text">枝网作文展旨在收录原创（原偷小作文），由于爬取评论区有限，数据不一定准确，仅供娱乐。本榜单<span class="high">定期刷新</span>。作文展的收录范围是<span class="high">ASoul的六个官号</span></p>
       <h2 class="pb-4 pt-2">名词解释</h2>  
       <p class="text">点赞数：小作文自身的点赞数</p>
@@ -41,14 +44,18 @@
         <a href="https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md" target="_blank">API文档</a>
       </div>
       <div class="footer-links">
-        <p>联系我们</p>
-        <a href="https://space.bilibili.com/1809170490/" target="_blank">BiliBili</a>
-        <a href="https://github.com/ASoulCnki" target="_blank">GitHub</a>
-      </div>
-      <div class="footer-links">
         <p>问题反馈</p>
         <a href="https://t.bilibili.com/542031663106174238" target="_blank">主站反馈</a>
         <a href="https://t.bilibili.com/551286754984977322" target="_blank">作文展反馈</a>
+      </div>
+      <div class="footer-links">
+        <p>联系我们</p>
+        <a href="https://space.bilibili.com/1809170490/" target="_blank">
+          <span class="iconfont icon-bilibili-line text-blue-500">BiliBili</span>
+        </a>
+        <a href="https://github.com/ASoulCnki" target="_blank">
+          <span class="iconfont icon-github text-black">GitHub</span>
+        </a>
       </div>
     </div>
     <div class="active-button" v-if="isActive" @click="visible = true">🎉</div>
@@ -125,7 +132,7 @@
 }
 
 .footer-links {
-  @apply grid w-auto grid-cols-1 px-10 box-border w-1/3 text-center;
+  @apply grid grid-cols-1 px-10 box-border w-1/3 text-center;
 }
 
 .footer-links a, .footer-links p {
@@ -139,5 +146,5 @@
 .footer-links p {
   min-width: 60px;
   @apply text-gray-600 font-semibold dark:text-gray-300;
-} 
+}
 </style>
