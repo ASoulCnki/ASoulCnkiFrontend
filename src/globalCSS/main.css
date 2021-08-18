@@ -186,6 +186,13 @@ button {
   @apply pb-4 p-0;
 }
 
+.el-input__inner {
+  @apply overflow-ellipsis mx-auto w-full;
+  @apply dark:bg-gray-700 dark:text-gray-300;
+  line-height: 36px;
+  height: 36px;
+}
+
 .marked {
   @apply font-normal bg-gray-100 text-red-500;
   @apply dark:bg-gray-700 dark:text-yellow-400;

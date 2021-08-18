@@ -122,7 +122,7 @@ export default {
 }
 
 .option-label {
-  @apply m-2 pt-2 p-1 px-6 border transition pb-2;
+  @apply m-2 pt-2 p-1 px-6 border transition pb-2 cursor-pointer;
   @apply bg-gray-50 rounded-lg text-gray-600;
   @apply dark:bg-gray-700 dark:text-gray-300;
 }
@@ -133,7 +133,7 @@ export default {
 
 .input {
   width: 98%;
-  @apply outline-none p-2 px-3 mx-2 rounded-lg;
+  @apply outline-none mx-2 rounded-lg;
   @apply box-border tracking-wider overflow-ellipsis;
   @apply dark:bg-gray-700 dark:text-gray-300;
 }
