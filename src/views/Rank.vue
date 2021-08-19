@@ -14,7 +14,7 @@
               </div>
             </div>
             <span class="filter-button" @click="selectVisible = !selectVisible">
-              筛选
+              <span class="iconfont icon-guolv mr-1">筛选</span>
             </span>
           </div>
           <RankSelect 
@@ -36,7 +36,7 @@
           <span class="button" @click="pageNum++">下一页</span>
         </div>
       </div>
-      <RankRightContent/>
+      <RankRightContent :endTime="response.timeRange[1]" />
     </div>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
       totalPage:1,
       response: {
         allCount: 0,
-        timeRange: [0, 0],
+        timeRange: [0, '2021-07-25 00:00:00'],
         articles: []
       },
       timer: null
@@ -173,7 +173,7 @@ html, body {
 }
 
 .filter-tag {
-  width: calc(100% - 45px);
+  width: calc(100% - 70px);
   height: 27px;
   @apply inline-block overflow-hidden;
 }
@@ -190,7 +190,7 @@ html, body {
 }
 
 .filter-button {
-  @apply box-border float-right p-1 px-2 rounded-md border;
+  @apply box-border float-right p-1 pb-0 rounded-md border;
   @apply hover:bg-blue-400 hover:text-gray-100 transition;
   @apply cursor-pointer;
 }
@@ -209,7 +209,6 @@ html, body {
   @apply py-2 px-3 m-2 bg-white text-black rounded-md border-0;
   @apply hover:scale-110 hover:bg-gray-100 transition;
   @apply dark:bg-gray-500 dark:text-gray-300 dark:hover:bg-gray-400;
-  cursor: pointer;
 }
 
 .page-num {

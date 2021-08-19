@@ -45,7 +45,7 @@ const person_list = [
 ];
 
 const description = [
-  {key: '比对库范围：', value: 'b站动态、视频评论区', type: 'text'},
+  {key: '比对库范围：', value: 'b站动态、视频评论区(仅限A-Soul的六个官方账号)', type: 'text'},
   {key: '参考文献：', value: `[1]李旭.基于串匹配方法的文档复制检测系统研究[D].燕山大学.`, type: 'text'},
   {key: '开源地址：', value: {text: 'ASoulCnki', href: 'https://github.com/ASoulCnki'}, type: 'link'},
   {key: '反馈地址：', value: {text: 'ASoulCnki_Official', href: 'https://t.bilibili.com/542031663106174238'}, type: 'link'},
@@ -87,7 +87,7 @@ const filters = [
     ]
   },
   {
-    filterName: '关键词检索',
+    filterName: '关键词检索[0-3个关键词]',
     filterAttr:'keywords',
     type: 'input',
     options: [

@@ -4,6 +4,7 @@ import router from './router'
 import Element from './config/element'
 import xss from 'xss'
 import "tailwindcss/tailwind.css"
+import './globalCSS/iconfont.css'
 
 Vue.prototype.xss = xss
 
