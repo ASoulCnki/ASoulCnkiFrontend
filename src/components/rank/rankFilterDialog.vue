@@ -18,7 +18,7 @@
       <br>
       后续将开放更多筛选方式供大家使用
     </p>
-    <p class="activity-content imp">本通知仅自动弹出一次，后续可从屏幕右下角🎉按钮打开该通知</p>
+    <p class="activity-content imp">本通知仅自动弹出一次，后续可从屏幕右下角(移动端为右上角)🎉按钮打开该通知</p>
   </div>
 </template>
 

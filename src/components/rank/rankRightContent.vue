@@ -42,7 +42,7 @@
     </div>
     <Links/>
     <div class="active-button" v-if="isActive" @click="visible = true">🎉</div>
-    <el-dialog :visible.sync="visible" title="枝江作文展筛选功能正式上线🎉">
+    <el-dialog :visible.sync="visible" title="枝江作文展筛选功能正式上线🎉" :lock-scroll="false">
       <Dialog/>
     </el-dialog>
   </div>

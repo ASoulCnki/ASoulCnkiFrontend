@@ -139,6 +139,7 @@ html, body {
 .rank-panel {
   @apply m-0 p-0 text-2xl h-full mx-auto w-full bg-gray-200;
   @apply dark:bg-gray-800;
+  min-width: 350px;
 }
 
 .nav {

@@ -62,7 +62,7 @@ export default {
 .article {
   @apply w-full p-2 mx-auto text-lg mt-3 mb-4 border border-gray-200 dark:border-gray-800;
   @apply bg-gray-100 text-gray-600 rounded-md shadow-md;
-  @apply dark:text-gray-400 dark:bg-gray-700; 
+  @apply dark:text-gray-400 dark:bg-gray-700;
 }
 
 .article-header { @apply p-1 pb-2 divide-x text-2xl; }
