@@ -36,7 +36,8 @@
           <span class="button" @click="pageNum++">下一页</span>
         </div>
       </div>
-      <RankRightContent :endTime="response.timeRange[1]" />
+      <RankRightContent :endTime="response.timeRange[1]" :scrollVisible="scrollVisible"/>
+      <div class="active-button" v-show="scrollVisible" @click="scrollBackTop"><span class="iconfont icon-scroll_top"></span></div>
     </div>
   </div>
 </template>
@@ -45,6 +46,7 @@
 import RankArticle from '../components/rank/rankArticle.vue'
 import RankSelect from '../components/rank/rankSelect.vue'
 import RankRightContent from '../components/rank/rankRightContent.vue'
+import throttle from "throttle-debounce/throttle";
 import { debounce, request } from '../utils/'
 import { filters } from '../config/'
 
@@ -67,7 +69,9 @@ export default {
         timeRange: [0, '2021-07-25 00:00:00'],
         articles: []
       },
-      timer: null
+      timer: null,
+      scrollVisibleHeight: 1000,
+      scrollVisible: false,
     }
   },
   methods: {
@@ -78,7 +82,19 @@ export default {
     getData() {
       request.call(this, arguments)
     },
-    debounce
+    debounce,
+    initScroll() {
+      this.scrollHandler = throttle(300, this.onScroll);
+      this.$el.addEventListener('scroll', this.scrollHandler);  // fixme: 改用选择器会严谨一点？
+    },
+    onScroll() {
+      const scrollTop = this.$el.scrollTop;
+      console.log(scrollTop);
+      this.scrollVisible = scrollTop >= this.scrollVisibleHeight;
+    },
+    scrollBackTop() {
+      this.$el.scrollTop = 0;
+    }
   },
   mounted() {
     document.title = "枝江作文展"
@@ -104,6 +120,10 @@ export default {
         debounce(() => this.pageNum--, 700)
       }
     })
+    this.initScroll();
+  },
+  beforeDestroy() {
+    this.$el.removeEventListener('scroll', this.scrollHandler);
   },
   watch: {
     pageNum(newVal) {
@@ -113,7 +133,7 @@ export default {
       if (newVal < 1) {
         return this.pageNum = 1
       }
-      scrollTo(0, 0)
+      this.scrollBackTop();
       this.getData()
     },
     stateSelect(newVal, oldVal) {
@@ -137,7 +157,7 @@ html, body {
 }
 
 .rank-panel {
-  @apply m-0 p-0 text-2xl h-full mx-auto w-full bg-gray-200;
+  @apply m-0 p-0 text-2xl h-screen mx-auto w-full bg-gray-200 overflow-scroll;
   @apply dark:bg-gray-800;
 }
 
