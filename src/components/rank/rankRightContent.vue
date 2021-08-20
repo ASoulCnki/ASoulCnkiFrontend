@@ -56,7 +56,8 @@
   export default {
     name:'RankRightContent',
     props: {
-      endTime: String
+      endTime: String,
+      scrollVisible: { type: Boolean, default: false },
     },
     components: {
       Dialog,
