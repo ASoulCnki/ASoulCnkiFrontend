@@ -8,7 +8,7 @@
         枝网原班人马打造，我们自己都溜到停不下来的优秀小作文展示平台
       </p>
     </div>
-    <div class="right-top-description right-item">
+    <div class="right-top-description right-item pb-6">
       <h3 class="description-title dark:text-gray-300">
         枝网查重系统介绍
       </h3>   
@@ -20,9 +20,8 @@
         </em>
       </p>
     </div>
-
     <Carousel :memberArray="person_list"/>
-    <hr class="p-0 mb-4 mt-10">
+    <Links/>
     <p class="text-center text-xl">
       <a class="text-gray-400" href="https://beian.miit.gov.cn/" target="_blank">
         琼ICP备20001476号-2
@@ -38,6 +37,7 @@
 <script>
 import Carousel from '../Carousel.vue'
 import ActivityDialog from '../activity/activityDialog.vue'
+import Links from '../public/Links.vue'
 import { person_list, description } from '@/config'
 import { existActiveKey, isTimeActive } from '@/utils'
 
@@ -45,7 +45,8 @@ export default {
   name: 'RightContent',
   components: {
     Carousel,
-    ActivityDialog
+    ActivityDialog,
+    Links
   },
   data() { 
     return {

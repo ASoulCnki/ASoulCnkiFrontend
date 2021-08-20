@@ -133,12 +133,12 @@ html, body {
   min-width: 375px;
   @apply h-full;
   @apply bg-gray-200;
-  @apply dark:bg-gray-600;
+  @apply dark:bg-gray-800;
 }
 
 .rank-panel {
   @apply m-0 p-0 text-2xl h-full mx-auto w-full bg-gray-200;
-  @apply dark:bg-gray-700;
+  @apply dark:bg-gray-800;
 }
 
 .nav {
@@ -152,11 +152,11 @@ html, body {
   @apply text-2xl border-0 rounded-none overflow-hidden min-h-full;
   @apply xl:w-5/6 lg:mx-auto md:px-6;
   @apply bg-gray-200;
-  @apply dark:bg-gray-700;
+  @apply dark:bg-gray-800;
 }
 
 .left-content {
-  @apply box-border p-4 shadow-xl bg-blue-300;
+  @apply box-border p-4 bg-blue-300;
   @apply md:w-4/5 md:mx-auto lg:float-left lg:w-3/5;
   @apply md:my-5 md:rounded-md lg:mb-64;
   @apply dark:bg-gray-600;
@@ -197,23 +197,23 @@ html, body {
 
 .page-input {
   @apply w-14 text-center h-12 py-2 mx-2 rounded-md;
-  @apply dark:bg-gray-500;
+  @apply dark:bg-gray-500 dark:text-gray-300;
 }
 
 .button-panel {
   @apply flex justify-center rounded-md mt-2;
-  @apply dark:text-gray-200 dark:bg-gray-600;
+  @apply dark:text-gray-400 dark:bg-gray-600;
 }
 
 .button {
   @apply py-2 px-3 m-2 bg-white text-black rounded-md border-0;
   @apply hover:scale-110 hover:bg-gray-100 transition;
-  @apply dark:bg-gray-500 dark:text-gray-300 dark:hover:bg-gray-400;
+  @apply dark:bg-gray-700 dark:text-gray-400;
 }
 
 .page-num {
   @apply w-auto text-center h-12 py-2 m-2;
-  @apply dark:text-gray-200;
+  @apply dark:text-gray-400;
 }
 
 .result-none {
