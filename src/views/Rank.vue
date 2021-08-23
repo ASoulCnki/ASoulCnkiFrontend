@@ -37,7 +37,6 @@
         </div>
       </div>
       <RankRightContent :endTime="response.timeRange[1]" :scrollVisible="scrollVisible"/>
-      <div class="active-button" v-show="scrollVisible" @click="scrollBackTop"><span class="iconfont icon-scroll_top"></span></div>
     </div>
   </div>
 </template>
@@ -46,7 +45,6 @@
 import RankArticle from '../components/rank/rankArticle.vue'
 import RankSelect from '../components/rank/rankSelect.vue'
 import RankRightContent from '../components/rank/rankRightContent.vue'
-import throttle from "throttle-debounce/throttle";
 import { debounce, request } from '../utils/'
 import { filters } from '../config/'
 
@@ -83,18 +81,6 @@ export default {
       request.call(this, arguments)
     },
     debounce,
-    initScroll() {
-      this.scrollHandler = throttle(300, this.onScroll);
-      this.$el.addEventListener('scroll', this.scrollHandler);  // fixme: 改用选择器会严谨一点？
-    },
-    onScroll() {
-      const scrollTop = this.$el.scrollTop;
-      console.log(scrollTop);
-      this.scrollVisible = scrollTop >= this.scrollVisibleHeight;
-    },
-    scrollBackTop() {
-      this.$el.scrollTop = 0;
-    }
   },
   mounted() {
     document.title = "枝江作文展"
@@ -120,10 +106,6 @@ export default {
         debounce(() => this.pageNum--, 700)
       }
     })
-    this.initScroll();
-  },
-  beforeDestroy() {
-    this.$el.removeEventListener('scroll', this.scrollHandler);
   },
   watch: {
     pageNum(newVal) {
@@ -157,7 +139,7 @@ html, body {
 }
 
 .rank-panel {
-  @apply m-0 p-0 text-2xl h-screen mx-auto w-full bg-gray-200 overflow-scroll;
+  @apply m-0 p-0 text-2xl h-full mx-auto w-full bg-gray-200 overflow-hidden;
   @apply dark:bg-gray-800;
   min-width: 350px;
 }

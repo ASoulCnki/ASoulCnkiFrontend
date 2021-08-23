@@ -20,7 +20,7 @@
                 </button>
               </li>
               <li>
-                <button class="button report" id="copy" :disabled="!reportable">
+                <button class="button report" id="copy" @click="copy" :disabled="!reportable">
                   <span class="iconfont icon-fuzhi"></span>
                 </button>
               </li>
@@ -64,6 +64,7 @@
 <script>
 import { isChracterDraw, pureLength, buttonClick } from '../utils/'
 import { message } from '../config'
+import clipbaord from 'clipboard'
 import Notice from '../components/Notice.vue'
 import ArticleShow from '../components/index/articleShow.vue'
 import RightContent from '../components/index/RightContent.vue'
@@ -138,6 +139,16 @@ export default {
     openDialog() {
       this.isAgreed = !this.isAgreed
       this.isProtocolVisiable = true
+    },
+    copy() {
+      const clip = new clipbaord('#copy', {
+        text: () => this.report()
+      })
+        .on('success', () => {
+          this.notify('复制成功，适度玩梗捏', 'success')
+          clip.destroy()
+        })
+        .on('error', () => this.notify('复制失败', 'error'))
     }
   },
   computed: {
@@ -155,14 +166,6 @@ export default {
     }
   },
   mounted() {
-    const isAgreed = JSON.parse(localStorage.getItem('isAgreed'))
-    this.isAgreed = isAgreed || false
-    const clipboard = new ClipboardJS('#copy', {
-      text: this.report
-    })
-    clipboard.on("success", () => this.notify('复制成功,适度玩梗捏', 'success'));
-    clipboard.on("error", () => this.notify('复制失败，请手动复制', 'warning'))
-    this.clipboard = clipboard
   },
   watch: {
     isAgreed(newVal) {

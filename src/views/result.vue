@@ -25,7 +25,7 @@
       </div>
       <div class="result-body">
         <div class="flex justify-center space-x-5">
-          <button class="result-copy-button" id="result-copy">
+          <button class="result-copy-button" id="#copy" @click="copy">
             复制查重结果
           </button>
           <button class="result-copy-button" @click="backToHome">
@@ -56,6 +56,7 @@
 
 <script>
 import ArticleShow from '../components/index/articleShow.vue'
+import clipbaord from 'clipboard'
 export default {
   name: 'result',
   components: {
@@ -64,7 +65,6 @@ export default {
   data() {
     return {
       response: {},
-      clipboard: null,
       progress_class: ""
     }
   },
@@ -79,7 +79,7 @@ export default {
       report += `查重结果仅作参考，请注意辨别是否为原创`
       return report;
     },
-    notify(s, type) {
+    notify(s, type="success") {
       this.$message({
         showClose: true,
         message: s,
@@ -88,6 +88,16 @@ export default {
     },
     backToHome() {
       this.$router.go(-1)
+    },
+    copy() {
+      const clip = new clipbaord('#copy', {
+        text: () => this.report()
+      })
+        .on('success', () => {
+          this.notify('复制成功，适度玩梗捏', 'success')
+          clip.destroy()
+        })
+        .on('error', () => this.notify('复制失败', 'error'))
     }
   },
   created() {
@@ -109,14 +119,6 @@ export default {
       this.rate_color = "red";
     }
   },
-  mounted() {
-    const clipboard = new ClipboardJS('#result-copy', {
-      text: this.report
-    })
-    clipboard.on("success", () => this.notify('复制成功,适度玩梗捏', 'success'));
-    clipboard.on("error", () => this.notify('复制失败，请手动复制', 'warning')) 
-    this.clipboard = clipboard
-  }
 }
 </script>
 

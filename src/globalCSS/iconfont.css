@@ -62,3 +62,7 @@
 .icon-scroll_top:before {
   content: "\25B2";
 }
+
+.icon-top:before {
+  content: "\e646";
+}
