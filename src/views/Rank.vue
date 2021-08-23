@@ -45,6 +45,7 @@
 import RankArticle from '../components/rank/rankArticle.vue'
 import RankSelect from '../components/rank/rankSelect.vue'
 import RankRightContent from '../components/rank/rankRightContent.vue'
+import throttle from "throttle-debounce/throttle";
 import { debounce, request } from '../utils/'
 import { filters } from '../config/'
 
@@ -106,6 +107,10 @@ export default {
         debounce(() => this.pageNum--, 700)
       }
     })
+    this.initScroll();
+  },
+  beforeDestroy() {
+    this.$el.removeEventListener('scroll', this.scrollHandler);
   },
   watch: {
     pageNum(newVal) {
