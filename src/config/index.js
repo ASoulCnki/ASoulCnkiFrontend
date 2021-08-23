@@ -56,9 +56,9 @@ const filters = [
     type: 'single',
     // option 第一个为默认值, 显示时按顺序排列
     options: [
+      {text: '全部时间', value: 0},
       {text: '本周', value: 1},
       {text: '三天内', value: 2},
-      {text: '全部时间', value: 0},
     ]
   },
   {
