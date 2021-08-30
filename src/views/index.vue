@@ -28,9 +28,11 @@
                 <button @click="buttonClick" :disabled="isComplete"
                   :class="'text-button button ' + (isComplete ? 'submit-pedding' : 'submit-ready') " 
                 >
-                  <span class="iconfont icon-shangchuan -ml-1 mr-2"></span> 
+                  <span class="iconfont icon-shangchuan mr-1"></span>
                   {{ isComplete ? '查重中' : '提交' }}
-                </button> 
+                  <!-- 待添加多后端功能后实装 -->
+                  <!-- <div class="iconfont icon-bottom ml-1"></div> -->
+                </button>
               </li>
 
             </ul>
@@ -64,6 +66,7 @@
 <script>
 import { isChracterDraw, pureLength, buttonClick } from '../utils/'
 import { message } from '../config'
+import { serverInfo } from '../config/serverinfo'
 import clipbaord from 'clipboard'
 import Notice from '../components/Notice.vue'
 import ArticleShow from '../components/index/articleShow.vue'
@@ -101,7 +104,7 @@ export default {
         alike: []
       },
       textMarked: false,
-      clipbaord: null
+      serverInfo
     };
   },
   methods: {

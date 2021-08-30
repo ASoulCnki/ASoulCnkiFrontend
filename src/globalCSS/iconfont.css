@@ -62,3 +62,11 @@
 .icon-top:before {
   content: "\e646";
 }
+
+.icon-bottom {
+  transform: rotateZ(180deg);
+}
+
+.icon-bottom:before {
+  content: "\e646";
+}
