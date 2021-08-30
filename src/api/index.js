@@ -1,7 +1,7 @@
 import axios from 'axios';
 axios.defaults.timeout = 4000 // mill seconds
 const instance = axios.create({
-    baseURL: process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'
+    // baseURL: process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/v1/api'
 })
 
 instance.interceptors.request.use(config => {
@@ -16,6 +16,16 @@ instance.interceptors.request.use(config => {
     }
     config.url = url
     return config
-}
+})
+
+instance.interceptors.response.use(
+    response => {
+        return response
+    },
+    // When res.status != 200
+    // ployfill for Promise.all
+    error => {
+        return Promise.resolve({data:{code: 1}})
+    }
 )
 export { instance }

@@ -25,7 +25,7 @@
       </div>
       <div class="result-body">
         <div class="flex justify-center space-x-5">
-          <button class="result-copy-button" id="#copy" @click="copy">
+          <button class="result-copy-button" id="copy" @click="copy">
             复制查重结果
           </button>
           <button class="result-copy-button" @click="backToHome">
