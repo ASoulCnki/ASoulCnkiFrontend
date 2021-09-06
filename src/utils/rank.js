@@ -1,8 +1,8 @@
 import { instance } from '@/api';
 import { parseTime } from './index'
 
-export function request() {
-  const getUrl = `https://asoulcnki.asia/v1/api/ranking/`;
+export function request() { 
+  const getUrl = `${process.env.VUE_APP_BASE_API}v1/api/ranking/`;
 
   const notify = (s, type) => {
     this.$message({ showClose: true, message: s, type: type })
