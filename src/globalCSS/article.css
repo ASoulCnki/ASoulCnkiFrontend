@@ -50,7 +50,7 @@
 }
 
 .footer {
-  @apply: box-border w-full text-right m-0 pr-8;
+  @apply box-border w-full text-right m-0 pr-8;
 }
 
 @media screen and (max-width: 768px) {

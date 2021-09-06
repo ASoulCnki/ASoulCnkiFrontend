@@ -42,7 +42,7 @@ async function buttonClick() {
 
 // do sub request
 function subRequest(serverInfo, text) {
-  const url = serverInfo.url + '/v1/api/check'
+  const url = serverInfo.url + 'v1/api/check'
   return instance.post(url, { text: text })
     .catch(err => err)
 }
@@ -56,7 +56,7 @@ async function allRequest(serverInfoArray, text) {
     axiosPendingArray.push(subRequest(serverInfo, text))
   });
 
-  // 对网站限流的情况没做处理
+  // 如果某个请求发生错误，忽略这个请求
   await axios.all(axiosPendingArray)
     .then(axios.spread((...res) => {
       response = mergeCheckResponse(res)
@@ -94,7 +94,7 @@ function mergeCheckResponse(res) {
     .sort((x, y) => y.rate - x.rate)
 
   response = {
-    rate: Math.max(...rateArray),
+    rate: Math.max(...rateArray, 0),
     start_time: Math.min(...startTimeArray),
     end_time: Math.max(...endTimeArray),
     related: related

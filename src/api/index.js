@@ -9,7 +9,8 @@ instance.interceptors.request.use(config => {
     if (config.method === 'get' && config.params) {
         url += '?'
         for (let key in config.params) {
-            url += `${key}=${encodeURIComponent(config.params[key])}&`
+            if (config.params[key].toString() != '')
+                url += `${key}=${encodeURIComponent(config.params[key])}&`
         }
         url = url.substring(0, url.length - 1)
         config.params = {}

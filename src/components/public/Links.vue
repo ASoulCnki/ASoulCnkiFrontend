@@ -37,13 +37,13 @@
 .footer-links a, p { @apply py-2 block; }
 
 .footer-links a {
-  @apply text-gray-500 dark:text-gray-400 hover:underline;
+  @apply text-gray-600 dark:text-gray-300 hover:underline;
 }
 
 .footer-links a, span { @apply text-xl; }
 
 .footer-links p {
   min-width: 60px;
-  @apply text-gray-500 font-semibold dark:text-gray-400 text-2xl;
+  @apply text-gray-600 font-semibold dark:text-gray-300 text-2xl;
 }
 </style>

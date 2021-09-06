@@ -115,7 +115,9 @@ button {
   line-height: 1.6rem;
   transition: 0.22s;
   @apply px-4 py-2 rounded-lg flex justify-center;
-  @apply text-white border border-white;
+  @apply
+    text-white border border-white
+    dark:border-gray-600;
 }
 
 #copy {
@@ -123,7 +125,7 @@ button {
 }
 
 .button:disabled {
-  @apply cursor-not-allowed bg-gray-300 text-gray-100;
+  @apply cursor-not-allowed bg-gray-400 text-gray-100;
 }
 
 .text-button {
@@ -197,12 +199,12 @@ button {
   @apply box-border w-16 h-16 md:bg-white text-center pt-3 pl-1 cursor-pointer; 
   @apply text-3xl md:rounded-2xl md:fixed md:bottom-40 md:right-16 lg:shadow-lg z-50;
   @apply md:hover:bg-gray-50 transition md:hover:shadow-inner; 
-  @apply dark:bg-gray-600 dark:hover:bg-gray-800;
+  @apply dark:bg-gray-700 dark:hover:bg-gray-600;
 }
 
 .return-top {
   @apply box-border w-16 h-16 bg-white text-center pt-3 pl-1 cursor-pointer; 
   @apply text-3xl rounded-2xl fixed bottom-20 right-16 lg:shadow-lg z-50;
   @apply hover:bg-gray-50 transition hover:shadow-inner; 
-  @apply dark:bg-gray-600 dark:hover:bg-gray-800 opacity-75;
+  @apply dark:bg-gray-600 dark:hover:bg-gray-700 opacity-75 dark:text-gray-300;
 }
