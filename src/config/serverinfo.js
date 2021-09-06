@@ -2,7 +2,8 @@
 export const serverInfo = [
   {
     name: '枝网',
-    url: 'https://asoulcnki.asia',
+    // ensure url end with /
+    url: process.env.VUE_APP_BASE_API || 'https://asoulcnki.asia/',
     select: true
   }
 ]
