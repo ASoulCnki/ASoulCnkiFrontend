@@ -3,7 +3,9 @@
 源项目：https://github.com/stream2000/ASoulCnki  
 网站地址：https://asoulcnki.asia
 
-基于vue cli  
+前端已迁移至 [Vue3 版本](https://github.com/ASoulCnki/ASoulCnkiFrontEndV3)，本项目归档，**不再维护**
+
+基于vue cli
 ## 贡献流程：
 先fork项目到您的github账户，然后再clone，开新分支并发起pr
 
